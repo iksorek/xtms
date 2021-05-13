@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Vehicle;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,13 +31,18 @@ class DatabaseSeeder extends Seeder
         $admin->givePermissionTo('add user');
 
         $super_admin = Role::create(['name' => 'super_admin']);
-        $user = \App\Models\User::factory()->create([
+        $user = \App\Models\User::factory()
+            ->has(Vehicle::factory(10))
+            ->create([
             'name' => 'iksor',
             'email' => 'dev@mrogon.co.uk',
         ]);
         $user->assignRole('super_admin');
 
 
+        User::factory(20)
+            ->has(Vehicle::factory()->count(10))
+            ->create();
 
 
     }

@@ -21,7 +21,6 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -62,4 +61,15 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function Vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+
+    public function Runs()
+    {
+        return $this->hasManyThrough(Run::class, Vehicle::class);
+    }
 }
