@@ -68,8 +68,13 @@ class User extends Authenticatable
         return $this->hasMany(Vehicle::class);
     }
 
-    public function Runs()
+    public function Runs(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasManyThrough(Run::class, Vehicle::class);
+        return $this->hasMany(Run::class);
+    }
+
+    public function Customer(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Customer::class);
     }
 }

@@ -15,6 +15,18 @@ class CreateRunsTable extends Migration
     {
         Schema::create('runs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('vehicle_id')->nullable();
+            $table->foreignId('customer_id')->nullable();
+            $table->string('postcode_from');
+            $table->string('postcode_to');
+            $table->dateTime('start_time');
+            $table->dateTime('finish_est');
+            $table->dateTime('finished')->nullable();
+            $table->integer('price')->nullable();
+            $table->boolean('paid')->default(false);
+            $table->text('additional_info')->nullable();
+
             $table->timestamps();
         });
     }

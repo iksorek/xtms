@@ -22,9 +22,10 @@ class VehicleFactory extends Factory
     public function definition()
     {
         return [
-            'reg'=>$this->faker->randomLetter.$this->faker->randomLetter.rand(10,20).$this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomLetter,
+            'reg'=>$this->faker->randomLetter.$this->faker->randomLetter.rand(10,20).' '.$this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomLetter,
             'milage'=>rand(5254,46546),
-
+            'mot'=>$this->faker->dateTimeBetween('-200 days', '+200 days'),
+            'insurance'=>$this->faker->dateTimeBetween('-50 days', '+200 days'),
         ];
     }
 }

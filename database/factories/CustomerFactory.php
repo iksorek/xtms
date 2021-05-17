@@ -3,19 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\Customer;
-use App\Models\Run;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RunFactory extends Factory
+class CustomerFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Run::class;
+    protected $model = Customer::class;
 
     /**
      * Define the model's default state.
@@ -25,10 +22,11 @@ class RunFactory extends Factory
     public function definition()
     {
         return [
-            'postcode_from'=>'NP16RA',
-            'postcode_to'=>'BS354GG',
-            'start_time'=>now(),
-            'finish_est'=>Carbon::now()->add(rand(1,5), 'hour'),
+            'name'=>$this->faker->name,
+            'mobile'=>$this->faker->e164PhoneNumber,
+            'address'=>$this->faker->streetAddress.' '.$this->faker->city,
+            'info'=>$this->faker->words(80, true)
+
         ];
     }
 }

@@ -16,7 +16,11 @@ class CreateVehiclesTable extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('type')->default('van');
+            $table->string('type')->default('VAN');
+            $table->string('make')->default('Mercedes');
+            $table->string('model')->default('Sprinter');
+            $table->date('mot')->nullable();
+            $table->date('insurance')->nullable();
             $table->string('reg');
             $table->integer('milage')->nullable();
             $table->timestamps();
