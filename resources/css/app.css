@@ -47,6 +47,28 @@ video {
     height: auto
 }
 
+.bg-splash{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("/img/tech-5090539_1280.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    color: white;
+}
 .bg-white {
     --bg-opacity: 1;
     background-color: #fff;
