@@ -1,5 +1,5 @@
 <div class="flex w-full">
-    <div class="flex-col bg-green-300 w-1/2">
+    <div class="flex-col w-1/2">
         <div class="m-4">
             <x-jet-label for="search">Search Your customers</x-jet-label>
             <x-jet-input wire:model="search" name="search" placeholder="Type customer name" class="w-3/4 mx-auto"/>
@@ -23,7 +23,7 @@
             You have no saved customers Yet
         @endempty
     </div>
-    <div class="flex-col w-1/2 text-center p-5 bg-green-200">
+    <div class="w-1/2 text-center p-5 bg-green-200 rounded-2xl">
         @empty($customerDetails)
             Click on customer name to see more details.
         @endempty

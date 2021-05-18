@@ -21,11 +21,14 @@ class VehicleFactory extends Factory
      */
     public function definition()
     {
+        $randMileage = rand(5200, 520000);
         return [
             'reg'=>$this->faker->randomLetter.$this->faker->randomLetter.rand(10,20).' '.$this->faker->randomLetter.$this->faker->randomLetter.$this->faker->randomLetter,
-            'milage'=>rand(5254,46546),
+            'mileage'=>$randMileage,
             'mot'=>$this->faker->dateTimeBetween('-200 days', '+200 days'),
             'insurance'=>$this->faker->dateTimeBetween('-50 days', '+200 days'),
+            'service'=>$this->faker->numberBetween($randMileage - 100, $randMileage + 100)
+
         ];
     }
 }

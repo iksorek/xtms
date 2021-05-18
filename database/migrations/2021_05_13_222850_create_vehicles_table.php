@@ -21,8 +21,9 @@ class CreateVehiclesTable extends Migration
             $table->string('model')->default('Sprinter');
             $table->date('mot')->nullable();
             $table->date('insurance')->nullable();
+            $table->integer('service')->nullable();
             $table->string('reg');
-            $table->integer('milage')->nullable();
+            $table->integer('mileage')->nullable();
             $table->timestamps();
         });
     }
