@@ -28,18 +28,6 @@
                         </div>
 
                     </td>
-
-
-                    {{--                        @if($veh->mot < now())--}}
-                    {{--                            <td class="bg-red-500">EXPIRED {{$veh->mot}}</td>--}}
-                    {{--                        @else--}}
-                    {{--                          <td class="bg-green-300">{{$veh->mot}}</td>--}}
-                    {{--                        @endif--}}
-                    {{--                    @if($veh->insurance < now())--}}
-                    {{--                        <td class="bg-red-500">EXPIRED {{$veh->insurance}}</td>--}}
-                    {{--                    @else--}}
-                    {{--                        <td class="bg-green-300">{{$veh->insurance}}</td>--}}
-                    {{--                    @endif--}}
                 </tr>
             @endforeach
             </tbody>

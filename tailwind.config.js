@@ -6,7 +6,14 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/views/components/vans/*.blade.php',
     ],
+    options: {
+        safelist: {
+            greedy: [/^bg-/]
+        },
+    },
+
 
     theme: {
         extend: {
