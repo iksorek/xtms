@@ -15,6 +15,7 @@ class VanExpDate extends Component
     public $type;
     public $date;
     public $color;
+    public $mode;
     public $tooltip = '';
 
     public function __construct($type, $date)
@@ -34,13 +35,16 @@ class VanExpDate extends Component
             $this->tooltip = $this->date[0];
             if ($this->date[0] < $this->date[1]) {
                 $this->color = 'red';
+                $this->mode = 'err';
                 $diff = $this->date[1] - $this->date[0];
                 $this->tooltip .= ' (' . $diff . ' miles ago)';
             } else {
                 $this->color = 'green';
+                $this->mode = 'info';
                 $diff = $this->date[0] - $this->date[1];
                 if ($diff < 30) {
                     $this->color = 'yellow';
+                    $this->mode = 'warning';
                 }
                 $this->tooltip .= ' (' . $diff . ' miles left)';
             }
@@ -48,15 +52,18 @@ class VanExpDate extends Component
         } else {
             $this->tooltip = $this->date;
             $diff = Carbon::parse($this->date)->diffInDays(Carbon::now());
-            $this->tooltip .= ' '. $diff . ' days';
+            $this->tooltip .= ' ' . $diff . ' days';
             if ($this->date < now()) {
                 $this->color = 'red';
-                $this->tooltip .= ' '.'ago';
+                $this->mode = 'err';
+                $this->tooltip .= ' ' . 'ago';
             } else {
                 $this->color = 'green';
-                $this->tooltip .= ' '.'left';
-                if($diff < 30){
+                $this->mode = 'info';
+                $this->tooltip .= ' ' . 'left';
+                if ($diff < 30) {
                     $this->color = 'yellow';
+                    $this->mode = 'warning';
                 }
 
             }
