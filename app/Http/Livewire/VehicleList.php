@@ -9,6 +9,12 @@ use Livewire\Component;
 class VehicleList extends Component
 {
     public $vehs = null;
+    public $showModal = false;
+
+    public function toggleModal($vehicle){
+       return $this->showModal = $vehicle;
+
+    }
 
     public function render()
     {

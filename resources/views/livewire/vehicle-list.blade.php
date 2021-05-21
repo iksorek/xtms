@@ -1,13 +1,14 @@
-<div>
+<div class="p-2 sm:p-4 md:p-8">
     @if($vehs)
-        <table class="table-auto w-full text-sm">
+
+        <table class="w-full text-xs md:text-sm">
             <thead>
             <tr>
                 <th>Make - Model</th>
                 <th>Reg</th>
-                <th>Mileage</th>
+                <th class="hidden sm:block">Mileage</th>
                 <th>Runs planned</th>
-                <th>INFORMATION</th>
+                <th class="hidden sm:block">INFORMATION</th>
 
             </tr>
             </thead>
@@ -15,12 +16,13 @@
 
 
             @foreach($vehs as $veh)
+
                 <tr class="text-center">
-                    <td>{{ $veh->make }} {{$veh->model}}</td>
+                    <td wire:click=toggleModal({{$veh->id}})>{{ $veh->make }} {{$veh->model}}</td>
                     <td>{{\Illuminate\Support\Str::upper($veh->reg)}}</td>
-                    <td>{{$veh->mileage}}</td>
+                    <td class="hidden sm:block">{{$veh->mileage}}</td>
                     <td>{{$veh->Runs()->count()}}</td>
-                    <td class="flex content-center mx-auto">
+                    <td class="hidden sm:flex flex content-center mx-auto">
                         <div class="flex mx-auto">
                             <x-vans.van-exp-date type='MOT' :date="$veh->mot"/>
                             <x-vans.van-exp-date type='INS' :date="$veh->insurance"/>
@@ -32,5 +34,10 @@
             @endforeach
             </tbody>
         </table>
+        @if($showModal)
+            <x-vehicle-details-modal vehicle="{{$showModal}}"></x-vehicle-details-modal>
+
+
+        @endif
     @endif
 </div>
