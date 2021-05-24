@@ -88,3 +88,6 @@ video {
 .has-tooltip:hover .tooltip {
     @apply visible z-50
 }
+input, button{
+    line-height: 2rem;
+}

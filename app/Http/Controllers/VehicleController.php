@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\vehicle;
+use App\Models\Vehicle;
+use App\View\Components\vehicleDetails;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -30,7 +31,7 @@ class VehicleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -38,23 +39,13 @@ class VehicleController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
-    public function show(vehicle $vehicle)
+
+    public function show($vehID)
     {
-        //
+        $vehicle = Vehicle::with('Runs')->findOrFail($vehID);
+        return view('vehicleDetails', ['vehicle'=>$vehicle]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\vehicle  $vehicle
-     * @return \Illuminate\Http\Response
-     */
     public function edit(vehicle $vehicle)
     {
         //
@@ -63,8 +54,8 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\vehicle  $vehicle
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, vehicle $vehicle)
@@ -75,7 +66,7 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\vehicle  $vehicle
+     * @param \App\Models\vehicle $vehicle
      * @return \Illuminate\Http\Response
      */
     public function destroy(vehicle $vehicle)

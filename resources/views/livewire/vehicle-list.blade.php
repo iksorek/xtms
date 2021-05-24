@@ -18,10 +18,10 @@
             @foreach($vehs as $veh)
 
                 <tr class="text-center">
-                    <td wire:click=toggleModal({{$veh->id}})>{{ $veh->make }} {{$veh->model}}</td>
+                    <td><a href="{{route("vehicleDetails", ['vehicleID'=>$veh->id])}}">{{ $veh->make }} {{$veh->model}}</a></td>
                     <td>{{\Illuminate\Support\Str::upper($veh->reg)}}</td>
                     <td class="hidden sm:block">{{$veh->mileage}}</td>
-                    <td>{{$veh->Runs()->count()}}</td>
+                    <td>{{$veh->runs_count}}</td>
                     <td class="hidden sm:flex flex content-center mx-auto">
                         <div class="flex mx-auto">
                             <x-vans.van-exp-date type='MOT' :date="$veh->mot"/>
@@ -34,10 +34,6 @@
             @endforeach
             </tbody>
         </table>
-        @if($showModal)
-            <x-vehicle-details-modal vehicle="{{$showModal}}"></x-vehicle-details-modal>
 
-
-        @endif
     @endif
 </div>
