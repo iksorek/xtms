@@ -1,5 +1,6 @@
 <div>
-    <x-jet-banner/>
+  <x-jet-banner />
+
     @if($errors->any())
    <p class="text-2xl text-red-600 text-center m-2">{{ $errors->first() }}</p>
     @endif
@@ -48,7 +49,9 @@
                        class="bg-green-100 border-0"/>
             </td>
             <td class="text-center">
-                <x-jet-button wire:click="saveNewService" class="ml">Save new service milage</x-jet-button>
+                <x-jet-button wire:click="saveNewService" class="ml">Save</x-jet-button>
+
+                <x-jet-button wire:click="addIntervalMilesToService" class="ml">+6000 miles</x-jet-button>
             </td>
         </tr>
     </table>

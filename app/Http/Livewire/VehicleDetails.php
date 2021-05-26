@@ -23,9 +23,7 @@ class VehicleDetails extends Component
     protected $rulesInsurance = [
         'newInsurance' => 'required|date',
     ];
-    protected $rulesService = [
-        'newService' => "required|integer",
-    ];
+
 
     public function mount()
     {
@@ -40,13 +38,30 @@ class VehicleDetails extends Component
         $this->validate($this->rulesInsurance);
         $this->vehicle->insurance = $this->newInsurance;
         $this->vehicle->save();
+        request()->session()->flash('flash.banner', 'Insurance renewal date saved');
+        request()->session()->flash('flash.bannerStyle', 'success');
     }
 
     public function saveNewService()
     {
-        $this->validate($this->rulesService);
+        $this->validate([
+            'newService' => "required|numeric|min:" . $this->mileage,
+
+        ]);
         $this->vehicle->service = $this->newService;
         $this->vehicle->save();
+        request()->session()->flash('flash.banner', 'Next service mileage saved');
+        request()->session()->flash('flash.bannerStyle', 'success');
+    }
+
+    public function addIntervalMilesToService()
+    {
+        $this->vehicle->service = $this->vehicle->service + 6000;
+        $this->vehicle->save();
+        $this->newService = $this->vehicle->service;
+        request()->session()->flash('flash.banner', 'Next service at ' . $this->newService . ' saved.');
+        request()->session()->flash('flash.bannerStyle', 'success');
+
     }
 
     public function saveNewMotDate()
@@ -54,7 +69,8 @@ class VehicleDetails extends Component
         $this->validate($this->rulesMot);
         $this->vehicle->mot = $this->newmot;
         $this->vehicle->save();
-        //todo SET ALERTS
+        request()->session()->flash('flash.banner', 'Next MOT date saved');
+        request()->session()->flash('flash.bannerStyle', 'success');
 
     }
 
