@@ -12,10 +12,7 @@ class VehicleDetails extends Component
     public $newInsurance;
     public $newService;
     public $mileage;
-    protected $listeners = [
-        'confirmed',
-        'cancelled',
-    ];
+
 
     protected $rulesMot = [
         'newmot' => 'required|date',
