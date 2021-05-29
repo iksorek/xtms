@@ -23,11 +23,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
     Route::get('/myCustomers', [CustomerController::class, 'index'])->name('myCustomers');
     Route::get('/vehicledetails/{vehicleID}', [VehicleController::class, 'show'])->name('vehicleDetails');
-    Route::get('/myvehicles', function () {
-        return view('myvehicles');
-    })->name('vehicles');
+    Route::get('/myvehicles', [VehicleController::class, 'index'])->name('vehicles');
+    Route::get('/myvehicles/add', [VehicleController::class, 'create'])->name('addVehicle');
+    Route::put('/myvehicles/store', [VehicleController::class, 'store'])->name('storeVehicle');
 
 });
 

@@ -20,6 +20,7 @@ class CreateVehiclesTable extends Migration
             $table->string('make')->default('Mercedes');
             $table->string('model')->default('Sprinter');
             $table->date('mot')->nullable();
+            $table->date('tax')->nullable();
             $table->date('insurance')->nullable();
             $table->integer('service')->nullable();
             $table->string('reg');

@@ -26,6 +26,7 @@
                         <div class="flex mx-auto">
                             <x-vans.van-exp-date type='MOT' :date="$veh->mot"/>
                             <x-vans.van-exp-date type='INS' :date="$veh->insurance"/>
+                            <x-vans.van-exp-date type='TAX' :date="$veh->tax"/>
                             <x-vans.van-exp-date type='SERVICE' :date="[$veh->service, $veh->mileage]"/>
                         </div>
 
