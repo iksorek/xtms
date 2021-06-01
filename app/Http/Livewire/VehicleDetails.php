@@ -9,12 +9,7 @@ use phpDocumentor\Reflection\Types\True_;
 
 class VehicleDetails extends Component
 {
-    public $vehicle;
-    public $newmot;
-    public $newInsurance;
-    public $newService;
-    public $mileage;
-
+    public $vehicle, $mot, $tax, $insurance, $service, $mileage, $reg, $make, $model, $confirmingVehicleDeletion;
 
 
     protected $rulesMot = [
@@ -25,58 +20,61 @@ class VehicleDetails extends Component
     ];
 
 
-
-
-
     public function mount()
     {
-        $this->newmot = $this->vehicle->mot;
-        $this->newInsurance = $this->vehicle->insurance;
-        $this->newService = $this->vehicle->service;
+        $this->mot = $this->vehicle->mot;
+        $this->make = $this->vehicle->make;
+        $this->model = $this->vehicle->model;
+        $this->reg = $this->vehicle->reg;
+        $this->tax = $this->vehicle->tax;
+        $this->insurance = $this->vehicle->insurance;
+        $this->service = $this->vehicle->service;
         $this->mileage = $this->vehicle->mileage;
-    }
+        $this->confirmingVehicleDeletion = false;
 
-    public function saveNewInsuranceDate()
-    {
-        $this->validate($this->rulesInsurance);
-        $this->vehicle->insurance = $this->newInsurance;
-        $this->vehicle->save();
-        request()->session()->flash('flash.banner', 'Insurance renewal date saved');
-        request()->session()->flash('flash.bannerStyle', 'success');
-    }
-
-    public function saveNewService()
-    {
-        $this->validate([
-            'newService' => "required|numeric|min:" . $this->mileage,
-
-        ]);
-        $this->vehicle->service = $this->newService;
-        $this->vehicle->save();
-        request()->session()->flash('flash.banner', 'Next service mileage saved');
-        request()->session()->flash('flash.bannerStyle', 'success');
     }
 
     public function addIntervalMilesToService()
     {
         $this->vehicle->service = $this->vehicle->service + 6000;
         $this->vehicle->save();
-        $this->newService = $this->vehicle->service;
-        request()->session()->flash('flash.banner', 'Next service at ' . $this->newService . ' saved.');
+        $newService = $this->vehicle->service;
+        request()->session()->flash('flash.banner', 'Next service at ' . $newService . ' saved.');
         request()->session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('vehicleDetails', $this->vehicle->id));
 
     }
 
-    public function saveNewMotDate()
-    {
-        $this->validate($this->rulesMot);
-        $this->vehicle->mot = $this->newmot;
+    public function cancelChanges(){
+        request()->session()->flash('flash.banner', 'Nothing has been updated');
+        request()->session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('vehicles'));
+    }
+
+    public function updateVehicle(){
+        $this->vehicle->mot = $this->mot;
+        $this->vehicle->make = $this->make;
+        $this->vehicle->model = $this->model;
+        $this->vehicle->tax = $this->tax;
+        $this->vehicle->insurance = $this->insurance;
+        $this->vehicle->service = $this->service;
+        $this->vehicle->mileage = $this->mileage;
         $this->vehicle->save();
-        request()->session()->flash('flash.banner', 'Next MOT date saved');
+
+        request()->session()->flash('flash.banner', 'Changes saved.');
         request()->session()->flash('flash.bannerStyle', 'success');
+        return redirect()->to(route('vehicleDetails', $this->vehicle->id));
 
     }
+    public function deleteVehicle(){
+        $this->vehicle->delete();
+        request()->session()->flash('flash.banner', 'Vehicle deleted');
+        request()->session()->flash('flash.bannerStyle', 'danger');
+        return redirect()->to(route('vehicles'));
 
+
+
+    }
 
     public function render()
     {

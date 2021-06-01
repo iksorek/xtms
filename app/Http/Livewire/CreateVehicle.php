@@ -10,6 +10,7 @@ class CreateVehicle extends Component
 {
     public $reg, $make, $model, $mot, $insurance, $tax, $mileage, $service;
     protected $rulesNewVehicle = [
+        'reg'=>'required|unique:App\Models\Vehicle,reg',
         'make'=>'required|min:3',
         'model'=>'required',
         'mileage'=>'required|numeric',
@@ -20,9 +21,19 @@ class CreateVehicle extends Component
     ];
 
 
+    public function resetForm()
+    {
+        return $this->redirect(route('addVehicle'));
+    }
+
     public function checkReg()
     {
-        if (strlen($this->reg) > 5) {
+
+            $this->validate(
+                [
+                    'reg'=>'required|min:3|unique:App\Models\Vehicle,reg',
+                ]
+            );
             $response = Http::withHeaders([
                 'x-api-key' => env('DVLA_API_KEY'),
                 'Content-Type' => 'application/json'
@@ -34,8 +45,7 @@ class CreateVehicle extends Component
             $this->mot = $response->json('motExpiryDate');
             $this->tax = $response->json('taxDueDate');
 
-        } else {
-        }
+
     }
 
 

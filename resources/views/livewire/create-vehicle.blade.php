@@ -4,9 +4,19 @@
     <x-jet-label for="reg">New vehicle registration</x-jet-label>
     <x-jet-input nam="reg" disabled="{{$make}}" wire:model="reg"
                  placeholder="New vehicle registration"></x-jet-input>
+    <x-jet-input-error for="reg"/>
+
+
     <x-jet-button class="mt-3" wire:click="checkReg">Check</x-jet-button>
+
+
+
     @if($make && $make != 'err')
         <div class="m-10">
+            <x-jet-label for="reg">Registration number</x-jet-label>
+            <x-jet-input name="reg" value="{{$reg}}" disabled/>
+            <x-jet-input-error for="reg"/>
+
             <x-jet-label for="make">Make</x-jet-label>
             <x-jet-input name="make" value="{{$make}}"/>
             <x-jet-input-error for="make"/>
@@ -36,6 +46,7 @@
             <x-jet-input-error for="tax"/>
             <br>
             <x-jet-button wire:click="storeNewVehicle" class="mt-3 w-1/4">Save</x-jet-button>
+            <x-jet-button wire:click="resetForm" class="mt-3 w-1/4">Reset</x-jet-button>
 
 
         </div>

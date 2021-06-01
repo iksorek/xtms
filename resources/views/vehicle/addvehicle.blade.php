@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight w-full">
-        Add new vehicle
+            Add new vehicle
         </h2>
 
     </x-slot>
@@ -13,7 +13,7 @@
                 <livewire:create-vehicle/>
 
 
-
+            </div>
         </div>
     </div>
 </x-app-layout>
