@@ -9,7 +9,7 @@ use phpDocumentor\Reflection\Types\True_;
 
 class VehicleDetails extends Component
 {
-    public $vehicle, $mot, $tax, $insurance, $service, $mileage, $reg, $make, $model, $confirmingVehicleDeletion;
+    public $vehicle, $mot, $tax, $insurance, $service, $mileage, $reg, $make, $model, $confirmingVehicleDeletion, $service_interval;
 
 
     protected $rulesMot = [
@@ -30,13 +30,14 @@ class VehicleDetails extends Component
         $this->insurance = $this->vehicle->insurance;
         $this->service = $this->vehicle->service;
         $this->mileage = $this->vehicle->mileage;
+        $this->service_interval = $this->vehicle->service_interval;
         $this->confirmingVehicleDeletion = false;
 
     }
 
     public function addIntervalMilesToService()
     {
-        $this->vehicle->service = $this->vehicle->service + 6000;
+        $this->vehicle->service = $this->vehicle->service + $this->vehicle->service_interval;
         $this->vehicle->save();
         $newService = $this->vehicle->service;
         request()->session()->flash('flash.banner', 'Next service at ' . $newService . ' saved.');
@@ -59,6 +60,7 @@ class VehicleDetails extends Component
         $this->vehicle->insurance = $this->insurance;
         $this->vehicle->service = $this->service;
         $this->vehicle->mileage = $this->mileage;
+        $this->vehicle->service_interval = $this->service_interval;
         $this->vehicle->save();
 
         request()->session()->flash('flash.banner', 'Changes saved.');

@@ -23,6 +23,7 @@ class CreateVehiclesTable extends Migration
             $table->date('tax')->nullable();
             $table->date('insurance')->nullable();
             $table->integer('service')->nullable();
+            $table->integer('service_interval')->default(6000);
             $table->string('reg');
             $table->integer('mileage')->nullable();
             $table->timestamps();

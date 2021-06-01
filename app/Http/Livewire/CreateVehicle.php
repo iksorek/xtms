@@ -8,13 +8,14 @@ use Livewire\Component;
 
 class CreateVehicle extends Component
 {
-    public $reg, $make, $model, $mot, $insurance, $tax, $mileage, $service;
+    public $reg, $make, $model, $mot, $insurance, $tax, $mileage, $service, $service_interval;
     protected $rulesNewVehicle = [
         'reg'=>'required|unique:App\Models\Vehicle,reg',
         'make'=>'required|min:3',
         'model'=>'required',
         'mileage'=>'required|numeric',
         'service'=>'numeric',
+        'service_interval'=>'numeric',
         'mot'=>'date',
         'insurance'=>'date',
         'tax'=>'date'
@@ -59,6 +60,7 @@ class CreateVehicle extends Component
         $newVehicle->model = $this->model;
         $newVehicle->mileage = $this->mileage;
         $newVehicle->service = $this->service;
+        $newVehicle->service_interval = $this->service_interval;
         $newVehicle->insurance = $this->insurance;
         $newVehicle->mot = $this->mot;
         $newVehicle->tax = $this->tax;

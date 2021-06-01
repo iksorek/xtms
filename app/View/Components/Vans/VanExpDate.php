@@ -42,7 +42,7 @@ class VanExpDate extends Component
                 $this->color = 'green';
                 $this->mode = 'info';
                 $diff = $this->date[0] - $this->date[1];
-                if ($diff < 30) {
+                if ($diff < 300) {
                     $this->color = 'yellow';
                     $this->mode = 'warning';
                 }

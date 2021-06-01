@@ -33,6 +33,10 @@
             <x-jet-input name="service" type="number" wire:model="service"/>
             <x-jet-input-error for="service"/>
 
+            <x-jet-label for="service_interval">Service interval</x-jet-label>
+            <x-jet-input name="service_interval" type="number" wire:model="service_interval"/>
+            <x-jet-input-error for="service_interval"/>
+
             <x-jet-label for="mot">MOT retest date</x-jet-label>
             <x-jet-input name="mot" wire:model="mot" type="date"/>
             <x-jet-input-error for="mot"/>
