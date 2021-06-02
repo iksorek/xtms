@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
-use phpDocumentor\Reflection\Types\True_;
 
 class VehicleDetails extends Component
 {

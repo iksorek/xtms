@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
-use App\View\Components\vehicleDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -44,23 +43,7 @@ class VehicleController extends Controller
         return view('vehicle.vehicleDetails', ['vehicle'=>$vehicle]);
     }
 
-    public function edit(vehicle $vehicle)
-    {
-        //
-    }
-
-    public function update(Request $request, vehicle $vehicle)
-    {
-        //
-    }
-
-
-    public function destroy(vehicle $vehicle)
-    {
-        //
-    }
-
-    public function getDataFromDvla($reg)
+    private function getDataFromDvla($reg)
     {
 
         $response = Http::withHeaders([

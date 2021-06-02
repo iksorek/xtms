@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\vehicle;
+use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VehicleFactory extends Factory
@@ -12,7 +12,7 @@ class VehicleFactory extends Factory
      *
      * @var string
      */
-    protected $model = Vehicle::class;
+    protected $model = \App\Models\Vehicle::class;
 
     /**
      * Define the model's default state.
