@@ -44,18 +44,30 @@
                 <x-jet-input name="mot" wire:model="mot" type="date"
                              class="{{ $mot<= now() ? 'bg-red-500' : 'bg-green-500' }}"/>
                 <x-jet-input-error for="mot"/>
+                <br>
+                <x-jet-button wire:click="addMonthsTo(6, 'mot')" class="h-4">ADD 6 months
+                </x-jet-button>
             </div>
             <div class="m-2">
                 <x-jet-label for="insurance">Insurance renewal date</x-jet-label>
                 <x-jet-input name="insurance" type="date" wire:model="insurance"
                              class="{{ $insurance<= now() ? 'bg-red-500' : 'bg-green-500' }}"/>
                 <x-jet-input-error for="insurance"/>
+                <br>
+                <x-jet-button wire:click="addMonthsTo(12, 'insurance')" class="h-4">ADD 12 months
+                </x-jet-button>
+
+
             </div>
             <div class="m-2">
                 <x-jet-label for="tax">Tax due date</x-jet-label>
                 <x-jet-input name="tax" type="date" wire:model="tax"
                              class="{{ $tax<= now() ? 'bg-red-500' : 'bg-green-500' }}"/>
                 <x-jet-input-error for="tax"/>
+                <br>
+                <x-jet-button wire:click="addMonthsTo(12, 'tax')" class="h-4">ADD 12 months
+                </x-jet-button>
+
             </div>
         </div>
 

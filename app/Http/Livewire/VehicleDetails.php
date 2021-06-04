@@ -45,13 +45,26 @@ class VehicleDetails extends Component
 
     }
 
-    public function cancelChanges(){
+    public function addMonthsTo($months, $to)
+    {
+        $effectiveDate = strtotime("+$months months", strtotime($this->vehicle->$to));
+        $newDate = date("Y-m-d", $effectiveDate);
+        $this->vehicle->$to = $newDate;
+        $this->vehicle->save();
+        request()->session()->flash('flash.banner', 'Date has benn changed to  ' . $newDate . '.');
+        request()->session()->flash('flash.bannerStyle', 'success');
+        return redirect(route('vehicleDetails', $this->vehicle->id));
+    }
+
+    public function cancelChanges()
+    {
         request()->session()->flash('flash.banner', 'Nothing has been updated');
         request()->session()->flash('flash.bannerStyle', 'success');
         return redirect(route('vehicles'));
     }
 
-    public function updateVehicle(){
+    public function updateVehicle()
+    {
         $this->vehicle->mot = $this->mot;
         $this->vehicle->make = $this->make;
         $this->vehicle->model = $this->model;
@@ -67,12 +80,13 @@ class VehicleDetails extends Component
         return redirect()->to(route('vehicleDetails', $this->vehicle->id));
 
     }
-    public function deleteVehicle(){
+
+    public function deleteVehicle()
+    {
         $this->vehicle->delete();
         request()->session()->flash('flash.banner', 'Vehicle deleted');
         request()->session()->flash('flash.bannerStyle', 'danger');
         return redirect()->to(route('vehicles'));
-
 
 
     }

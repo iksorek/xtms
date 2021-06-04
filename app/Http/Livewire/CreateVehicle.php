@@ -8,17 +8,18 @@ use Livewire\Component;
 
 class CreateVehicle extends Component
 {
-    public $reg, $make, $model, $mot, $insurance, $tax, $mileage, $service, $service_interval;
+    public $reg, $make, $model, $mot, $insurance, $tax, $mileage, $service;
+    public $service_interval = 10000;
     protected $rulesNewVehicle = [
-        'reg'=>'required|unique:App\Models\Vehicle,reg',
-        'make'=>'required|min:3',
-        'model'=>'required',
-        'mileage'=>'required|numeric',
-        'service'=>'numeric',
-        'service_interval'=>'numeric',
-        'mot'=>'date',
-        'insurance'=>'date',
-        'tax'=>'date'
+        'reg' => 'required|unique:App\Models\Vehicle,reg',
+        'make' => 'required|min:3',
+        'model' => 'required',
+        'mileage' => 'required|numeric',
+        'service' => 'numeric',
+        'service_interval' => 'numeric',
+        'mot' => 'date',
+        'insurance' => 'date',
+        'tax' => 'date'
     ];
 
 
@@ -30,22 +31,22 @@ class CreateVehicle extends Component
     public function checkReg()
     {
 
-            $this->validate(
-                [
-                    'reg'=>'required|min:3|unique:App\Models\Vehicle,reg',
-                ]
-            );
-            $response = Http::withHeaders([
-                'x-api-key' => env('DVLA_API_KEY'),
-                'Content-Type' => 'application/json'
-            ])->acceptJson()->post(env("DVLA_API_URL"), [
-                "registrationNumber" => $this->reg
-            ]);
+        $this->validate(
+            [
+                'reg' => 'required|min:3|unique:App\Models\Vehicle,reg',
+            ]
+        );
+        $response = Http::withHeaders([
+            'x-api-key' => env('DVLA_API_KEY'),
+            'Content-Type' => 'application/json'
+        ])->acceptJson()->post(env("DVLA_API_URL"), [
+            "registrationNumber" => $this->reg
+        ]);
 //            dd($response->json());
-            $this->make = $response->json('make');
-            $this->mot = $response->json('motExpiryDate');
-            $this->tax = $response->json('taxDueDate');
-
+        $this->make = $response->json('make');
+        $this->mot = $response->json('motExpiryDate');
+        $this->tax = $response->json('taxDueDate');
+        $this->insurance = date("Y-m-d");
 
     }
 

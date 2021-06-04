@@ -18,7 +18,7 @@
             <x-jet-input-error for="reg"/>
 
             <x-jet-label for="make">Make</x-jet-label>
-            <x-jet-input name="make" value="{{$make}}"/>
+            <x-jet-input name="make" wire:model="make"/>
             <x-jet-input-error for="make"/>
 
             <x-jet-label for="model">Model</x-jet-label>
