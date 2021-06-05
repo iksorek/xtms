@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('myCustomers') }}" :active="request()->routeIs('myCustomers')">
                         My customers
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('runs') }}" :active="request()->routeIs('runs')">
+                        Runs
+                    </x-jet-nav-link>
                 </div>
             </div>
 

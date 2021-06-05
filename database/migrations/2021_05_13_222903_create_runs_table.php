@@ -20,13 +20,13 @@ class CreateRunsTable extends Migration
             $table->foreignId('customer_id')->nullable();
             $table->string('postcode_from');
             $table->string('postcode_to');
+            $table->integer('distance')->nullable();
             $table->dateTime('start_time');
             $table->dateTime('finish_est');
             $table->dateTime('finished')->nullable();
             $table->integer('price')->nullable();
             $table->boolean('paid')->default(false);
             $table->text('additional_info')->nullable();
-
             $table->timestamps();
         });
     }

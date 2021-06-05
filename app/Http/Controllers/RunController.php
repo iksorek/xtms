@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\run;
+use App\Models\Run;
 use Illuminate\Http\Request;
 
 class RunController extends Controller
@@ -14,7 +14,7 @@ class RunController extends Controller
      */
     public function index()
     {
-        //
+        return view('Run.runsIndex');
     }
 
     /**
@@ -30,7 +30,7 @@ class RunController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,10 +41,10 @@ class RunController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\run  $run
+     * @param \App\Models\run $run
      * @return \Illuminate\Http\Response
      */
-    public function show(run $run)
+    public function show(Run $run)
     {
         //
     }
@@ -52,10 +52,10 @@ class RunController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\run  $run
+     * @param \App\Models\run $run
      * @return \Illuminate\Http\Response
      */
-    public function edit(run $run)
+    public function edit(Run $run)
     {
         //
     }
@@ -63,11 +63,11 @@ class RunController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\run  $run
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\run $run
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, run $run)
+    public function update(Request $request, Run $run)
     {
         //
     }
@@ -75,10 +75,10 @@ class RunController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\run  $run
+     * @param \App\Models\run $run
      * @return \Illuminate\Http\Response
      */
-    public function destroy(run $run)
+    public function destroy(Run $run)
     {
         //
     }

@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\RunController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/myvehicles', [VehicleController::class, 'index'])->name('vehicles');
     Route::get('/myvehicles/add', [VehicleController::class, 'create'])->name('addVehicle');
     Route::put('/myvehicles/store', [VehicleController::class, 'store'])->name('storeVehicle');
+    Route::get('/runs', [RunController::class, 'index'])->name('runs');
 
 });
 
