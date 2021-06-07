@@ -113,6 +113,9 @@
             <x-jet-responsive-nav-link href="{{ route('myCustomers') }}" :active="request()->routeIs('myCustomers')">
                 My Customers
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('runs') }}" :active="request()->routeIs('runs')">
+                Runs
+            </x-jet-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
