@@ -22,7 +22,7 @@ class CreateRunsTable extends Migration
             $table->string('postcode_to');
             $table->integer('distance')->nullable();
             $table->dateTime('start_time');
-            $table->dateTime('finish_est');
+            $table->dateTime('finish_est')->nullable();
             $table->dateTime('finished')->nullable();
             $table->integer('price')->nullable();
             $table->boolean('paid')->default(false);

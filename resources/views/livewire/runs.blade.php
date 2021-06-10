@@ -33,15 +33,30 @@
 
                     From {{$townStart}} to {{$townFinish}}<br>
                     Distance {{$distance}} miles<br>
-                    Time {{round($time)}} minutes<br>
-                    Approximate cost: &pound;{{round($costApr)}}
+                    Time {{$time}} minutes<br>
+                    Approximate cost: &pound;{{$costApr}}
+                    <br>
+                    <x-jet-button class="m-3 w-full" wire:click="$toggle('createRun')">Create run</x-jet-button>
+
+
+
 
 
                 @endif
 
             </div>
 
+
         </div>
+
+
+        @if($createRun)
+            <div class="w-full bg-green-300 lg:rounded-3xl lg:p-5">
+                <livewire:new-run :newrun="$arrayResponse"/>
+            </div>
+        @endif
+
+
 
 
 
