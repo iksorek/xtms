@@ -2,13 +2,23 @@
 
 namespace App\Http\Livewire\RunsTable;
 
+use App\Models\Customer;
 use Livewire\Component;
-use phpDocumentor\Reflection\Element;
 
 class Row extends Component
 {
 
-    public $oneRun;
+    public $oneRun, $customers, $search, $pickedCustomer;
+
+    public function setAsRunCustomer($id)
+    {
+        $this->oneRun->customer_id = $id;
+        $this->pickedCustomer = Customer::findOrFail($id)->name;
+        $this->customers = null;
+        $this->search = null;
+        $this->oneRun->save();
+
+    }
 
     public function updateColumn($col)
     {
@@ -30,6 +40,9 @@ class Row extends Component
 
     public function render()
     {
+        if ($this->search != '' && !empty($this->search)) {
+            $this->customers = Customer::where('user_id', \Auth::id())->where('name', 'LIKE', "%$this->search%")->get(['id', 'name']);
+        }
         return view('livewire.runs-table.row');
     }
 }

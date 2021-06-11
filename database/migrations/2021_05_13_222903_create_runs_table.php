@@ -28,6 +28,7 @@ class CreateRunsTable extends Migration
             $table->integer('price')->nullable();
             $table->boolean('paid')->default(false);
             $table->text('additional_info')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

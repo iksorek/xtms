@@ -1,21 +1,40 @@
 <tr class="border-b border-gray-200 hover:bg-gray-100">
     <td class="py-3 px-6 text-left whitespace-nowrap">
         <div class="flex items-center">
-                                    <span
-                                        class="font-medium">{{$oneRun->postcode_from}} - {{$oneRun->postcode_to}}</span>
+            <span
+                class="{{$oneRun->finished ? ' text-green-600' : ''}} font-bold uppercase">{{$oneRun->postcode_from}} - {{$oneRun->postcode_to}}</span>
         </div>
     </td>
     <td class="py-3 px-6 text-left">
         <div class="flex items-center">
             @if($oneRun->Customer)
-                <x-jet-input value="{{$oneRun->Customer->name}}"/>
+                {{$oneRun->Customer->name}}
+            @elseif($pickedCustomer)
+                {{$pickedCustomer}}
             @else
-                <x-jet-input value="Pick customer"/>
+                <div class="flex flex-col">
+                    <x-jet-input name="search" wire:model="search" value="Pick customer"/>
+
+                    @empty($customers)
+                        @if(empty($customers) && $search)
+                            <p class="text-center m-5">Not found</p>
+                        @endif
+                    @else
+                        <br>
+                        <ul class="max-h-36 overflow-y-scroll">
+                            @foreach($customers as $customer)
+                                <li class="hover:bg-blue-300 mx-3"
+                                    wire:click="setAsRunCustomer({{$customer->id}})">{{$customer->name}}</li>
+                            @endforeach
+                        </ul>
+                    @endempty
+
+                </div>
             @endif
 
         </div>
     </td>
-    <td class="py-3 px-6 text-center text-xs">
+    <td class="py-3 px-6 text-center text-xs{{$oneRun->finished ? ' text-green-600' : ''}}">
         Start {{$oneRun->start_time}}<br>
         Eta Finish {{$oneRun->finish_est}}<br>
         {{$oneRun->finished ? 'Finished: ' . $oneRun->finished : 'Back est: ' . $oneRun->back_est}}

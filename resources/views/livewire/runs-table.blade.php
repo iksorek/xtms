@@ -15,7 +15,7 @@
                     </thead>
                     <tbody class="text-gray-600 text-xs font-light">
                     @foreach($myRuns as $index => $oneRun)
-                       <livewire:runs-table.row :oneRun="$oneRun">
+                        <livewire:runs-table.row :oneRun="$oneRun">
                     @endforeach
 
                     </tbody>
