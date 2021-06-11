@@ -17,6 +17,8 @@ class NewRun extends Component
     {
         $this->cost = $this->newrun['costApr'];
         $this->vehicles = Vehicle::where('user_id', Auth::id())->get();
+        $this->date = date("Y-m-d", strtotime('tomorrow'));
+        $this->startTime = "10:00";
     }
 
     public function saveNewRun()
@@ -27,7 +29,11 @@ class NewRun extends Component
         $run->postcode_from = $this->newrun['postcodesStart'];
         $run->postcode_to = $this->newrun['postcodesFinish'];
         $run->distance = $this->newrun['distance'];
+        $run->price = $this->cost;
         $run->start_time = "$this->date $this->startTime";
+        $run->finish_est = date("Y-m-d H:i:s", strtotime($run->start_time) + ($this->newrun['time'] * 60));
+        $run->back_est = date("Y-m-d H:i:s", strtotime($run->start_time) + ($this->newrun['time'] * 60 * 2) + 3600);
+
         $run->save();
         $this->redirectRoute('runs');
     }

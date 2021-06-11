@@ -9,23 +9,14 @@ use Livewire\Component;
 class Runs extends Component
 {
 
-    public $myRuns, $time, $distance, $townStart, $townFinish, $costApr, $createRun;
+    public $time, $distance, $townStart, $townFinish, $costApr, $createRun;
     public $addRun = false;
     public $postcodesStart = 'np165ra';
     public $postcodesFinish = 'SW1A 0AA';
     public $arrayResponse;
 
 
-    public function getMyRuns()
-    {
-        $this->postcodeToCoordinates('np165ra');
-        return Run::where('user_id', \Auth::id())->get();
-    }
 
-    public function mount()
-    {
-        $this->myRuns = $this->getMyRuns();
-    }
 
     public function postcodeToCoordinates($postcode)
     {

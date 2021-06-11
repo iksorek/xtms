@@ -64,10 +64,7 @@
 
 
     @else
-
-        @foreach($myRuns as $run)
-            {{$run->postcode_from}} - {{$run->postcode_to}} <br>
-        @endforeach
+        <livewire:runs-table>
     @endif
 
 

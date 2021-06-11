@@ -25,7 +25,8 @@
     <x-jet-label for="startTime">Choose a time</x-jet-label>
     <x-jet-input name="startTime" type="time" wire:model="startTime"/>
     <x-jet-input-error for="startTime"/>
-    <x-jet-button wire:click="saveNewRun">Save run</x-jet-button>
+    <br>
+    <x-jet-button wire:click="saveNewRun" class="w-3/4 mt-3">Save run</x-jet-button>
 
 
 </div>
