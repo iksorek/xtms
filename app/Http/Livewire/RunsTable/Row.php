@@ -8,14 +8,23 @@ use Livewire\Component;
 class Row extends Component
 {
 
-    public $oneRun, $customers, $search, $pickedCustomer;
+    public $oneRun, $customers, $search, $pickedCustomer, $update;
 
-    public function setAsRunCustomer($id)
+    public function assignCustomerToRun($id)
     {
         $this->oneRun->customer_id = $id;
         $this->pickedCustomer = Customer::findOrFail($id)->name;
         $this->customers = null;
         $this->search = null;
+        $this->oneRun->save();
+
+    }
+
+    public function detachCustomer()
+    {
+
+        $this->oneRun->customer_id = null;
+        $this->pickedCustomer = null;
         $this->oneRun->save();
 
     }

@@ -7,13 +7,22 @@
     </td>
     <td class="py-3 px-6 text-left">
         <div class="flex items-center">
-            @if($oneRun->Customer)
-                {{$oneRun->Customer->name}}
+
+            @if($oneRun->Customer && $oneRun->customer_id)
+                <div class="flex justify-between w-full">
+                    <div>{{$oneRun->Customer->name}}</div>
+                    <div class="text-red-500 border border-red-500 px-1 mx-1" wire:click="detachCustomer">X</div>
+                </div>
+
             @elseif($pickedCustomer)
-                {{$pickedCustomer}}
+                <div class="flex justify-between w-full">
+                    <div>{{$pickedCustomer}}</div>
+                    <div class="text-red-500 border border-red-500 px-1 mx-1" wire:click="detachCustomer">X</div>
+                </div>
+
             @else
                 <div class="flex flex-col">
-                    <x-jet-input name="search" wire:model="search" value="Pick customer"/>
+                    <x-jet-input class="border" name="search" wire:model="search" value="Pick customer"/>
 
                     @empty($customers)
                         @if(empty($customers) && $search)
@@ -21,10 +30,10 @@
                         @endif
                     @else
                         <br>
-                        <ul class="max-h-36 overflow-y-scroll">
+                        <ul class="max-h-36 overflow-y-scroll position-fixed">
                             @foreach($customers as $customer)
                                 <li class="hover:bg-blue-300 mx-3"
-                                    wire:click="setAsRunCustomer({{$customer->id}})">{{$customer->name}}</li>
+                                    wire:click="assignCustomerToRun({{$customer->id}})">{{$customer->name}}</li>
                             @endforeach
                         </ul>
                     @endempty
