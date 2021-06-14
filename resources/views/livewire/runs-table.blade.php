@@ -15,11 +15,14 @@
                     </thead>
                     <tbody class="text-gray-600 text-xs font-light">
                     @foreach($myRuns as $index => $oneRun)
-                        <livewire:runs-table.row :oneRun="$oneRun">
+                        <livewire:runs-table.row :oneRun="$oneRun" :key="$oneRun->id">
                     @endforeach
 
                     </tbody>
                 </table>
+                @if($confirmingRunDeletion)
+                    <livewire:modals.run-delete-confirmation :run="$confirmingRunDeletion"/>
+                @endif
             </div>
         </div>
     </div>

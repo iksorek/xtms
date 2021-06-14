@@ -10,6 +10,19 @@ use Livewire\Component;
 class RunsTable extends Component
 {
     public $myRuns;
+    public $confirmingRunDeletion = false;
+    protected $listeners = ['deleteModal', 'hideDeleteModal'];
+
+    public function deleteModal(Run $run)
+    {
+        $this->confirmingRunDeletion = $run;
+
+    }
+
+    public function hideDeleteModal()
+    {
+        $this->confirmingRunDeletion = false;
+    }
 
     public function getMyRuns()
     {

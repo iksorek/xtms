@@ -19,6 +19,10 @@ class Row extends Component
         $this->oneRun->save();
 
     }
+    public function deleteRun(){
+        $this->emit('deleteModal', $this->oneRun->id);
+    }
+
 
     public function detachCustomer()
     {
