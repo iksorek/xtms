@@ -1,29 +1,49 @@
-<div class="overflow-x-auto">
-    <div
-        class="min-w-screen  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-        <div class="w-full lg:w-5/6">
-            <div class="bg-white shadow-md rounded my-6">
-                <table class="min-w-max w-full table-auto">
-                    <thead>
-                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-left">Run</th>
-                        <th class="py-3 px-6 text-left">Client</th>
-                        <th class="py-3 px-6 text-center">Date / time</th>
-                        <th class="py-3 px-6 text-center">Status</th>
-                        <th class="py-3 px-6 text-center">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-gray-600 text-xs font-light">
-                    @foreach($myRuns as $index => $oneRun)
-                        <livewire:runs-table.row :oneRun="$oneRun" :key="$oneRun->id">
-                    @endforeach
+<x-jet-confirmation-modal wire:model="runToDelete">
+    <x-slot name="title">
+        Delete run
+    </x-slot>
+    <x-slot name="content">
+        You are about to delete run from {{ $runToDelete ? $runToDelete->postcode_from : 'Err'}} to
+        {{ $runToDelete ? $runToDelete->postcode_to : 'Err'}}<br>
 
-                    </tbody>
-                </table>
-                @if($confirmingRunDeletion)
-                    <livewire:modals.run-delete-confirmation :run="$confirmingRunDeletion"/>
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
+        Are You sure?
+    </x-slot>
+
+    <x-slot name="footer">
+        <x-jet-secondary-button wire:click="cancelDelete" wire:loading.attr="disabled">
+            Cancel
+        </x-jet-secondary-button>
+
+        <x-jet-danger-button class="ml-2" wire:click="deleteRun({{$runToDelete}})" wire:loading.attr="disabled">
+            DELETE
+        </x-jet-danger-button>
+    </x-slot>
+</x-jet-confirmation-modal>
+
+
+<table class="border-collapse w-full text-sm">
+    <thead>
+    <tr>
+        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Route
+        </th>
+        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Customer
+        </th>
+        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Times
+        </th>
+        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Status
+        </th>
+        <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
+            Actions
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($myRuns as $index => $oneRun)
+        <livewire:runs-table.row :oneRun="$oneRun" :key="$oneRun->id">
+    @endforeach
+    </tbody>
+</table>

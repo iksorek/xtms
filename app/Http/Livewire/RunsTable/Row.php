@@ -20,6 +20,7 @@ class Row extends Component
 
     }
     public function deleteRun(){
+
         $this->emit('deleteModal', $this->oneRun->id);
     }
 
@@ -48,6 +49,7 @@ class Row extends Component
 
     public function mount()
     {
+
     }
 
 

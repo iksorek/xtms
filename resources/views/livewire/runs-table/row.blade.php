@@ -1,15 +1,15 @@
-<tr class="border-b border-gray-200 hover:bg-gray-100">
-    <td class="py-3 px-6 text-left whitespace-nowrap">
-        <div class="flex items-center">
-            <span
-                class="{{$oneRun->finished ? ' text-green-600' : ''}} font-bold uppercase">{{$oneRun->postcode_from}} - {{$oneRun->postcode_to}}</span>
-        </div>
+<tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Route</span>
+        <span
+            class="{{$oneRun->finished ? ' text-green-600' : ''}} font-bold uppercase">{{$oneRun->postcode_from}} - {{$oneRun->postcode_to}}</span>
     </td>
-    <td class="py-3 px-6 text-left">
-        <div class="flex items-center">
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Customer</span>
+        <div class="w-1/2 lg:w-full mx-auto">
 
             @if($oneRun->Customer && $oneRun->customer_id)
-                <div class="flex justify-between w-full">
+                <div class="flex justify-between w-50">
                     <div>{{$oneRun->Customer->name}}</div>
                     <div class="text-red-500 border border-red-500 px-1 mx-1" wire:click="detachCustomer">X</div>
                 </div>
@@ -42,15 +42,20 @@
             @endif
 
         </div>
-    </td>
-    <td class="py-3 px-6 text-center text-xs{{$oneRun->finished ? ' text-green-600' : ''}}">
-        Start {{$oneRun->start_time}}<br>
-        Eta Finish {{$oneRun->finish_est}}<br>
-        {{$oneRun->finished ? 'Finished: ' . $oneRun->finished : 'Back est: ' . $oneRun->back_est}}
+
 
     </td>
-    <td class="py-3 px-6 text-center">
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase ">Times</span>
+        <span class="{{$oneRun->finished ? ' text-green-600' : ''}}">
+                Start {{$oneRun->start_time}}<br>
+                Eta Finish {{$oneRun->finish_est}}<br>
+                {{$oneRun->finished ? 'Finished: ' . $oneRun->finished : 'Back est: ' . $oneRun->back_est}}
+    </span>
 
+        </td>
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
         <button
             wire:click="updateColumn('paid')"
             class="{{$oneRun->paid ? 'bg-green-200' : 'bg-red-500'}} text-black py-1 px-3 rounded-full text-xs">{{$oneRun->paid ? 'Paid' : 'Unpaid'}}
@@ -64,8 +69,10 @@
 
         </button>
 
+
     </td>
-    <td class="py-3 px-6 text-center">
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
         <div class="flex item-center justify-center">
             <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -83,7 +90,7 @@
                           d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
                 </svg>
             </div>
-            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" wire:click="deleteRun">
+            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" wire:click="deleteRun({{$oneRun}})">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

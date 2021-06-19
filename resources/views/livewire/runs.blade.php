@@ -1,6 +1,7 @@
-<div class="p-5">
-    <div class="text-right">
-        <x-jet-button wire:click="$toggle('addRun')">
+
+<div class="p-5 w-full">
+    <div class="container mx-auto mb-3">
+        <x-jet-button class="w-full" wire:click="$toggle('addRun')">
             @if(!$addRun)
                 ADD RUN
             @else
@@ -24,7 +25,7 @@
                 <x-jet-input-error for="postcodesFinish"/>
                 <br>
 
-                <x-jet-button class="mt-3" wire:click="getQuote">Get quote</x-jet-button>
+                <x-jet-button class="mt-3 w-full" wire:click="getQuote">Get quote</x-jet-button>
             </div>
             <div>
 
@@ -51,8 +52,10 @@
 
 
         @if($createRun)
-            <div class="w-full bg-green-300 lg:rounded-3xl lg:p-5">
-                <livewire:new-run :newrun="$arrayResponse"/>
+            <div class="flex items-center justify-center">
+                <div class="w-full container mx-auto bg-gray-400 lg:rounded-3xl lg:p-5">
+                    <livewire:new-run :newrun="$arrayResponse"/>
+                </div>
             </div>
         @endif
 
@@ -64,8 +67,10 @@
 
 
     @else
-        <livewire:runs-table>
-    @endif
+        <div class="container mx-auto">
+            <livewire:runs-table/>
+        </div>
 
+    @endif
 
 </div>

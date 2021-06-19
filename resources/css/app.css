@@ -45,7 +45,7 @@ video {
     height: auto
 }
 
-.bg-splash{
+.bg-splash {
     height: 100vh;
     width: 100vw;
     background-image: url("/img/tech-5090539_1280.jpg");
@@ -55,7 +55,8 @@ video {
     background-size: cover;
 
 }
-.hero{
+
+.hero {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -64,23 +65,12 @@ video {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, .6);
     color: whitesmoke;
 
 }
 
-@media (min-width: 640px) {
 
-}
-
-@media (min-width: 768px) {
-
-}
-
-@media (min-width: 1024px) {
-
-
-}
 .tooltip {
     @apply invisible absolute;
 }
@@ -88,7 +78,8 @@ video {
 .has-tooltip:hover .tooltip {
     @apply visible z-50
 }
-input, button{
+
+input, button {
     line-height: 2rem;
     color: black;
 }

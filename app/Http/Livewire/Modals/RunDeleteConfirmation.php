@@ -8,10 +8,10 @@ class RunDeleteConfirmation extends Component
 {
     public $run;
 
-    public function hideDeleteModal()
-    {
-        $this->emit('hideDeleteModal');
-    }
+//    public function hideDeleteModal()
+//    {
+//        $this->emit('hideDeleteModal');
+//    }
 
     public function deleteRun()
     {

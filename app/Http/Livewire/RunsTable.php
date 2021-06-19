@@ -9,19 +9,33 @@ use Livewire\Component;
 
 class RunsTable extends Component
 {
-    public $myRuns;
-    public $confirmingRunDeletion = false;
+    public $myRuns, $runToDelete;
+
+
     protected $listeners = ['deleteModal', 'hideDeleteModal'];
 
-    public function deleteModal(Run $run)
+    public function deleteModal($run)
     {
-        $this->confirmingRunDeletion = $run;
+        $this->runToDelete = Run::with('Customer')->findOrFail($run);
+    }
+
+    public function deleteRun(Run $run)
+    {
+        $run->delete();
+        request()->session()->flash('flash.banner', 'Run deleted');
+        request()->session()->flash('flash.bannerStyle', 'danger');
+        $this->runToDelete = false;
+        $this->redirect(route('runs'));
+    }
+
+    public function refreshParent()
+    {
 
     }
 
-    public function hideDeleteModal()
+    public function cancelDelete()
     {
-        $this->confirmingRunDeletion = false;
+        $this->runToDelete = false;
     }
 
     public function getMyRuns()
@@ -33,6 +47,7 @@ class RunsTable extends Component
     public function mount()
     {
         $this->myRuns = $this->getMyRuns();
+
     }
 
     public function render()
