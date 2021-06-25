@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         $user = \App\Models\User::factory()
             ->has(Customer::factory(300))
             ->has(Vehicle::factory(rand(5, 15)))
-            ->has(Run::factory(rand(3, 10)))
+            ->has(Run::factory(1))
             ->create([
                 'name' => 'iksor',
                 'email' => 'dev@mrogon.co.uk',

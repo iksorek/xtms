@@ -53,7 +53,7 @@
                 {{$oneRun->finished ? 'Finished: ' . $oneRun->finished : 'Back est: ' . $oneRun->back_est}}
     </span>
 
-        </td>
+    </td>
     <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
         <button
@@ -74,7 +74,7 @@
     <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
         <div class="flex item-center justify-center">
-            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" wire:click="redirectToRun({{$oneRun}})">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -100,3 +100,6 @@
         </div>
     </td>
 </tr>
+@if($showDetails)
+    <livewire:modals.run-details :run="$showDetails"/>
+@endif

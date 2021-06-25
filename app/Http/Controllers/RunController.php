@@ -45,9 +45,10 @@ class RunController extends Controller
      * @param \App\Models\run $run
      * @return \Illuminate\Http\Response
      */
-    public function show(Run $run)
+    public function show($run)
     {
-        //
+        $run = Run::with(['Customer', "Vehicle"])->findOrFail($run);
+        return view('Run.runDetails', ["run" => $run]);
     }
 
     /**

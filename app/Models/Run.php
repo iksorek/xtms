@@ -25,4 +25,15 @@ class Run extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    public function setPostcodeFromAttribute($value)
+    {
+        $this->attributes['postcode_from'] = strtoupper($value);
+    }
+
+    public function setPostcodeToAttribute($value)
+    {
+        $this->attributes['postcode_to'] = strtoupper($value);
+    }
+
 }

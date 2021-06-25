@@ -18,6 +18,10 @@ class Vehicle extends Model
     {
         return $this->hasMany(Run::class);
     }
+    public function setRegAttribute($value)
+    {
+        $this->attributes['reg'] = strtoupper($value);
+    }
 
 
 

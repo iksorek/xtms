@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/myvehicles/add', [VehicleController::class, 'create'])->name('addVehicle');
     Route::put('/myvehicles/store', [VehicleController::class, 'store'])->name('storeVehicle');
     Route::get('/runs', [RunController::class, 'index'])->name('runs');
+    Route::get('/run/{runId}', [RunController::class, 'show'])->name('showRun');
 
 });
 

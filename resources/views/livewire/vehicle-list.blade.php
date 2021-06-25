@@ -1,5 +1,5 @@
 <div class="p-2 sm:p-4 md:p-8">
-    @if($vehs)
+    @if($vehs->count() != 0)
 
         <table class="w-full text-xs md:text-sm">
             <thead>
@@ -18,7 +18,9 @@
             @foreach($vehs as $veh)
 
                 <tr class="text-center">
-                    <td><a href="{{route("vehicleDetails", ['vehicleID'=>$veh->id])}}">{{ $veh->make }} {{$veh->model}}</a></td>
+                    <td>
+                        <a href="{{route("vehicleDetails", ['vehicleID'=>$veh->id])}}">{{ $veh->make }} {{$veh->model}}</a>
+                    </td>
                     <td>{{\Illuminate\Support\Str::upper($veh->reg)}}</td>
                     <td class="hidden sm:block">{{$veh->mileage}}</td>
                     <td>{{$veh->runs_count}}</td>
@@ -35,6 +37,8 @@
             @endforeach
             </tbody>
         </table>
+    @else
+        <p class="text-xl">Seems like You have no vehicles. </p>
 
     @endif
 </div>

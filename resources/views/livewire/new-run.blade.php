@@ -12,10 +12,21 @@
     <x-jet-label for="vehicle">Choose vehicle</x-jet-label>
     <select name="vehicle" wire:model="vehicle"
             class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-        @foreach($vehicles as $oneVehicle)
-            <option value="{{$oneVehicle->id}}">{{$oneVehicle->model}} - {{$oneVehicle->reg}}</option>
-        @endforeach
 
+
+        @if($vehicles->count() == 1)
+            <option value="null">SELECT LATER</option>
+            @foreach($vehicles as $oneVehicle)
+                <option value="{{$oneVehicle->id}}" selected>{{$oneVehicle->model}} - {{$oneVehicle->reg}}</option>
+            @endforeach
+        @elseif($vehicles->count() > 1)
+            <option value="null">SELECT LATER</option>
+            @foreach($vehicles as $oneVehicle)
+                <option value="{{$oneVehicle->id}}">{{$oneVehicle->model}} - {{$oneVehicle->reg}}</option>
+            @endforeach
+        @else
+            <option value="null" selected>YOU HAVE NO VEHICLES!</option>
+        @endif
     </select>
 
     <x-jet-label for="date">Choose a date</x-jet-label>

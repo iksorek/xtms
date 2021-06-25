@@ -8,7 +8,7 @@ use Livewire\Component;
 class Row extends Component
 {
 
-    public $oneRun, $customers, $search, $pickedCustomer, $update;
+    public $oneRun, $customers, $search, $pickedCustomer, $update, $showDetails;
 
     public function assignCustomerToRun($id)
     {
@@ -19,7 +19,9 @@ class Row extends Component
         $this->oneRun->save();
 
     }
-    public function deleteRun(){
+
+    public function deleteRun()
+    {
 
         $this->emit('deleteModal', $this->oneRun->id);
     }
@@ -31,6 +33,13 @@ class Row extends Component
         $this->oneRun->customer_id = null;
         $this->pickedCustomer = null;
         $this->oneRun->save();
+
+    }
+
+    public function redirectToRun($run)
+    {
+        $this->redirectRoute('showRun', ['runId' => $run['id']]);
+
 
     }
 
