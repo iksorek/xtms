@@ -1,5 +1,5 @@
 <div>
-    <div class="m-10 p-5 grid grid-cols-2">
+    <div class="m-10 p-5 grid grid-cols-1 md:grid-cols-2 text-center">
         <div>
             <div class="m-2">
                 <x-jet-label for="reg">Registration number</x-jet-label>

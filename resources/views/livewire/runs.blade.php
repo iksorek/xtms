@@ -51,7 +51,7 @@
 
     @if($createRun)
         <div class="flex items-center justify-center">
-            <div class="w-full container mx-auto bg-gray-300 p-2">
+            <div class="w-full container mx-auto bg-gray-200 p-2">
                 <livewire:new-run :newrun="$arrayResponse"/>
             </div>
         </div>
