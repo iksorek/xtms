@@ -20,6 +20,10 @@ class Runs extends Component
         "refreshParent" => '$refresh',
     ];
 
+    public function cancelAdding()
+    {
+        return $this->redirectRoute('runs');
+    }
 
     public function postcodeToCoordinates($postcode)
     {
