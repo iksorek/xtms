@@ -9,17 +9,16 @@ use Livewire\Component;
 class Runs extends Component
 {
 
-    public $time, $distance, $townStart, $townFinish, $costApr, $createRun;
+    public $time, $distance, $townStart, $townFinish, $costApr;
     public $addRun = false;
+    public $createRun = false;
     public $postcodesStart = 'np165ra';
     public $postcodesFinish = 'SW1A 0AA';
     public $arrayResponse;
 
     protected $listeners = [
-         "refreshParent" => '$refresh',
+        "refreshParent" => '$refresh',
     ];
-
-
 
 
     public function postcodeToCoordinates($postcode)
@@ -53,7 +52,7 @@ class Runs extends Component
         $this->costApr = round(($this->distance * 1.3) + ($this->time / 60 * 12));
         //lets say cost per mile = GBP1.3 PLUS GBP12 per hour. Will be added in settings
         //todo ADD SETTINGS to be able to set cost per mile / hour
-        $this->arrayResponse = (array) $this;
+        $this->arrayResponse = (array)$this;
 
 
     }

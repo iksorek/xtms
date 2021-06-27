@@ -10,7 +10,7 @@ use Livewire\Component;
 class NewRun extends Component
 {
 
-    public $newrun, $cost, $vehicle, $date, $startTime, $finishEst, $info;
+    public $newrun, $cost, $vehicle, $date, $startTime, $finishEst, $info, $additional_info;
     public $vehicles;
 
     public function mount()
@@ -33,6 +33,7 @@ class NewRun extends Component
         $run->start_time = "$this->date $this->startTime";
         $run->finish_est = date("Y-m-d H:i:s", strtotime($run->start_time) + ($this->newrun['time'] * 60));
         $run->back_est = date("Y-m-d H:i:s", strtotime($run->start_time) + ($this->newrun['time'] * 60 * 2) + 3600);
+        $run->additional_info = $this->additional_info;
 
         $run->save();
         $this->redirectRoute('runs');

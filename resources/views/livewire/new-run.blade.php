@@ -11,7 +11,7 @@
     <br>
     <x-jet-label for="vehicle">Choose vehicle</x-jet-label>
     <select name="vehicle" wire:model="vehicle"
-            class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            class="form_laravel">
 
 
         @if($vehicles->count() == 1)
@@ -37,6 +37,12 @@
     <x-jet-input name="startTime" type="time" wire:model="startTime"/>
     <x-jet-input-error for="startTime"/>
     <br>
+    <x-jet-label for="additional_info">Additional info</x-jet-label>
+    <textarea class="form_laravel" name="additional_info" wire:model="additional_info"></textarea>
+    <x-jet-input-error for="additional_info"/>
+    <br>
+
+
     <x-jet-button wire:click="saveNewRun" class="w-3/4 mt-3">Save run</x-jet-button>
 
 
