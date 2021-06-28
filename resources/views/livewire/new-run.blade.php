@@ -54,27 +54,29 @@
                             <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
                         @endforeach
                     </select>
-                    <p wire:click="$toggle('addNewCustomerForm')" class="hover:text-green-500 cursor-pointer my-5">create new
+                    <p wire:click="$toggle('addNewCustomerForm')" class="hover:text-green-500 cursor-pointer my-5">
+                        create new
                         customer</p>
                 </div>
             @else
                 <div class="new_customer">
                     <livewire:quick-new-customer/>
 
-
-
-
-
-                    <p wire:click="$toggle('addNewCustomerForm')" class="hover:text-green-500 cursor-pointer my-5">Choose
-                        from saved customers</p>
+                    @if(!$customer)
+                        <p wire:click="$toggle('addNewCustomerForm')" class="hover:text-green-500 cursor-pointer my-5">
+                            Choose
+                            from saved customers</p>
+                    @endif
                 </div>
             @endif
 
         </div>
     </div>
 
-
-    <x-jet-button wire:click="saveNewRun" class="w-3/4 mt-3">Save run</x-jet-button>
-
+    @if($customer)
+        <x-jet-button wire:click="saveNewRun" class="w-3/4 mt-3">
+            Save run
+        </x-jet-button>
+    @endif
 
 </div>

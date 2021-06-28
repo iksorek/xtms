@@ -16,15 +16,17 @@ class NewRun extends Component
     protected $listeners = ['assignCustomer'];
 
 
-    public function assignCustomer($id){
-        $this->customer = $id;
+    public function assignCustomer($id)
+    {
 
+        $this->customer = $id;
     }
+
     public function mount()
     {
         $this->cost = $this->newrun['costApr'];
         $this->vehicles = Vehicle::where('user_id', Auth::id())->get();
-        $this->customers = Customer::where('user_id', Auth::id())->get();
+        $this->customers = Customer::where('user_id', Auth::id())->orderBy('name')->get();
         $this->date = date("Y-m-d", strtotime('tomorrow'));
         $this->startTime = "10:00";
         $this->addNewCustomerForm = false;
@@ -33,8 +35,6 @@ class NewRun extends Component
     protected $rules = [
         'cost' => 'required|numeric|min:1',
         'date' => 'required|after_or_equal:NOW',
-
-
 
 
     ];
