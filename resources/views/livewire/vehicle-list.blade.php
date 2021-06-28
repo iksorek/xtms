@@ -1,4 +1,5 @@
 <div class="p-2 sm:p-4 md:p-8">
+
     @if($vehs->count() != 0)
 
         <table class="w-full text-xs md:text-sm">
