@@ -1,6 +1,6 @@
-<div class="p-2 sm:p-4 md:p-8">
 
-    @if($vehs->count() != 0)
+
+@if($vehs->count() != 0)
 
         <table class="w-full text-xs md:text-sm">
             <thead>
@@ -42,4 +42,9 @@
         <p class="text-xl">Seems like You have no vehicles. </p>
 
     @endif
+<div class="p-2 sm:p-4 md:p-8">
+    <a href="{{route("addVehicle")}}"
+       class="button-like-link">
+        New vehicle</a>
+
 </div>

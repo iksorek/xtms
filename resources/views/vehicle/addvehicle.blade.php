@@ -6,14 +6,9 @@
 
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-green-100 shadow-xl sm:rounded-lg text-center">
-
-                <livewire:create-vehicle/>
+    <div class="bg-green-100 p-2 sm:p-4 md:p-8 mx-auto container">
+        <livewire:create-vehicle/>
 
 
-            </div>
-        </div>
     </div>
 </x-app-layout>

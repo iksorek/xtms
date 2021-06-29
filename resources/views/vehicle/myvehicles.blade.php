@@ -6,10 +6,9 @@
 
     </x-slot>
 
-    <a href="{{route("addVehicle")}}"
-       class="button-like-link">
-        New vehicle</a>
-    <div class="bg-green-100 ">
+
+
+    <div class="bg-green-100 p-2 sm:p-4 md:p-8 mx-auto container">
         <livewire:vehicle-list/>
     </div>
 </x-app-layout>
