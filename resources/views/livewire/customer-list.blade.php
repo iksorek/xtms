@@ -1,11 +1,11 @@
-<div class="flex w-full">
-    <div class="flex-col w-1/2">
-        <div class="m-4">
+<div class="container mx-auto gap-4 grid grid-cols-1 md:grid-cols-2">
+    <div>
+        <div class="m-2">
             <x-jet-label for="search">Search Your customers</x-jet-label>
-            <x-jet-input wire:model="search" name="search" placeholder="Type customer name" class="w-3/4 mx-auto"/>
+            <x-jet-input wire:model="search" name="search" placeholder="Type customer name" class="w-full mx-auto"/>
         </div>
         @isset($customers)
-            <ul>
+            <ul class="h-20 sm:h-30 md:h-60 overflow-y-scroll">
                 @empty($search)
                     <p class="text-center m-5">You have {{$customers->count()}} saved customers.</p>
                 @else
@@ -23,7 +23,7 @@
             You have no saved customers Yet
         @endempty
     </div>
-    <div class="w-1/2 text-center p-5 bg-green-200 rounded-2xl">
+    <div {{$customerDetails ? '' : ''}} class="p-4 md:p-10">
         @empty($customerDetails)
             Click on customer name to see more details.
         @endempty

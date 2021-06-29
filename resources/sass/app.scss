@@ -79,13 +79,15 @@ input, button {
     color: black;
 }
 
-.run_details {
-    @apply border-2 m-4 p-2 border-gray-300;
-}
+.run {
+    &_details {
+        @apply border-2 m-4 p-2 border-gray-300;
+    }
 
-.run__title-top {
-    @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
-    transform: translateY(-1rem);
+    &__title-top {
+        @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
+        transform: translateY(-1rem);
+    }
 
 }
 

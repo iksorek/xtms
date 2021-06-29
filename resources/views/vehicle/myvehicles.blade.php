@@ -6,13 +6,10 @@
 
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{route("addVehicle")}}"
-               class="button-like-link">
-                New vehicle</a>
-            <div class="bg-green-100 shadow-xl sm:rounded-lg text-center">
-                <livewire:vehicle-list/>
-            </div>
-        </div>
+    <a href="{{route("addVehicle")}}"
+       class="button-like-link">
+        New vehicle</a>
+    <div class="bg-green-100 ">
+        <livewire:vehicle-list/>
+    </div>
 </x-app-layout>
