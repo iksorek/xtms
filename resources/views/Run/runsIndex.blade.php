@@ -6,11 +6,7 @@
 
     </x-slot>
 
-    <div class="py-12">
-
-
+    <div class="container-live">
         <livewire:runs/>
-
-
     </div>
 </x-app-layout>

@@ -8,7 +8,7 @@
 
 
 
-    <div class="bg-green-100 p-2 sm:p-4 md:p-8 mx-auto container">
+    <div class="container-live">
         <livewire:vehicle-list/>
     </div>
 </x-app-layout>
