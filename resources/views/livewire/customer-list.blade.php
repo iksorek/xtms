@@ -36,9 +36,33 @@
                 <p><b>Address:</b> {{$customerDetails->address}}</p>
                 <p><b>Info:</b> {{$customerDetails->info}}</p>
                 <p><b>Number of runs</b> {{$customerDetails->runs()->count()}}</p>
+                <x-jet-button wire:click="confirmingCustomerDeletion({{$customer->id}})" class="mt-3 bg-red-600 w-1/2">DELETE Customer
+                </x-jet-button>
+
+
+
             </div>
 
         @endisset
 
     </div>
+    <x-jet-confirmation-modal wire:model="confirmingCustomerDeletionModal">
+        <x-slot name="title">
+            Delete customer
+        </x-slot>
+
+        <x-slot name="content">
+            Are you sure you want to delete your customer <b>{{$customerDetails ? $customerDetails->name : ''}}</b>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button  wire:loading.attr="disabled" wire:click="$toggle('confirmingCustomerDeletionModal')">
+                Cancel
+            </x-jet-secondary-button>
+
+            <x-jet-danger-button class="ml-2"  wire:loading.attr="disabled" wire:click="deleteCustomer({{$customerDetails ? $customerDetails->id : ''}})">
+                Delete customer
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-confirmation-modal>
 </div>

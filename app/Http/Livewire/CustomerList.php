@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Customer;
+use Cassandra\Custom;
 use Livewire\Component;
 
 class CustomerList extends Component
@@ -11,6 +12,7 @@ class CustomerList extends Component
     public $search = null;
     public $customerDetails = null;
     public $customers = null;
+    public $confirmingCustomerDeletionModal = false;
 
 
     public function getCustomerDetails($id)
@@ -18,10 +20,23 @@ class CustomerList extends Component
         $this->customerDetails = Customer::where('id', $id)->firstOrFail();
     }
 
+    public function confirmingCustomerDeletion($id)
+    {
+        $this->confirmingCustomerDeletionModal = true;
+
+    }
+
+    public function deleteCustomer($id)
+    {
+        Customer::findOrFail($id)->delete();
+        request()->session()->flash('flash.banner', 'Customer deleted');
+        request()->session()->flash('flash.bannerStyle', 'danger');
+        return redirect()->to(route('myCustomers'));
+    }
 
     public function render()
     {
-        if($this->search == ''){
+        if ($this->search == '') {
             $this->customerDetails = null;
         }
         if ($this->search != '' && !empty($this->search)) {
