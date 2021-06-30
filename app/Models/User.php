@@ -73,8 +73,8 @@ class User extends Authenticatable
         return $this->hasMany(Run::class);
     }
 
-    public function Customer(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function Customers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Customer::class);
+        return $this->hasMany(Customer::class)->orderBy('name');
     }
 }

@@ -39,8 +39,11 @@ class Row extends Component
     public function redirectToRun($run)
     {
         $this->redirectRoute('showRun', ['runId' => $run['id']]);
+    }
 
-
+    public function redirectToEditRun($run)
+    {
+        $this->redirectRoute('editRun', ['runId' => $run]);
     }
 
     public function updateColumn($col)

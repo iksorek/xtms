@@ -4,9 +4,9 @@
         <span
             class="{{$oneRun->finished ? ' text-green-600' : ''}} font-bold uppercase">{{$oneRun->postcode_from}} - {{$oneRun->postcode_to}}</span>
     </td>
-    <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+    <td class="w-full lg:w-auto p-3 text-gray-800 text-right lg:text-center border border-b block lg:table-cell relative lg:static">
         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Customer</span>
-        <div class="w-1/2 lg:w-full mx-auto">
+        <div class="sm:w-full w-1/2 mx-auto sm:pl-28">
 
             @if($oneRun->Customer && $oneRun->customer_id)
                 <div class="flex justify-between w-50">
@@ -84,7 +84,8 @@
                           d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                 </svg>
             </div>
-            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                 wire:click="redirectToEditRun({{$oneRun->id}})">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

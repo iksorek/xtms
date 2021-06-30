@@ -1,4 +1,4 @@
-<div class="p-5 container mx-auto">
+<div class="">
     <div class="mb-3">
 
         @if(!$addRun)
@@ -59,7 +59,7 @@
 
     @if(!$addRun)
         {{--        //ADDRUN == FALSE--}}
-        <div class="container mx-auto">
+        <div>
             <livewire:runs-table/>
         </div>
 

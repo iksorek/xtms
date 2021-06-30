@@ -21,6 +21,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::put('/myvehicles/store', [VehicleController::class, 'store'])->name('storeVehicle');
     Route::get('/runs', [RunController::class, 'index'])->name('runs');
     Route::get('/run/{runId}', [RunController::class, 'show'])->name('showRun');
+    Route::get('/editrun/{runId}', [RunController::class, 'edit'])->name('editRun');
+
 
 });
 
