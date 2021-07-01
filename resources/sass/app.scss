@@ -106,5 +106,6 @@ input, button {
     @apply bg-black text-xsm sm:text-sm text-gray-200 rounded px-2 py-1 font-bold m-2 hover:bg-gray-800;
 }
 .container-live{
-    @apply border border-black border-opacity-50 p-2 sm:p-4 md:p-8 mx-auto container;
+    @apply p-2 sm:p-4 md:p-8 mx-auto container;
+    border: 1px dashed rgba(192,192,192,.6);
 }

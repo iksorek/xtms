@@ -5,7 +5,7 @@
             <x-jet-input wire:model="search" name="search" placeholder="Type customer name" class="w-full mx-auto"/>
         </div>
         @isset($customers)
-            <ul class="h-20 sm:h-30 md:h-60 overflow-y-scroll">
+            <ul class="max-h-20 sm:max-h-30 md:max-h-60 overflow-y-auto">
                 @empty($search)
                     <p class="text-center m-5">You have {{$customers->count()}} saved customers.</p>
                 @else

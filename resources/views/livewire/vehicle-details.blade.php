@@ -65,7 +65,7 @@
                              class="{{ $tax<= now() ? 'bg-red-500' : 'bg-green-500' }}"/>
                 <x-jet-input-error for="tax"/>
                 <br>
-                <x-jet-button wire:click="addMonthsTo(6, 'tax')" class="h-4">ADD 6ssh  months
+                <x-jet-button wire:click="addMonthsTo(6, 'tax')" class="h-4">ADD 6 months
                 </x-jet-button>
 
             </div>
