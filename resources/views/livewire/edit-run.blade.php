@@ -24,7 +24,7 @@
     </div>
     <div class="run_edit-cell">
         <x-jet-label for="newCustomer">Customer</x-jet-label>
-        <select name="newCustomer" wire:model="newCustomer">
+        <select name="newCustomer" class="form_laravel" wire:model="newCustomer">
             @foreach($customers as $oneCustomer)
                 <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
             @endforeach
@@ -33,7 +33,7 @@
     </div>
     <div class="run_edit-cell">
         <x-jet-label for="newVehicle">Vehicle</x-jet-label>
-        <select name="newVehicle" wire:model="newVehicle">
+        <select name="newVehicle" class="form_laravel" wire:model="newVehicle">
 
             @foreach($vehicles as $oneVehicle)
                 <option value="{{$oneVehicle->id}}">{{$oneVehicle->reg}}</option>

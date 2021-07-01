@@ -34,7 +34,9 @@ class EditRun extends Component
         $this->date = date("Y-m-d", strtotime($this->run->start_time));
         $this->startTime = date("H:i", strtotime($this->run->start_time));
         $this->additional_info = $this->run->additional_info;
-        $this->newCustomer = $this->run->Customer->id;
+
+       $this->run->Customer ? $this->newCustomer = $this->run->Customer->id : $this->newCustomer = 0;
+
         $this->newVehicle = $this->run->Vehicle->id;
 
 
