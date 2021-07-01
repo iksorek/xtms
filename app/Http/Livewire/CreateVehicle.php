@@ -74,8 +74,7 @@ class CreateVehicle extends Component
     }
 
 
-    public
-    function render()
+    public function render()
     {
         return view('livewire.create-vehicle');
     }

@@ -10,37 +10,36 @@
         <x-jet-input-error for="postcode_to"/>
     </div>
     <div class="run_edit-cell">
-        <x-jet-label for="customer">Customer</x-jet-label>
-        <select name="customer" wire:model="customer">
-
-            @if($customer)
-                <option selected value="{{$customer->id}}" class="bg-green-500">{{$customer->name}}</option>
-            @else
-                <option selected value="">Not selected yet</option>
-
-            @endif
-
-            @foreach($customers as $oneCustomer)
-                <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
-
-            @endforeach
-        </select>
-        <x-jet-input-error for="customer"/>
+        <x-jet-label for="cost">Cost</x-jet-label>
+        <x-jet-input name="cost" wire:model="cost"/>
+        <x-jet-input-error for="cost"/>
     </div>
     <div class="run_edit-cell">
-        <x-jet-label for="vehicle">Vehicle</x-jet-label>
-        <select name="vehicle" wire:model="vehicle">
+        <x-jet-label for="cost">Distance</x-jet-label>
+        <div class="w-full inline-block">
+            {{$distance}} miles
+            <x-jet-button class="mr-0">Reculcate</x-jet-button>
+        </div>
+        <x-jet-input-error for="distance"/>
+    </div>
+    <div class="run_edit-cell">
+        <x-jet-label for="newCustomer">Customer</x-jet-label>
+        <select name="newCustomer" wire:model="newCustomer">
+            @foreach($customers as $oneCustomer)
+                <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
+            @endforeach
+        </select>
+        <x-jet-input-error for="newCustomer"/>
+    </div>
+    <div class="run_edit-cell">
+        <x-jet-label for="newVehicle">Vehicle</x-jet-label>
+        <select name="newVehicle" wire:model="newVehicle">
 
-            @if($vehicle)
-                <option selected value="{{$vehicle->id}}" class="bg-green-500">{{$vehicle->reg}}</option>
-            @else
-                <option selected value="">Not selected yet</option>
-            @endif
             @foreach($vehicles as $oneVehicle)
                 <option value="{{$oneVehicle->id}}">{{$oneVehicle->reg}}</option>
             @endforeach
         </select>
-        <x-jet-input-error for="customer"/>
+        <x-jet-input-error for="newVehicle"/>
     </div>
     <div class="run_edit-cell">
         <x-jet-label for="date">Date</x-jet-label>
@@ -57,5 +56,10 @@
         <textarea name="additional_info" class="form_laravel" wire:model="additional_info"></textarea>
         <x-jet-input-error for="additional_info"/>
     </div>
+    <div class="place-self-end">
+        <x-jet-button wire:click="updateRun">Save changes</x-jet-button>
+    </div>
 
 </div>
+
+
