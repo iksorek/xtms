@@ -24,7 +24,7 @@
                 <x-jet-input-error for="postcodesFinish"/>
                 <br>
 
-                <x-jet-button class="mt-3" wire:click="getQuote">Get quote</x-jet-button>
+                <x-jet-button class="mt-3" wire:click="calculateRoute">Get quote</x-jet-button>
             </div>
 
             @if($townStart && $townFinish && $distance && $time)

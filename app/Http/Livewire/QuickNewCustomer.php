@@ -19,7 +19,7 @@ class QuickNewCustomer extends Component
     public function saveNewCustomer()
     {
         $this->validate();
-        $this->newCustomer = Auth::user()->Customer()->create([
+        $this->newCustomer = Auth::user()->Customers()->create([
             'name' => $this->name,
             'mobile' => $this->mobile,
             'address' => $this->address,
