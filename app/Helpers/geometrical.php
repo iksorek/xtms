@@ -30,13 +30,17 @@ if (!function_exists('getQuote')) {
             "coordinates" => [[$coordinatesStart['longitude'], $coordinatesStart['latitude']], [$coordinatesFinish['longitude'], $coordinatesFinish['latitude']]],
             'units' => 'mi'
         ]);
-        $res['time'] = round($response->json()['routes'][0]['summary']['duration'] / 60);
-        $res['distance'] = round($response->json()['routes'][0]['summary']['distance']);
-        $res['postcodesStart'] = $postcodesStart;
-        $res['postcodesFinish'] = $postcodesFinish;
-        $res['costApr'] = round(($res['distance'] * 1.3) + ($res['time'] / 60 * 12));
-        //lets say cost per mile = GBP1.3 PLUS GBP12 per hour. Will be added in settings
-        //todo ADD SETTINGS to be able to set cost per mile / hour
+        if ($response->successful()) {
+            $res['time'] = round($response->json()['routes'][0]['summary']['duration'] / 60);
+            $res['distance'] = round($response->json()['routes'][0]['summary']['distance']);
+            $res['postcodesStart'] = $postcodesStart;
+            $res['postcodesFinish'] = $postcodesFinish;
+            $res['costApr'] = round(($res['distance'] * 1.3) + ($res['time'] / 60 * 12));
+            //lets say cost per mile = GBP1.3 PLUS GBP12 per hour. Will be added in settings
+            //todo ADD SETTINGS to be able to set cost per mile / hour
+        } else {
+            $res = dd('Can not connect to API');
+        }
         return $res;
     }
 }

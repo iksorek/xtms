@@ -18,7 +18,7 @@
         <x-jet-label for="cost">Distance</x-jet-label>
         <div class="w-full inline-block">
             {{$distance}} miles
-            <x-jet-button class="mr-0">Reculcate</x-jet-button>
+            <x-jet-button class="mr-0" wire:click="recalculateRun">Recalculate cost and distance</x-jet-button>
         </div>
         <x-jet-input-error for="distance"/>
     </div>

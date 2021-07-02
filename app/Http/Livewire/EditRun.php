@@ -35,7 +35,7 @@ class EditRun extends Component
         $this->startTime = date("H:i", strtotime($this->run->start_time));
         $this->additional_info = $this->run->additional_info;
 
-       $this->run->Customer ? $this->newCustomer = $this->run->Customer->id : $this->newCustomer = 0;
+        $this->run->Customer ? $this->newCustomer = $this->run->Customer->id : $this->newCustomer = 0;
 
         $this->newVehicle = $this->run->Vehicle->id;
 
@@ -51,6 +51,7 @@ class EditRun extends Component
         $this->run->postcode_from = $this->postcode_from;
         $this->run->postcode_to = $this->postcode_to;
         $this->run->price = $this->cost;
+        $this->run->distance = $this->distance;
         $this->run->customer_id = $this->customer;
         $this->run->vehicle_id = $this->newVehicle;
         $this->run->customer_id = $this->newCustomer;
@@ -63,6 +64,14 @@ class EditRun extends Component
         $this->run->save();
         $this->redirectRoute('editRun', $this->run->id);
 
+
+    }
+
+    public function recalculateRun()
+    {
+        $response = getQuote($this->postcode_from, $this->postcode_to);
+        $this->cost = $response['costApr'];
+        $this->distance = $response['distance'];
 
     }
 
