@@ -38,6 +38,7 @@ if (!function_exists('getQuote')) {
             $res['costApr'] = round(($res['distance'] * 1.3) + ($res['time'] / 60 * 12));
             //lets say cost per mile = GBP1.3 PLUS GBP12 per hour. Will be added in settings
             //todo ADD SETTINGS to be able to set cost per mile / hour
+            ($res['costApr'] > 20) ?: $res['costApr'] = 20;
         } else {
             $res = dd('Can not connect to API');
         }

@@ -109,3 +109,6 @@ input, button {
     @apply p-2 sm:p-4 md:p-8 mx-auto container;
     border: 1px dashed rgba(192,192,192,.6);
 }
+.actions_buttons{
+    @apply w-4 mr-2 transform hover:text-purple-500 cursor-pointer hover:scale-110;
+}
