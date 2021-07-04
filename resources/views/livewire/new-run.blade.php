@@ -9,6 +9,7 @@
         <div>
             <x-jet-label for="cost">Final cost: (GBP)</x-jet-label>
             <x-jet-input wire:model="cost" name="cost"/>
+
             <x-jet-input-error for="cost"></x-jet-input-error>
             <br>
             <x-jet-label for="vehicle">Choose vehicle</x-jet-label>

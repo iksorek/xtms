@@ -36,6 +36,12 @@
                     Time: {{$time}} minutes<br>
                     Approximate cost: &pound;{{$costApr}}
                     <br>
+                    <span class="text-sm">
+            ({{$distance}} miles * {{Auth::user()->ppm}}per mile)
+               +
+                ({{round($time / 60, 2)}} h * {{Auth::user()->pph}} per hour)
+           </span>
+                    <br>
                     <x-jet-button class="m-3" wire:click="$toggle('createRun')">Create run</x-jet-button>
 
                 </div>
