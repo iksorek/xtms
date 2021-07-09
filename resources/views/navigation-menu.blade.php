@@ -16,13 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('vehicles') }}" :active="request()->routeIs('vehicles')">
-                        My Vehicles
+                       Vehicles
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('myCustomers') }}" :active="request()->routeIs('myCustomers')">
-                        My customers
+                       Customers
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('runs') }}" :active="request()->routeIs('runs')">
                         Runs
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('mysettings') }}" :active="request()->routeIs('mysettings')">
+                       Settings
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -108,13 +111,16 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('vehicles') }}" :active="request()->routeIs('vehicles')">
-                My Vehicles
+               Vehicles
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('myCustomers') }}" :active="request()->routeIs('myCustomers')">
-                My Customers
+               Customers
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('runs') }}" :active="request()->routeIs('runs')">
                 Runs
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('mysettings') }}" :active="request()->routeIs('mysettings')">
+               Settings
             </x-jet-responsive-nav-link>
         </div>
 

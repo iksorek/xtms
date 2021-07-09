@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\RunController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/runs', [RunController::class, 'index'])->name('runs');
     Route::get('/run/{runId}', [RunController::class, 'show'])->name('showRun');
     Route::get('/editrun/{runId}', [RunController::class, 'edit'])->name('editRun');
+    Route::get('/mysettings', [Controller::class, 'mysettings'])->name('mysettings');
 
 
 });
