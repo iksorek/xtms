@@ -75,8 +75,7 @@ class VehicleDetails extends Component
         $this->vehicle->service_interval = $this->service_interval;
         $this->vehicle->save();
 
-        request()->session()->flash('flash.banner', 'Changes saved.');
-        request()->session()->flash('flash.bannerStyle', 'success');
+        create_banner('Changes has been saved');
         return redirect()->to(route('vehicleDetails', $this->vehicle->id));
 
     }

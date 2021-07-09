@@ -55,8 +55,7 @@ class NewRun extends Component
         $run->additional_info = $this->additional_info;
         $this->validate();
         $run->save();
-        request()->session()->flash('flash.banner', 'New run has been saved!');
-        request()->session()->flash('flash.bannerStyle', 'success');
+        create_banner('New run has been saved!');
         $this->redirectRoute('runs');
     }
 

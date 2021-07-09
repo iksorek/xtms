@@ -36,7 +36,8 @@
     },
     "autoload": {
         "files": [
-            "app\\Helpers\\geometrical.php"
+            "app\\Helpers\\geometrical.php",
+            "app\\Helpers\\global.php"
         ],
         "psr-4": {
             "App\\": "app/",

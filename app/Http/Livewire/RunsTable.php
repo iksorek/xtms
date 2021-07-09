@@ -22,8 +22,7 @@ class RunsTable extends Component
     public function deleteRun(Run $run)
     {
         $run->delete();
-        request()->session()->flash('flash.banner', 'Run deleted');
-        request()->session()->flash('flash.bannerStyle', 'danger');
+        create_banner('Run deleted', 'danger');
         $this->runToDelete = false;
         $this->redirect(route('runs'));
     }

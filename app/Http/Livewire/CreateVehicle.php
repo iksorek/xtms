@@ -25,7 +25,7 @@ class CreateVehicle extends Component
 
     public function resetForm()
     {
-        return $this->redirect(route('addVehicle'));
+        return $this->redirectRoute('addVehicle');
     }
 
     public function checkReg()
@@ -66,8 +66,7 @@ class CreateVehicle extends Component
         $newVehicle->mot = $this->mot;
         $newVehicle->tax = $this->tax;
         $newVehicle->save();
-        request()->session()->flash('flash.banner', 'New vehicle saved');
-        request()->session()->flash('flash.bannerStyle', 'success');
+        create_banner('New vehicle saved');
         return redirect(route('vehicles'));
 
 

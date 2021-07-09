@@ -22,7 +22,8 @@ class Mysettings extends Component
         $user->ppm = $this->ppm;
         $user->pph = $this->pph;
         $user->save();
-//        $this->redirect(route('mysettings'));
+        create_banner('Changes has been saved');
+        $this->redirectRoute('mysettings');
 
 
     }
