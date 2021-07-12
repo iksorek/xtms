@@ -10,7 +10,8 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-               Here You will see request, incoming runs, vans services, invoices etc
+                <h2 class="text-lg text-center">Lets start with table.</h2>
+                <livewire:runs-blocks/>
             </div>
         </div>
     </div>
