@@ -112,3 +112,8 @@ input, button {
 .actions_buttons{
     @apply w-4 mr-2 transform hover:text-purple-500 cursor-pointer hover:scale-110;
 }
+.actions_buttons-pos{
+    position: relative;
+    top: 0;
+    right: 0;
+}

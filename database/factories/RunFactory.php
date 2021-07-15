@@ -24,11 +24,27 @@ class RunFactory extends Factory
      */
     public function definition()
     {
+
+        $postCodes = [
+            ' YO31 0RQ',
+            'IP18 6DB',
+            'TW9 1AF',
+            'ML6 8TW',
+            'CM9 6JH',
+            'KY12 9RB',
+            'LA2 8HL',
+            'S8 8JG',
+            'SG15 6RY',
+            'AB43 6NU',
+        ];
+
+
         return [
-            'postcode_from'=>'NP16RA',
-            'postcode_to'=>'BS354GG',
-            'start_time'=>now(),
-            'finish_est'=>Carbon::now()->add(rand(1,5), 'hour'),
+            'postcode_from' => 'NP165RA',
+            'postcode_to' => $this->faker->randomElement($postCodes),
+            'price'=>rand(20, 1000),
+            'start_time' => Carbon::now()->add(rand(1, 5), 'hour'),
+            'finish_est' => Carbon::now()->add(rand(6, 10), 'hour'),
         ];
     }
 }

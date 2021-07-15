@@ -35,17 +35,17 @@ class DatabaseSeeder extends Seeder
         $super_admin = Role::create(['name' => 'super_admin']);
 
 
-        User::factory(15)
-            ->has(Customer::factory(rand(5, 15)))
-            ->has(Vehicle::factory(rand(5, 15)))
-            ->has(Run::factory(rand(3, 10)))
-            ->create();
-//
+//        User::factory(15)
+//            ->has(Customer::factory(rand(5, 15)))
+//            ->has(Vehicle::factory(rand(5, 15)))
+//            ->has(Run::factory(rand(3, 10)))
+//            ->create();
+////
 //        //my super admin
         $user = \App\Models\User::factory()
             ->has(Customer::factory(300))
-            ->has(Vehicle::factory(rand(5, 15)))
-            ->has(Run::factory(1))
+            ->has(Vehicle::factory(10))
+            ->has(Run::factory(20))
             ->create([
                 'name' => 'iksor',
                 'email' => 'dev@mrogon.co.uk',

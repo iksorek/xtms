@@ -24,20 +24,40 @@
     </div>
     <div class="run_edit-cell">
         <x-jet-label for="newCustomer">Customer</x-jet-label>
+
+
         <select name="newCustomer" class="form_laravel" wire:model="newCustomer">
+            @if($customer)
+                <option value="{{$customer->id}}" selected>{{$customer->name}}</option>
+
+            @else
+                <option value="0" selected>PLEASE SELECT</option>
+            @endif
             @foreach($customers as $oneCustomer)
                 <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
             @endforeach
+
         </select>
+
+
         <x-jet-input-error for="newCustomer"/>
     </div>
     <div class="run_edit-cell">
         <x-jet-label for="newVehicle">Vehicle</x-jet-label>
         <select name="newVehicle" class="form_laravel" wire:model="newVehicle">
 
+
+            @if($vehicle)
+                <option value="{{$vehicle->id}}" selected>{{$vehicle->name}}</option>
+
+            @else
+                <option value="0" selected>PLEASE SELECT</option>
+            @endif
             @foreach($vehicles as $oneVehicle)
                 <option value="{{$oneVehicle->id}}">{{$oneVehicle->reg}}</option>
             @endforeach
+
+
         </select>
         <x-jet-input-error for="newVehicle"/>
     </div>
