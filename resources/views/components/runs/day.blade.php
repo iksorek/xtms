@@ -12,12 +12,11 @@
 
                     @foreach($vehicle->Runs as $oneRun)
                         <div class="mx-1 p-2
-                         border border-2 relative"
-                             wire:click="redirectToRunDetails({{$oneRun}})">
+                         border border-2 relative">
                             <x-runs.edit-icon :id="$oneRun->Vehicle->id"/>
                             <p>{{$oneRun->postcode_from}} to {{$oneRun->postcode_to}}</p>
                             <p>{{substr($oneRun->start_time, -8)}} - {{substr($oneRun->finish_est, -8)}}
-                                ({{substr($oneRun->back_est, -8)}})</p>
+                                {{$oneRun->back_est ? "(".substr($oneRun->back_est, -8).")" : 'No Estimates'}}</p>
                         </div>
                     @endforeach
 
@@ -30,16 +29,16 @@
             </div>
         @endforelse
         <div class="border border-2 w-full m-1 p-2">
-            <div class="w-full font-bold text-center">Not assigned or requested}</div>
+            <div class="w-full font-bold text-center">Not assigned or requested</div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full">
                 @forelse($runsWithoutVehicle as $run)
-                    <div class="mx-1 border border-2 bg-red-400 p-2 relative"
-                         wire:click="redirectToRunDetails({{$run->id}})">
+                    <div class="mx-1 border border-2 bg-red-400 p-2 relative">
 
                         <div class="relative">
                             <p>{{$run->postcode_from}} to {{$run->postcode_to}}</p>
-                            <p>{{substr($run->start_time, -8)}} - {{substr($run->finish_est, -8)}}
-                                ({{substr($run->back_est, -8)}})</p>
+                            <p>
+                                {{substr($run->start_time, -8)}} - {{substr($run->finish_est, -8)}}
+                            </p>
                         </div>
 
                         <x-runs.edit-icon :id="$run->id"/>
