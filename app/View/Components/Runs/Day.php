@@ -19,11 +19,14 @@ class Day extends Component
         $this->vehicles = Vehicle::with('Runs')->where('user_id', '=', Auth::id())->whereHas('Runs', function ($q) {
             $q->whereDate('start_time', '=', $this->day);
         })->get();
-        $this->runsWithoutVehicle = Run::with('Customer')
+        $this->runsWithoutVehicle = Run::with(['Customer', "Vehicle"])
+            ->whereDate('start_time', '=', $this->day)
             ->where('user_id', '=', Auth::id())
-            ->where('customer_id', '=', null)
-            ->orWhere('vehicle_id', '=', null)
-            ->whereDate('start_time', '=', $this->day)->get();
+            ->where(function ($q){
+                return $q->whereNull('customer_id')
+                    ->orWhereNull('vehicle_id');
+            })
+           ->get();
 
 
         // dd($this->runs);

@@ -32,13 +32,16 @@
             <div class="w-full font-bold text-center">Not assigned or requested</div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full">
                 @forelse($runsWithoutVehicle as $run)
-                    <div class="mx-1 border border-2 bg-red-400 p-2 relative">
+                    <div class="mx-1 border border-2 bg-yellow-400 p-2 relative">
 
                         <div class="relative">
                             <p>{{$run->postcode_from}} to {{$run->postcode_to}}</p>
                             <p>
                                 {{substr($run->start_time, -8)}} - {{substr($run->finish_est, -8)}}
+
                             </p>
+                            <p class="text-red-600 text-center">{{$run->customer_id ?: 'No customer'}} {{$run->vehicle_id ?: 'No vehicle'}}</p>
+
                         </div>
 
                         <x-runs.edit-icon :id="$run->id"/>

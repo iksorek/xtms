@@ -22,6 +22,12 @@ class EditRun extends Component
         'newCustomer' => 'required|exists:customers,id',
         'newVehicle' => 'required|exists:vehicles,id'
     ];
+    protected $recalculationRules = [
+        'postcode_from' => 'required|min:5',
+        'postcode_to' => 'required|min:5|different:postcode_from',
+
+    ];
+
 
     public function mount()
     {
@@ -70,7 +76,7 @@ class EditRun extends Component
 
     public function recalculateRun()
     {
-        $this->validate();
+        $this->validate($this->recalculationRules);
         $response = getQuote($this->postcode_from, $this->postcode_to);
         $this->cost = $response['costApr'];
         $this->distance = $response['distance'];

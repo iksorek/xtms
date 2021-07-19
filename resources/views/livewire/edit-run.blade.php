@@ -17,7 +17,7 @@
     <div class="run_edit-cell">
         <x-jet-label for="cost">Distance</x-jet-label>
         <div class="w-full inline-block">
-            {{$distance}} miles
+            {{$distance ? $distance . " miles" : "Unknown yet"}}
             <x-jet-button class="mr-0" wire:click="recalculateRun">Recalculate cost and distance</x-jet-button>
         </div>
         <x-jet-input-error for="distance"/>
