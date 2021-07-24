@@ -27,7 +27,7 @@
                 <x-jet-button class="mt-3" wire:click="calculateRoute">Get quote</x-jet-button>
             </div>
 
-            @if($townStart && $townFinish && $distance && $time)
+            @if($townStart &&  $distance && $time)
                 <div class="bg-gray-300 p-2">
                     <h2 class="font-bold">Your quote:</h2>
 
