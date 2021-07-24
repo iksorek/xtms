@@ -14,7 +14,6 @@ class Day extends Component
     public function __construct($day)
     {
         $this->day = $day;
-//        $this->runs = Run::with('Vehicle', 'Customer')->whereDate('start_time', '=', $this->day)->orderBy('start_time')->get();
 
         $this->vehicles = Vehicle::with('Runs')->where('user_id', '=', Auth::id())->whereHas('Runs', function ($q) {
             $q->whereDate('start_time', '=', $this->day);
@@ -22,14 +21,12 @@ class Day extends Component
         $this->runsWithoutVehicle = Run::with(['Customer', "Vehicle"])
             ->whereDate('start_time', '=', $this->day)
             ->where('user_id', '=', Auth::id())
-            ->where(function ($q){
+            ->where(function ($q) {
                 return $q->whereNull('customer_id')
                     ->orWhereNull('vehicle_id');
             })
-           ->get();
+            ->get();
 
-
-        // dd($this->runs);
     }
 
 

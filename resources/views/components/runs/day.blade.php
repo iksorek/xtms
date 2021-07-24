@@ -1,7 +1,8 @@
 <div class="flex bg-blue-300 my-1 text-xsm md:text-sm">
 
     <div class="h-20 m-1 bg-blue-200 p-2 flex-shrink-0">
-        <p>{{$day}}</p>
+        <p> {{date("l", strtotime($day))}}</p>
+        <p>{{$day}} </p>
     </div>
     <div class="w-full p-2">
         @forelse($vehicles as $vehicle)
