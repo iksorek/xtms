@@ -54,7 +54,8 @@
                 <option value="0" selected>PLEASE SELECT</option>
             @endif
             @foreach($vehicles as $oneVehicle)
-                <option value="{{$oneVehicle->id}}">{{$oneVehicle->reg}}</option>
+                <option
+                    value="{{$oneVehicle->id}}" {{check_vehicle($oneVehicle->id) ? 'disabled' : ''}}>{{$oneVehicle->reg}}</option>
             @endforeach
 
 

@@ -26,7 +26,7 @@
                 @elseif($vehicles->count() > 1)
                     <option value="null">SELECT LATER</option>
                     @foreach($vehicles as $oneVehicle)
-                        <option value="{{$oneVehicle->id}}">{{$oneVehicle->model}} - {{$oneVehicle->reg}}</option>
+                        <option value="{{$oneVehicle->id}}" {{check_vehicle($oneVehicle->id) ? 'disabled' : ''}}>{{$oneVehicle->model}} - {{$oneVehicle->reg}}</option>
                     @endforeach
                 @else
                     <option value="null" selected>YOU HAVE NO VEHICLES!</option>
