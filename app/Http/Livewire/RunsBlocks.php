@@ -8,19 +8,16 @@ use Livewire\Component;
 class RunsBlocks extends Component
 {
 
-    public $daysToCount, $today, $lastDay, $dates;
+    public $daysToCount = 7;
+    public $today, $lastDay, $dates;
 
     public function __construct()
     {
-        $this->daysToCount = 7;
         $this->today = new \DateTime('now');
-
         for ($i = 0; $i < $this->daysToCount; $i++) {
             $this->today = new \DateTime('now');
             $this->dates[] = $this->today->modify("+$i days")->format('Y-m-d');
         }
-
-
 
     }
 
@@ -30,9 +27,16 @@ class RunsBlocks extends Component
     }
 
 
+    public function updating(){
+        for ($i = 0; $i < $this->daysToCount; $i++) {
+            $this->today = new \DateTime('now');
+            $this->dates[] = $this->today->modify("+$i days")->format('Y-m-d');
+        }
+
+    }
+
     public function render()
     {
-
-        return view('livewire.runs-blocks');
+      return view('livewire.runs-blocks');
     }
 }
