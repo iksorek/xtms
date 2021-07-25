@@ -9,8 +9,7 @@ use Livewire\Component;
 
 class RunsTable extends Component
 {
-    public $myRuns, $runToDelete;
-
+    public $myRuns, $runToDelete, $mode;
 
     protected $listeners = ['deleteModal', 'hideDeleteModal'];
 
@@ -33,10 +32,9 @@ class RunsTable extends Component
         $this->runToDelete = false;
     }
 
-    public function getMyRuns($mode = 'new')
+    public function getMyRuns()
     {
-        $mode == 'new' ? $operator = '>=' : $operator = '<';
-
+        !$this->mode || $this->mode == 'active' ? $operator = ">=" : $operator = '<';
 
         return Run::with('Customer')->
         whereDate('start_time', $operator, date("Y-m-d"))->

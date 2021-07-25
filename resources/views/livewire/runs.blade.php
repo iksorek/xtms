@@ -1,12 +1,14 @@
 <div>
-    <div class="mb-3">
+
+    <div class="text-right mb-3">
+
 
         @if(!$addRun)
+
             <x-jet-button wire:click="$toggle('addRun')">ADD RUN</x-jet-button>
         @else
             <x-jet-button wire:click="cancelAdding" class="bg-red-500 hover:bg-red-700">Cancel</x-jet-button>
         @endif
-
     </div>
 
 
@@ -64,9 +66,8 @@
     @endif
 
     @if(!$addRun)
-        {{--        //ADDRUN == FALSE--}}
         <div>
-            <livewire:runs-table/>
+            <livewire:runs-table />
         </div>
 
     @endif

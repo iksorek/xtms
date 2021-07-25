@@ -16,14 +16,14 @@ class Runs extends Component
     public $postcodesFinish = 'SW1A 0AA';
     public $arrayResponse;
 
-    protected $listeners = [
-        "refreshParent" => '$refresh',
-    ];
+
 
     public function cancelAdding()
     {
         return $this->redirectRoute('runs');
     }
+
+
 
     public function calculateRoute()
     {
