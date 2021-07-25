@@ -35,8 +35,11 @@ class RunsTable extends Component
 
     public function getMyRuns($mode = 'new')
     {
+        $mode == 'new' ? $operator = '>=' : $operator = '<';
+
+
         return Run::with('Customer')->
-        whereDate('start_time', ">=", date("Y-m-d"))->
+        whereDate('start_time', $operator, date("Y-m-d"))->
         where('user_id', \Auth::id())->
         orderBy('start_time')->
         get();
