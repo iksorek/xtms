@@ -27,19 +27,19 @@ class RunsTable extends Component
         $this->redirect(route('runs'));
     }
 
-    public function refreshParent()
-    {
-
-    }
 
     public function cancelDelete()
     {
         $this->runToDelete = false;
     }
 
-    public function getMyRuns()
+    public function getMyRuns($mode = 'new')
     {
-        return Run::with('Customer')->where('user_id', \Auth::id())->get();
+        return Run::with('Customer')->
+        whereDate('start_time', ">=", date("Y-m-d"))->
+        where('user_id', \Auth::id())->
+        orderBy('start_time')->
+        get();
     }
 
 

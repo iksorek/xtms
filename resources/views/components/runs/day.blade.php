@@ -41,7 +41,7 @@
                                 {{substr($run->start_time, -8)}} - {{substr($run->finish_est, -8)}}
 
                             </p>
-                            <p class="text-red-600 text-center">{{$run->customer_id ?: 'No customer'}} {{$run->vehicle_id ?: 'No vehicle'}}</p>
+                            <p class="text-red-600 text-center">{{$run->customer_id ? '' : 'No customer'}} {{$run->vehicle_id ?: 'No vehicle'}}</p>
 
                         </div>
 
