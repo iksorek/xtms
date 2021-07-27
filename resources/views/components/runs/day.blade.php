@@ -15,7 +15,7 @@
                         <div class="mx-1 p-2
                          border border-2 relative">
                             <x-runs.edit-icon :id="$oneRun->id"/>
-                            <p>{{$oneRun->postcode_from}} to {{$oneRun->postcode_to}}</p>
+                            <p>{{$oneRun->postcode_from}} to {{$oneRun->postcode_to}}({{$oneRun->start_time}})</p>
                             <p>{{substr($oneRun->start_time, -8)}} - {{substr($oneRun->finish_est, -8)}}
                                 {{$oneRun->back_est ? "(".substr($oneRun->back_est, -8).")" : 'No Estimates'}}</p>
                         </div>
