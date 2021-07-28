@@ -14,7 +14,10 @@
                     @foreach($vehicle->Runs as $oneRun)
                         <div class="mx-1 p-2
                          border border-2 relative">
+                            <div class="absolute top-1 right-0.5 flex">
                             <x-runs.edit-icon :id="$oneRun->id"/>
+                            <x-runs.view-icon :id="$oneRun->id"/>
+                            </div>
                             <p>{{$oneRun->postcode_from}} to {{$oneRun->postcode_to}}({{$oneRun->start_time}})</p>
                             <p>{{substr($oneRun->start_time, -8)}} - {{substr($oneRun->finish_est, -8)}}
                                 {{$oneRun->back_est ? "(".substr($oneRun->back_est, -8).")" : 'No Estimates'}}</p>
@@ -36,16 +39,20 @@
                     <div class="mx-1 border border-2 bg-yellow-400 p-2 relative">
 
                         <div class="relative">
+                            <div class="absolute top-1 right-0.5 flex">
+                                <x-runs.edit-icon :id="$run->id"/>
+                                <x-runs.view-icon :id="$run->id"/>
+                            </div>
                             <p>{{$run->postcode_from}} to {{$run->postcode_to}}</p>
                             <p>
                                 {{substr($run->start_time, -8)}} - {{substr($run->finish_est, -8)}}
 
                             </p>
-                            <p class="text-red-600 text-center">{{$run->customer_id ? '' : 'No customer'}} {{$run->vehicle_id ?: 'No vehicle'}}</p>
+                            <p class="run_details_missing_badge">{{$run->customer_id ? '' : 'No customer'}} {{$run->vehicle_id ?: 'No vehicle'}}</p>
 
                         </div>
 
-                        <x-runs.edit-icon :id="$run->id"/>
+
 
 
                     </div>

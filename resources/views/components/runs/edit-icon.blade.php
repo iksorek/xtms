@@ -1,4 +1,4 @@
-<div class="actions_buttons absolute top-0.5 right-0.5">
+<div class="actions_buttons">
     <a href="{{route("editRun", $id)}}">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
              stroke="currentColor">
