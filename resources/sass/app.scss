@@ -89,7 +89,8 @@ input, button {
         @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
         transform: translateY(-1rem);
     }
-    &_edit-cell{
+
+    &_edit-cell {
         @apply my-2 md:my-5 grid;
     }
 
@@ -106,24 +107,33 @@ input, button {
 .button-like-link {
     @apply bg-black text-xsm sm:text-sm text-gray-200 rounded px-2 py-1 font-bold m-2 hover:bg-gray-800;
 }
-.container-live{
+
+.container-live {
     @apply p-2 sm:p-4 md:p-8 mx-auto container;
-    border: 1px dashed rgba(192,192,192,.6);
+    border: 1px dashed rgba(192, 192, 192, .6);
 }
-.actions_buttons{
+
+.actions_buttons {
     @apply w-4 mr-2 transform hover:text-purple-500 cursor-pointer hover:scale-150;
 
 }
-.actions_buttons-pos{
+
+.actions_buttons-pos {
     position: relative;
     top: 0;
     right: 0;
 }
-.run_details_missing_badge{
+
+.run_details_missing_badge {
     @apply text-red-600 px-1 absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-8deg);
     background-color: rgba(205, 128, 16, .9);
     border-radius: 5%;
+}
+
+.dashboard-title__top {
+    @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
+    transform: translateY(-.8em);
 }
