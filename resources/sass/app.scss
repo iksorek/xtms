@@ -120,11 +120,10 @@ input, button {
     right: 0;
 }
 .run_details_missing_badge{
-    @apply text-red-600;
-    position: absolute;
+    @apply text-red-600 px-1 absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-12deg);
-    background-color: rgba(205, 128, 16, .7);
+    transform: translate(-50%, -50%) rotate(-8deg);
+    background-color: rgba(205, 128, 16, .9);
     border-radius: 5%;
 }
