@@ -1,6 +1,4 @@
 <div>
-
-
     Show planner for:<br>
     <x-jet-button wire:click="setDaysToCount(7)" class="{{$daysToCount == 7 ? 'bg-red-600' : ''}}">
         7 Days
@@ -14,7 +12,6 @@
         Days
     </x-jet-button>
     @foreach($dates as $day)
-
         <x-runs.day :day=$day/>
     @endforeach
 </div>
