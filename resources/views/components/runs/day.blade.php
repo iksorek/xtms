@@ -13,7 +13,7 @@
 
                     @foreach($vehicle->Runs as $oneRun)
                         <div class="m-1 p-2
-                         border border-2 relative shadow-md">
+                         border border-2 relative shadow-md bg-green-400">
                             <div class="absolute top-1 right-0.5 flex">
                                 <x-runs.edit-icon :id="$oneRun->id"/>
                                 <x-runs.view-icon :id="$oneRun->id"/>
