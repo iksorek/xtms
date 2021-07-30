@@ -1,12 +1,12 @@
-<div class="flex bg-blue-300 my-1 text-xsm md:text-sm">
+<div class="flex bg-gray-200 my-1 text-xsm md:text-sm border border-gray-300">
 
-    <div class="h-full border border-r m-1 bg-blue-200 p-2 flex-shrink-0">
+    <div class="h-full border border-r m-1 bg-gray-300 p-2 flex-shrink-0 border border-gray-400 shadow-md">
         <p> {{date("l", strtotime($day))}}</p>
         <p>{{$day}} </p>
     </div>
     <div class="w-full p-2">
         @forelse($vehicles as $vehicle)
-            <div class="w-full my-5 border border-dotted pb-5">
+            <div class="w-full my-5 border border-black border-dotted pb-5">
                 <p class="dashboard-title__top">{{$vehicle->reg}} {{$vehicle->make}}
                     - {{$vehicle->model}}</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full">
