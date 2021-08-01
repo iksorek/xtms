@@ -24,21 +24,20 @@ class RunDetails extends Component
         $this->delete = !$this->delete;
     }
 
+    public function setAsFinished(){
+        $this->run->finished = now();
+        $this->run->save();
+    }
+
     public function updateColumn($col)
     {
-        if ($col == 'finished') {
-            $this->run->finished ? $this->run->finished = null : $this->run->finished = now();
-
-        } else {
-
-            $this->run->$col = !$this->run->$col;
-
-        }
+        $this->run->$col = !$this->run->$col;
         $this->run->save();
     }
 
 
-    public function render()
+    public
+    function render()
     {
 
 

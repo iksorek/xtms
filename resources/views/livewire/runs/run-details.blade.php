@@ -40,10 +40,6 @@
             </div>
             <div class="description">
                 Distance: {{$run->distance ? "$run->distance miles" : 'Not set'}}</div>
-            <div class="description">
-            <span class="button-like-link"
-                  wire:click="updateColumn('finished')">{{$run->finished ? "Finished at $run->finished" : 'Unfinished' }}</span>
-            </div>
 
         </div>
         <div class="run_details">
@@ -87,7 +83,13 @@
                 {{\Carbon\Carbon::parse($run->back_est)->diffForHumans()}}
                 </span>
                 @endif</div>
-
+            @if($run->finished != null)
+                <span>
+                Finshed at: {{$run->finished}}
+            </span>
+            @else
+                <span class="button-like-link" wire:click="setAsFinished">Finish now</span>
+            @endif
 
         </div>
         @if($run->additional_info)
