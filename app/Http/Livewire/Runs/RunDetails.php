@@ -14,7 +14,7 @@ class RunDetails extends Component
     public function deleteRun(Run $run)
     {
         $run->delete();
-        create_banner('Run deleted', 'danger');
+        create_banner('Run moved to trash', 'danger');
 
         $this->redirect(route('runs'));
     }

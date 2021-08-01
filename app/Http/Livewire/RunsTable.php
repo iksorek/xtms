@@ -11,26 +11,7 @@ class RunsTable extends Component
 {
     public $myRuns, $runToDelete, $mode;
 
-    protected $listeners = ['deleteModal', 'hideDeleteModal'];
 
-    public function deleteModal($run)
-    {
-        $this->runToDelete = Run::with('Customer')->findOrFail($run);
-    }
-
-    public function deleteRun(Run $run)
-    {
-        $run->delete();
-        create_banner('Run deleted', 'danger');
-        $this->runToDelete = false;
-        $this->redirect(route('runs'));
-    }
-
-
-    public function cancelDelete()
-    {
-        $this->runToDelete = false;
-    }
 
     public function getMyRuns()
     {

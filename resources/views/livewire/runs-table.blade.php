@@ -1,24 +1,3 @@
-<x-jet-confirmation-modal wire:model="runToDelete">
-    <x-slot name="title">
-        Delete run
-    </x-slot>
-    <x-slot name="content">
-        You are about to delete run from {{ $runToDelete ? $runToDelete->postcode_from : 'Err'}} to
-        {{ $runToDelete ? $runToDelete->postcode_to : 'Err'}}<br>
-
-        Are You sure?
-    </x-slot>
-
-    <x-slot name="footer">
-        <x-jet-secondary-button wire:click="cancelDelete" wire:loading.attr="disabled">
-            Cancel
-        </x-jet-secondary-button>
-
-        <x-jet-danger-button class="ml-2" wire:click="deleteRun({{$runToDelete}})" wire:loading.attr="disabled">
-            DELETE
-        </x-jet-danger-button>
-    </x-slot>
-</x-jet-confirmation-modal>
 
 @if($myRuns->count() == 0)
   <p class="text-xl text-center shadow">THERE IS NO RUNS PLANNED</p>
