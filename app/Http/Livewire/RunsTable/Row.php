@@ -59,10 +59,6 @@ class Row extends Component
         $this->oneRun->save();
     }
 
-    public function mount()
-    {
-
-    }
 
 
     public function render()

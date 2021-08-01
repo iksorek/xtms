@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Customer;
 use App\Models\Run;
 use Livewire\Component;
 
@@ -9,7 +10,27 @@ class RunsBlocks extends Component
 {
 
     public $daysToCount;
-    public $today, $lastDay, $dates;
+    public $today, $lastDay, $dates, $showModal;
+    protected $listeners = ['setModal'];
+
+    public function setModal($run)
+    {
+        $this->showModal = Run::findOrFail($run);
+    }
+
+    public function hideModal()
+    {
+        $this->showModal = false;
+    }
+
+    public function assignCustomerToRun(Customer $customer, $run)
+    {
+        $run = Runs::findOrFail($run);
+        $run->Customer = $customer;
+        $run->save();
+    }
+
+
 
     public function mount()
     {
@@ -20,6 +41,7 @@ class RunsBlocks extends Component
             $this->today = new \DateTime('now');
             $this->dates[] = $this->today->modify("+$i days")->format('Y-m-d');
         }
+
 
     }
 
