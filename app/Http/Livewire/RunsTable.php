@@ -12,29 +12,31 @@ class RunsTable extends Component
     public $myRuns, $runToDelete, $mode;
 
 
-
     public function getMyRuns()
     {
-        !$this->mode || $this->mode == 'active' ? $operator = ">=" : $operator = '<';
 
-        return Run::with('Customer')->
-        whereDate('start_time', $operator, date("Y-m-d"))->
-        where('user_id', \Auth::id())->
-        orderBy('start_time')->
-        get();
+
+        if ($this->mode == 'deleted') {
+            return Run::with('Customer')->
+            onlyTrashed()->
+            where('user_id', \Auth::id())->
+            orderBy('start_time')->
+            get();
+        } else {
+            !$this->mode || $this->mode == 'current' ? $operator = ">=" : $operator = '<';
+            $this->mode == 'old' ? $operator = '<' : '';
+            return Run::with('Customer')->
+            whereDate('start_time', $operator, date("Y-m-d"))->
+            where('user_id', \Auth::id())->
+            orderBy('start_time')->
+            get();
+        }
     }
 
-
-    public function mount()
-    {
-        $this->myRuns = $this->getMyRuns();
-
-    }
 
     public function render()
     {
-
-
+        $this->myRuns = $this->getMyRuns();
         return view('livewire.runs-table');
     }
 }
