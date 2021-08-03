@@ -15,13 +15,14 @@ class CreateRunsTable extends Migration
     {
         Schema::create('runs', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->foreignId('user_id');
             $table->foreignId('vehicle_id')->nullable();
             $table->foreignId('customer_id')->nullable();
             $table->string('postcode_from');
             $table->string('postcode_to');
             $table->integer('distance')->nullable();
-            $table->timestamp('start_time');
+            $table->timestamp('start_time')->nullable();
             $table->timestamp('finish_est')->nullable();
             $table->timestamp('back_est')->nullable();
             $table->timestamp('finished')->nullable();
@@ -29,7 +30,7 @@ class CreateRunsTable extends Migration
             $table->boolean('paid')->default(false);
             $table->text('additional_info')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+
         });
     }
 
