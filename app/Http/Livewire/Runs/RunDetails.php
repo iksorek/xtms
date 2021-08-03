@@ -29,9 +29,9 @@ class RunDetails extends Component
         $this->run->save();
     }
 
-    public function updateColumn($col)
+    public function togglePaid()
     {
-        $this->run->$col = !$this->run->$col;
+        $this->run->paid = !$this->run->paid;
         $this->run->save();
     }
 

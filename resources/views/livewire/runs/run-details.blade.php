@@ -35,7 +35,7 @@
         <div class="run_details">
             <div class="run__title-top">Cost</div>
             <div class="description">Final cost: {{$run->price ? $run->price : 'Not set'}}
-                <span class="button-like-link" wire:click="updateColumn('paid')">{{$run->paid ? 'Paid' : 'Unpaid'}}
+                <span class="button-like-link" wire:click="togglePaid">{{$run->paid ? 'Paid' : 'Unpaid'}}
                     </span>
             </div>
             <div class="description">
