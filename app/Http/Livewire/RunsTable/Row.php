@@ -9,6 +9,12 @@ class Row extends Component
 {
 
     public $oneRun, $customers, $search, $pickedCustomer, $update, $showDetails;
+    public string $mode;
+
+    public function addToDeleteRunArr($id)
+    {
+        $this->emit('addToDeleteRunArr', $id);
+    }
 
     public function assignCustomerToRun($id)
     {
@@ -19,7 +25,6 @@ class Row extends Component
         $this->oneRun->save();
 
     }
-
 
 
     public function detachCustomer()
@@ -53,7 +58,6 @@ class Row extends Component
         }
         $this->oneRun->save();
     }
-
 
 
     public function render()

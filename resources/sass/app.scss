@@ -93,8 +93,12 @@ input, button {
     &_edit-cell {
         @apply my-2 md:my-5 grid;
     }
+    &_table_cell-name {
+      @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell;
+    }
 
 }
+
 
 .form_laravel {
     @apply border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm;

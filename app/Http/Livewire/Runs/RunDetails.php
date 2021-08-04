@@ -24,7 +24,8 @@ class RunDetails extends Component
         $this->delete = !$this->delete;
     }
 
-    public function setAsFinished(){
+    public function setAsFinished()
+    {
         $this->run->finished = now();
         $this->run->save();
     }
@@ -36,8 +37,7 @@ class RunDetails extends Component
     }
 
 
-    public
-    function render()
+    public function render()
     {
 
 
