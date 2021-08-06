@@ -138,6 +138,6 @@ input, button {
 }
 
 .dashboard-title__top {
-    @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
+    @apply text-white bg-gray-500 mx-4 px-2 text-center w-9/12 sm:w-1/2;
     transform: translateY(-.8em);
 }
