@@ -7,13 +7,13 @@
     <x-jet-secondary-button wire:click="$set('mode', 'deleted')"
                             class="{{$mode == 'deleted' ? 'text-blue-500' : ''}}">Deleted
     </x-jet-secondary-button>
-    @if($mode == 'deleted')
+    @if($mode == 'deleted' && count($myRuns) != 0)
         <x-jet-danger-button wire:click="deleteAllInTheBin">Delete all</x-jet-danger-button>
 
         @if(count($runsToDelete) != 0)
             <x-jet-danger-button wire:click="deleteSelected">Delete selected</x-jet-danger-button>
         @endif
-    @elseif($mode == 'old')
+    @elseif($mode == 'old' && count($myRuns) != 0)
 
         <x-jet-danger-button wire:click="deleteOldRuns">Move all to trash bin</x-jet-danger-button>
     @endif
