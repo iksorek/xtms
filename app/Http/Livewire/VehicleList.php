@@ -29,7 +29,9 @@ class VehicleList extends Component
     public function render()
     {
 
-        $this->vehs = Vehicle::withCount('Runs')->where('user_id', Auth::id())->get();
+        $this->vehs = Vehicle::withCount(['Runs' => function ($q) {
+            $q->where('finished', null);
+        }])->where('user_id', Auth::id())->get();
 
         return view('livewire.vehicle-list');
     }

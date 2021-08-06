@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire\Runs;
 
+use App\Models\Customer;
 use App\Models\Run;
 use Livewire\Component;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class RunDetails extends Component
 {
     public $run;
     public $delete = false;
+    public $showCustomerDetails = false;
 
 
     public function deleteRun(Run $run)
@@ -26,6 +29,8 @@ class RunDetails extends Component
 
     public function setAsFinished()
     {
+        $this->run->Vehicle->mileage = $this->run->Vehicle->mileage + ($this->run->distance * 2);
+        $this->run->Vehicle->save();
         $this->run->finished = now();
         $this->run->save();
     }

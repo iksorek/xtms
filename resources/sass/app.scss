@@ -93,8 +93,9 @@ input, button {
     &_edit-cell {
         @apply my-2 md:my-5 grid;
     }
+
     &_table_cell-name {
-      @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell;
+        @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell;
     }
 
 }
@@ -140,4 +141,20 @@ input, button {
 .dashboard-title__top {
     @apply text-white bg-gray-500 mx-4 px-2 text-center w-9/12 sm:w-1/2;
     transform: translateY(-.8em);
+}
+
+.customer_details {
+    @apply rounded-2xl p-4;
+    position: absolute;
+    display: block;
+    width: 90%;
+
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 200;
+    h2{
+        font-size: 1.5rem;
+        font-weight: bolder;
+    }
 }

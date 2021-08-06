@@ -1,4 +1,4 @@
-<div>
+<div class="relative">
     <x-jet-confirmation-modal wire:model="delete" class="text-black">
         <x-slot name="title">
             <span class="text-yellow-600">Delete run</span>
@@ -20,6 +20,24 @@
             </x-jet-danger-button>
         </x-slot>
     </x-jet-confirmation-modal>
+    @if($showCustomerDetails)
+        <div class="customer_details">
+            <h2 class="text-center">{{$run->Customer->name}}</h2>
+
+            <p class="inline-flex text-lg font-bold">
+                <x-bx-mobile class="h-6"/>{{$run->Customer->mobile}}
+            </p>
+            <address>
+                {{$run->Customer->address}}
+            </address>
+            <p class="mt-3">
+                {{$run->Customer->info}}
+            </p>
+
+
+            <x-jet-button wire:click="$toggle('showCustomerDetails')" class="mt-4">Close</x-jet-button>
+        </div>
+    @endif
 
     <div class="mx-auto grid md:grid-cols-2 lg:grid-cols-3">
 
@@ -27,9 +45,16 @@
         <div class="run_details">
             <div class="run__title-top">Route</div>
             <div class="description">Postcodes: {{$run->postcode_from}} - {{$run->postcode_to}}</div>
-            <div class="description">
-                Customer: {{$run->Customer ? $run->Customer->name : 'Not set'}}</div>
-            <div class="description">Vehicle: {{$run->Vehicle ? $run->Vehicle->reg : 'Not set'}}</div>
+            @if($run->Customer)
+                <p class="description" wire:click="$toggle('showCustomerDetails')">
+                    Customer: {{$run->Customer->name}}</p>
+            @else
+                <p class="description">
+                    Customer: Not set</p>
+            @endif
+
+            <p class="description">Vehicle: {{$run->Vehicle ? $run->Vehicle->reg : 'Not set'}}</p>
+
         </div>
 
         <div class="run_details">
