@@ -13,7 +13,13 @@ class CustomerList extends Component
     public $customerDetails = null;
     public $customers = null;
     public $confirmingCustomerDeletionModal = false;
+    public $addNewCustomer = false;
 
+    protected $listeners = ['hideNewCustomerModal'];
+
+    public function hideNewCustomerModal(){
+        $this->addNewCustomer = false;
+    }
 
     public function getCustomerDetails($id)
     {

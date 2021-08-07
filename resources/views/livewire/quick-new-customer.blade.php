@@ -18,7 +18,8 @@
         <br>
         <x-jet-button wire:click="saveNewCustomer">Save</x-jet-button>
     @else
-        {{$newCustomer->name}}
+
+        {{$fromNewRun ? $newCustomer->name : ''}}
     @endif
 
 </div>

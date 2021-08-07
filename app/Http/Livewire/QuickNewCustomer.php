@@ -10,6 +10,7 @@ use Auth;
 class QuickNewCustomer extends Component
 {
     public $name, $mobile, $address, $info, $newCustomer;
+    public $fromNewRun = false;
 
     protected $rules = [
         "name" => 'required|min:3',
@@ -25,8 +26,12 @@ class QuickNewCustomer extends Component
             'address' => $this->address,
             'info' => $this->info,
         ]);
-        $this->emit('assignCustomer', $this->newCustomer->id);
-
+        if ($this->fromNewRun) {
+            $this->emit('assignCustomer', $this->newCustomer->id);
+        } else {
+            create_banner('New customer '.$this->name.' added');
+            $this->redirect(route('myCustomers'));
+        }
     }
 
 

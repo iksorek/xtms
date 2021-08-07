@@ -61,7 +61,7 @@
                 </div>
             @else
                 <div class="new_customer">
-                    <livewire:quick-new-customer/>
+                    <livewire:quick-new-customer :from-new-run="true"/>
 
                     @if(!$customer)
                         <p wire:click="$toggle('addNewCustomerForm')" class="hover:text-green-500 cursor-pointer my-5">
