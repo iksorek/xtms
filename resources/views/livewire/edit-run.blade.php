@@ -18,7 +18,7 @@
         <x-jet-label for="cost">Distance</x-jet-label>
         <div class="w-full inline-block">
             {{$distance ? $distance . " miles" : "Unknown yet"}}
-            <x-jet-button class="mr-0" wire:click="recalculateRun">Recalculate cost and distance</x-jet-button>
+
         </div>
         <x-jet-input-error for="distance"/>
     </div>
@@ -76,6 +76,9 @@
         <x-jet-label for="additional_info">Additional info</x-jet-label>
         <textarea name="additional_info" class="form_laravel" wire:model="additional_info"></textarea>
         <x-jet-input-error for="additional_info"/>
+    </div>
+    <div class="run_edit-cell">
+        <x-jet-button class="w-full h-8 my-auto" wire:click="recalculateRun">Recalculate cost and distance</x-jet-button>
     </div>
     <div class="place-self-end">
         <x-jet-button wire:click="updateRun">Save changes</x-jet-button>
