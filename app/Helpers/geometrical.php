@@ -36,8 +36,6 @@ if (!function_exists('getQuote')) {
             $res['postcodesStart'] = $postcodesStart;
             $res['postcodesFinish'] = $postcodesFinish;
             $res['costApr'] = round(($res['distance'] * Auth::user()->ppm) + ($res['time'] / 60 * Auth::user()->pph));
-            //lets say cost per mile = GBP1.3 PLUS GBP12 per hour. Will be added in settings
-            //todo ADD SETTINGS to be able to set cost per mile / hour
             ($res['costApr'] > 20) ?: $res['costApr'] = 20;
         } else {
             $res = dd('Can not connect to API');
