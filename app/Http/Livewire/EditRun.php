@@ -11,7 +11,7 @@ class EditRun extends Component
 {
     public $run;
     public $cost, $customer, $vehicle, $date, $startTime, $finishEst, $additional_info, $postcode_from, $postcode_to, $distance;
-    public $vehicles, $customers, $newVehicle, $newCustomer, $back_est, $finish_est;
+    public $vehicles, $customers, $newVehicle, $newCustomer, $back_est, $finish_est, $status;
 
     protected $rules = [
 
@@ -42,7 +42,7 @@ class EditRun extends Component
         $this->date = date("Y-m-d", strtotime($this->run->start_time));
         $this->startTime = date("H:i", strtotime($this->run->start_time));
         $this->additional_info = $this->run->additional_info;
-
+        $this->status = $this->run->status;
         $this->run->Customer ? $this->newCustomer = $this->run->Customer->id : $this->newCustomer = 0;
         !$this->run->Vehicle ?: $this->newVehicle = $this->run->Vehicle->id;
 //        $this->newVehicle = $this->run->Vehicle->id;
@@ -84,6 +84,13 @@ class EditRun extends Component
         $this->finish_est = date("Y-m-d H:i:s", strtotime($start_time) + ($response['time'] * 60));
         $this->back_est = date("Y-m-d H:i:s", strtotime($start_time) + ($response['time'] * 60 * 2) + 3600);
 
+    }
+
+    public function setNewStatus($status)
+    {
+        $this->run->status = $status;
+        $this->status = $status;
+        $this->run->save();
     }
 
     public function render()

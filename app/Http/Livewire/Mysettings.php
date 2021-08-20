@@ -8,6 +8,7 @@ use Livewire\Component;
 class Mysettings extends Component
 {
     public $ppm, $pph;
+    public string $api_key;
 
     protected $rules = [
         'ppm' => 'required|numeric',
@@ -33,6 +34,8 @@ class Mysettings extends Component
     {
         $this->pph = Auth::user()->pph;
         $this->ppm = Auth::user()->ppm;
+        $this->api_key = Auth::user()->api_key;
+
     }
 
 

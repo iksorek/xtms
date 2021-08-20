@@ -21,7 +21,7 @@
         </x-slot>
     </x-jet-confirmation-modal>
     @if($showCustomerDetails)
-        <div class="customer_details">
+        <div class="customer_details text-white">
             <h2 class="text-center">{{$run->Customer->name}}</h2>
 
             <p class="inline-flex text-lg font-bold">
@@ -46,7 +46,7 @@
             <div class="run__title-top">Route</div>
             <div class="description">Postcodes: {{$run->postcode_from}} - {{$run->postcode_to}}</div>
             @if($run->Customer)
-                <p class="description" wire:click="$toggle('showCustomerDetails')">
+                <p class="description cursor-pointer" wire:click="$toggle('showCustomerDetails')">
                     Customer: {{$run->Customer->name}}</p>
             @else
                 <p class="description">
@@ -123,12 +123,19 @@
                 <div class="description">{{$run->additional_info}}</div>
             </div>
         @endif
+
+
         <div class="run_details">
-            <div class="run__title-top">Options</div>
-            <span><a href="{{route('editRun', $run)}}" class="button-like-link">Edit run</a></span>
-            <span class="button-like-link" wire:click="$toggle('delete')">Delete</span>
+            <div class="run__title-top">Status</div>
+                <p>{{$run->status}}</p>
+                //HERE WILL PUT DETAILS OF JUST REQUESTED
+            </div>
+            <div class="run_details">
+                <div class="run__title-top">Options</div>
+                <span><a href="{{route('editRun', $run)}}" class="button-like-link">Edit run</a></span>
+                <span class="button-like-link" wire:click="$toggle('delete')">Delete</span>
+            </div>
+
+
         </div>
-
-
     </div>
-</div>

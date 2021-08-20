@@ -9,9 +9,9 @@ use phpDocumentor\Reflection\Types\Boolean;
 
 class RunDetails extends Component
 {
-    public $run;
-    public $delete = false;
-    public $showCustomerDetails = false;
+    public Run $run;
+    public Run $delete;
+    public Customer $showCustomerDetails;
 
 
     public function deleteRun(Run $run)

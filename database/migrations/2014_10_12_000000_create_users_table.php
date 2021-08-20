@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('profile_photo_path')->nullable();
             $table->decimal('ppm');
             $table->decimal('pph');
+            $table->string('api_key')->nullable()->unique();
             $table->timestamps();
         });
     }

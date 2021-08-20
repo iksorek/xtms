@@ -13,11 +13,17 @@
 
                     @foreach($vehicle->Runs as $oneRun)
                         <div class="m-1 p-2
-                         border border-2 relative shadow-md {{$oneRun->finished ? 'bg-green-400' : 'bg-blue-400'}}" wire:click="setModal({{$oneRun->id}})">
+                         border border-2 relative shadow-md {{$oneRun->finished ? 'bg-green-400' : 'bg-blue-400'}}"
+                             wire:click="setModal({{$oneRun->id}})">
                             <div class="absolute top-1 right-0.5 flex">
                                 <x-runs.edit-icon :id="$oneRun->id"/>
                                 <x-runs.view-icon :id="$oneRun->id"/>
                             </div>
+                            <div class="absolute bottom-1 right-0.5 flex">
+                                <p class="bg-yellow-200 px-1">{{$oneRun->status}}</p>
+                            </div>
+
+
                             <div class="pr-10">
                                 <p>{{$oneRun->postcode_from}} to {{$oneRun->postcode_to}}</p>
                                 <p>{{substr($oneRun->start_time, -8)}} - {{substr($oneRun->finish_est, -8)}}
@@ -44,6 +50,9 @@
                             <div class="absolute top-1 right-0.5 flex">
                                 <x-runs.edit-icon :id="$run->id"/>
                                 <x-runs.view-icon :id="$run->id"/>
+                            </div>
+                            <div class="absolute bottom-1 right-0.5 flex">
+                                <p class="bg-yellow-200 px-1">{{$run->status}}</p>
                             </div>
                             <div class="pr-10">
                                 <p>{{$run->postcode_from}} to {{$run->postcode_to}}</p>
