@@ -153,8 +153,13 @@ input, button {
     transform: translate(-50%);
     background-color: rgba(0, 0, 0, .8);
     z-index: 200;
-    h2{
+
+    h2 {
         font-size: 1.5rem;
         font-weight: bolder;
     }
+}
+
+.outline-solid {
+    outline: 2px solid black;
 }

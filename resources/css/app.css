@@ -100,3 +100,5 @@ input, button {
 .button-like-link {
     @apply bg-black text-xsm sm:text-sm text-gray-200 rounded px-2 py-1 font-bold m-2 hover:bg-gray-800;
 }
+
+
