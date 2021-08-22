@@ -19,7 +19,8 @@ if (!function_exists('getQuote')) {
         if ($api_key != null) {
             $provider = User::where('api_key', $api_key)->get();
             if (count($provider) == 0) {
-                return 'WRONG API KEY PROVIDED';
+
+                return response('Wrong Api Key', 204);
 
             }
 
