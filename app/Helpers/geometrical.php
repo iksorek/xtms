@@ -37,12 +37,11 @@ if (!function_exists('getQuote')) {
             $res['postcodesFinish'] = $postcodesFinish;
             if(!$api_key) {
                 $res['costApr'] = round(($res['distance'] * Auth::user()->ppm) + ($res['time'] / 60 * Auth::user()->pph));
-                ($res['costApr'] > 20) ?: $res['costApr'] = 20;
             } else {
-                $provider = \App\Models\User::where('api_key', $api_key);
+                $provider = \App\Models\User::where('api_key', $api_key)->first();
                 $res['costApr'] = round(($res['distance'] * $provider->ppm) + ($res['time'] / 60 * $provider->pph));
-                ($res['costApr'] > 20) ?: $res['costApr'] = 20;
             }
+            ($res['costApr'] > 20) ?: $res['costApr'] = 20;
 
         } else {
             $res = dd('Can not connect to API');
