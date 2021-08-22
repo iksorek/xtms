@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use App\Models\User;
 
 if (!function_exists('postcodeToCoordinates')) {
     function postcodeToCoordinates($postcode)
@@ -15,6 +16,14 @@ if (!function_exists('postcodeToCoordinates')) {
 if (!function_exists('getQuote')) {
     function getQuote($postcodesStart, $postcodesFinish, $api_key = null)
     {
+        if ($api_key != null) {
+            $provider = User::where('api_key', $api_key)->get();
+            if (count($provider) == 0) {
+                return 'WRONG API KEY PROVIDED';
+
+            }
+
+        }
 
         $coordinatesStart = postcodeToCoordinates($postcodesStart);
         $coordinatesFinish = postcodeToCoordinates($postcodesFinish);
@@ -35,7 +44,7 @@ if (!function_exists('getQuote')) {
             $res['distance'] = round($response->json()['routes'][0]['summary']['distance']);
             $res['postcodesStart'] = $postcodesStart;
             $res['postcodesFinish'] = $postcodesFinish;
-            if(!$api_key) {
+            if (!$api_key) {
                 $res['costApr'] = round(($res['distance'] * Auth::user()->ppm) + ($res['time'] / 60 * Auth::user()->pph));
             } else {
                 $provider = \App\Models\User::where('api_key', $api_key)->first();
