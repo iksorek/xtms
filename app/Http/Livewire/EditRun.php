@@ -13,6 +13,7 @@ class EditRun extends Component
     public $cost, $customer, $vehicle, $date, $startTime, $finishEst, $additional_info, $postcode_from, $postcode_to, $distance;
     public $vehicles, $customers, $newVehicle, $newCustomer, $back_est, $finish_est, $status;
 
+
     protected $rules = [
 
         'postcode_from' => 'required|min:5',

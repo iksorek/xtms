@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         User::factory(15)
             ->has(Customer::factory(rand(5, 15)))
             ->has(Vehicle::factory(rand(1, 2)))
-            ->has(Run::factory(rand(3, 10)))
+            ->has(Run::factory(rand(10, 50)))
             ->create();
 //
         //my super admin

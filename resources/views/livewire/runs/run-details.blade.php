@@ -127,8 +127,7 @@
 
         <div class="run_details">
             <div class="run__title-top">Status</div>
-                <p>{{$run->status}}</p>
-                //HERE WILL PUT DETAILS OF JUST REQUESTED
+               <livewire:run-status-change-buttons :run="$run" />
             </div>
             <div class="run_details">
                 <div class="run__title-top">Options</div>

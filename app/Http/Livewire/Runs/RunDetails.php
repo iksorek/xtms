@@ -9,9 +9,11 @@ use phpDocumentor\Reflection\Types\Boolean;
 
 class RunDetails extends Component
 {
-    public Run $run;
-    public Run $delete;
-    public Customer $showCustomerDetails;
+    public $run;
+    public $delete;
+    public $showCustomerDetails;
+
+
 
 
     public function deleteRun(Run $run)
@@ -21,6 +23,7 @@ class RunDetails extends Component
 
         $this->redirect(route('runs'));
     }
+
 
     public function toggleDelete()
     {
