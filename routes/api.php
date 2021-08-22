@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/quote', function (Request $request) {
 
-    return getQuote($request->postcode_from, $request->postcode_to);
+    return getQuote($request->postcode_from, $request->postcode_to, $request->api_key);
 });
