@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/quote', function (Request $request) {
-    $result = getQuote($request->postcode_from, $request->postcode_to);
-    return $request;
-
+//    return \App\Models\User::where('api_key', $request->api_key)->first();
+    return 'DUPA';
 });
