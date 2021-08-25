@@ -17,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/quote', function (Request $request) {
 
-    if(postcode_check($request->postcode_from) && postcode_check($request->postcode_to)) {
+    if (!empty($request->postcode_from) && !empty($request->postcode_to)) {
         return getQuote($request->postcode_from, $request->postcode_to, $request->api_key);
 
     } else {
         return response('Invalid postcodes', 400);
-
     }
 });
