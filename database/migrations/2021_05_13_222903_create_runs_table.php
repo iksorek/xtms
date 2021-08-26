@@ -14,7 +14,7 @@ class CreateRunsTable extends Migration
     public function up()
     {
         Schema::create('runs', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->unique()->primary();
             $table->timestamps();
             $table->foreignId('user_id');
             $table->foreignId('vehicle_id')->nullable();
