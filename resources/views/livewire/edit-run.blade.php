@@ -27,20 +27,23 @@
     <div class="run_edit-cell">
         <x-jet-label for="newCustomer">Customer</x-jet-label>
 
+        @if(!$createCustomer)
+            <select name="newCustomer" class="form_laravel" wire:model="newCustomer">
+                @if($customer)
+                    <option value="{{$customer->id}}" selected>{{$customer->name}}</option>
 
-        <select name="newCustomer" class="form_laravel" wire:model="newCustomer">
-            @if($customer)
-                <option value="{{$customer->id}}" selected>{{$customer->name}}</option>
+                @else
+                    <option value="0" selected>PLEASE SELECT</option>
+                @endif
+                @foreach($customers as $oneCustomer)
+                    <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
+                @endforeach
 
-            @else
-                <option value="0" selected>PLEASE SELECT</option>
-            @endif
-            @foreach($customers as $oneCustomer)
-                <option value="{{$oneCustomer->id}}">{{$oneCustomer->name}}</option>
-            @endforeach
-
-        </select>
-
+            </select>
+            <button class="button-like-link" wire:click="$toggle('createCustomer')">Create Customer</button>
+        @else
+            <livewire:quick-new-customer :from-new-run="true"/>
+        @endif
 
         <x-jet-input-error for="newCustomer"/>
     </div>

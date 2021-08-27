@@ -12,6 +12,8 @@ class EditRun extends Component
     public $run;
     public $cost, $customer, $vehicle, $date, $startTime, $finishEst, $additional_info, $postcode_from, $postcode_to, $distance;
     public $vehicles, $customers, $newVehicle, $newCustomer, $back_est, $finish_est, $status;
+    public $createCustomer = false;
+    protected $listeners = ['assignCustomer'];
 
 
     protected $rules = [
@@ -62,9 +64,7 @@ class EditRun extends Component
         $this->run->price = $this->cost;
         $this->run->back_est = $this->back_est;
         $this->run->finish_est = $this->finish_est;
-
         $this->run->distance = $this->distance;
-        $this->run->customer_id = $this->customer;
         $this->run->vehicle_id = $this->newVehicle;
         $this->run->customer_id = $this->newCustomer;
         $this->run->start_time = "$this->date $this->startTime";
@@ -73,6 +73,12 @@ class EditRun extends Component
         $this->run->save();
         $this->redirectRoute('editRun', $this->run->id);
 
+    }
+
+    public function assignCustomer($id)
+    {
+
+        $this->newCustomer = $id;
     }
 
     public function recalculateRun()
