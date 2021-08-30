@@ -34,7 +34,7 @@
                         <ul class="max-h-36 overflow-y-scroll position-fixed">
                             @foreach($customers as $customer)
                                 <li class="hover:bg-blue-300 mx-3"
-                                    wire:click="assignCustomerToRun({{$customer->id}})">{{$customer->name}}</li>
+                                    wire:click="assignCustomerToRun('{{$customer->id}}')">{{$customer->name}}</li>
                             @endforeach
                         </ul>
                     @endempty
