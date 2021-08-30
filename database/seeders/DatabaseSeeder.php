@@ -21,18 +21,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        app()[PermissionRegistrar::class]->forgetCachedPermissions();
-        Permission::create(['name' => 'verify user']);
-        Permission::create(['name' => 'delete user']);
-        Permission::create(['name' => 'update user']);
-        Permission::create(['name' => 'add user']);
-        $admin = Role::create(['name' => 'admin']);
-        $admin->givePermissionTo('verify user');
-        $admin->givePermissionTo('delete user');
-        $admin->givePermissionTo('update user');
-        $admin->givePermissionTo('add user');
-
-        $super_admin = Role::create(['name' => 'super_admin']);
+//        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+//        Permission::create(['name' => 'verify user']);
+//        Permission::create(['name' => 'delete user']);
+//        Permission::create(['name' => 'update user']);
+//        Permission::create(['name' => 'add user']);
+//        $admin = Role::create(['name' => 'admin']);
+//        $admin->givePermissionTo('verify user');
+//        $admin->givePermissionTo('delete user');
+//        $admin->givePermissionTo('update user');
+//        $admin->givePermissionTo('add user');
+//
+//        $super_admin = Role::create(['name' => 'super_admin']);
 
 
         User::factory(15)
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'iksor',
                 'email' => 'dev@mrogon.co.uk',
             ]);
-        $user->assignRole('super_admin');
+//        $user->assignRole('super_admin');
 
 
     }

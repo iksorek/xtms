@@ -86,7 +86,7 @@ input, button {
     }
 
     &__title-top {
-        @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
+        @apply  w-1/2 text-white bg-gray-500 mx-4 px-2 text-center;
         transform: translateY(-1rem);
     }
 

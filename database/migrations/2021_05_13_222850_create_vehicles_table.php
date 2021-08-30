@@ -14,8 +14,8 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
+            $table->string('id')->unique()->primary();
+            $table->foreignUuid('user_id');
             $table->string('type')->default('VAN');
             $table->string('make')->default('Mercedes');
             $table->string('model')->default('Sprinter');

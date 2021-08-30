@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Customer;
-use Cassandra\Custom;
 use Livewire\Component;
 
 class CustomerList extends Component

@@ -18,7 +18,7 @@
 
                         @foreach($customers as $customer)
                             <li class="hover:bg-blue-300 mx-3"
-                                wire:click="getCustomerDetails({{$customer->id}})">{{$customer->name}}</li>
+                                wire:click="getCustomerDetails('{{$customer->id}}')">{{$customer->name}}</li>
                         @endforeach
                     @endempty
                 </ul>
@@ -47,7 +47,7 @@
                     <p><b>Address:</b> {{$customerDetails->address}}</p>
                     <p><b>Info:</b> {{$customerDetails->info}}</p>
                     <p><b>Number of runs</b> {{$customerDetails->runs()->count()}}</p>
-                    <x-jet-button wire:click="confirmingCustomerDeletion({{$customer->id}})"
+                    <x-jet-button wire:click="confirmingCustomerDeletion('{{$customer->id}}')"
                                   class="mt-3 bg-red-600 w-1/2">
                         DELETE Customer
                     </x-jet-button>
@@ -72,11 +72,11 @@
                                         wire:click="$toggle('confirmingCustomerDeletionModal')">
                     Cancel
                 </x-jet-secondary-button>
-
                 <x-jet-danger-button class="ml-2" wire:loading.attr="disabled"
-                                     wire:click="deleteCustomer({{$customerDetails ? $customerDetails->id : ''}})">
+                                     wire:click="deleteCustomer('{{$customerDetails->id ?? 1}}')">
                     Delete customer
                 </x-jet-danger-button>
+
             </x-slot>
         </x-jet-confirmation-modal>
     </div>

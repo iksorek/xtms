@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,21 +12,10 @@ class Run extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use Uuids;
     protected $guarded = [];
-    protected $primaryKey = 'id';
 
-    protected $keyType = 'string';
 
-    public $incrementing = false;
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function (Model $model) {
-            $model->setAttribute($model->getKeyName(), Uuid::uuid4());
-        });
-    }
 
     public function User(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

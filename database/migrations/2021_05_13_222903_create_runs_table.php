@@ -16,9 +16,9 @@ class CreateRunsTable extends Migration
         Schema::create('runs', function (Blueprint $table) {
             $table->string('id')->unique()->primary();
             $table->timestamps();
-            $table->foreignId('user_id');
-            $table->foreignId('vehicle_id')->nullable();
-            $table->foreignId('customer_id')->nullable();
+            $table->foreignUuid('user_id');
+            $table->foreignUuid('vehicle_id')->nullable();
+            $table->foreignUuid('customer_id')->nullable();
             $table->string('postcode_from');
             $table->string('postcode_to');
             $table->integer('distance')->nullable();
