@@ -26,7 +26,6 @@ class RunFactory extends Factory
     {
 
         $postCodes = [
-            ' YO31 0RQ',
             'IP18 6DB',
             'TW9 1AF',
             'ML6 8TW',
