@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="bg-splash">
-    <div class="font-sans text-gray-900 antialiased bg-splash">
+    <div class="font-sans antialiased bg-splash">
         {{ $slot }}
     </div>
 </div>

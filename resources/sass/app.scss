@@ -11,7 +11,6 @@ html {
 body {
     font-family: 'Farro', sans-serif;
 
-    margin: 0
 }
 
 a {
@@ -24,7 +23,8 @@ a {
 
 *, :after, :before {
     box-sizing: border-box;
-    border: 0 solid #e2e8f0
+    border: 0 solid #e2e8f0;
+    margin: 0;
 }
 
 a {
@@ -45,13 +45,22 @@ video {
 .bg-splash {
     height: 100vh;
     width: 100vw;
-    background-image: url("/img/tech-5090539_1280.jpg");
+    background-image: url("../img/railway-station-1363771_640.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+@media (min-width: 640px) {
+    .bg-splash {
+        background-image: url("../img/railway-station-1363771_1280.jpg");
+    }
 
 }
+
 
 .hero {
     @apply flex flex-col;
@@ -86,7 +95,7 @@ input, button {
     }
 
     &__title-top {
-        @apply  w-1/2 text-white bg-gray-500 mx-4 px-2 text-center;
+        @apply w-1/2 text-white bg-gray-500 mx-4 px-2 text-center;
         transform: translateY(-1rem);
     }
 
