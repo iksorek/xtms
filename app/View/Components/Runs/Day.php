@@ -6,10 +6,12 @@ use App\Models\Run;
 use App\Models\Vehicle;
 use Illuminate\View\Component;
 use Auth;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class Day extends Component
 {
     public $day, $vehicles, $runsWithoutVehicle;
+    public ?string $schedulerErr = null;
 
     public function __construct($day)
     {
@@ -17,12 +19,24 @@ class Day extends Component
 
 
         $this->vehicles = Vehicle::with(['Runs' => function ($q) use ($day) {
-            $q->whereDate('start_time', '=', $day);
+            $q->whereDate('start_time', '=', $day)->orderBy('start_time');
         }])->
         whereHas('Runs', function ($q) use ($day) {
             $q->whereDate('start_time', '=', $day);
         })->
         where('user_id', '=', Auth::id())->get();
+
+
+        foreach ($this->vehicles as $vehicle) {
+            foreach ($vehicle->Runs as $run) {
+                if (isset($last_back) && $run->start_time < $last_back) {
+                    $this->schedulerErr = 'Runs are overlapping';
+                } else
+                    $last_back = $run->back_est;
+            }
+
+
+        }
 
 
         $this->runsWithoutVehicle = Run::with(['Customer', "Vehicle"])
@@ -37,7 +51,8 @@ class Day extends Component
     }
 
 
-    public function render()
+    public
+    function render()
     {
         return view('components.runs.day');
     }
