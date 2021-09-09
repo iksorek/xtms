@@ -20,19 +20,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-//        app()[PermissionRegistrar::class]->forgetCachedPermissions();
-//        Permission::create(['name' => 'verify user']);
-//        Permission::create(['name' => 'delete user']);
-//        Permission::create(['name' => 'update user']);
-//        Permission::create(['name' => 'add user']);
-//        $admin = Role::create(['name' => 'admin']);
-//        $admin->givePermissionTo('verify user');
-//        $admin->givePermissionTo('delete user');
-//        $admin->givePermissionTo('update user');
-//        $admin->givePermissionTo('add user');
-//
-//        $super_admin = Role::create(['name' => 'super_admin']);
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+        Permission::create(['name' => 'verify user']);
+        Permission::create(['name' => 'delete user']);
+        Permission::create(['name' => 'update user']);
+        Permission::create(['name' => 'add user']);
+        $admin = Role::create(['name' => 'admin']);
+        $admin->givePermissionTo('verify user');
+        $admin->givePermissionTo('delete user');
+        $admin->givePermissionTo('update user');
+        $admin->givePermissionTo('add user');
 
 
         User::factory(15)
@@ -40,17 +37,18 @@ class DatabaseSeeder extends Seeder
             ->has(Vehicle::factory(rand(1, 2)))
             ->has(Run::factory(rand(10, 50)))
             ->create();
-//
+
         //my super admin
-        $user = \App\Models\User::factory()
+        $user = User::factory()
             ->has(Customer::factory(50))
             ->has(Vehicle::factory(3))
             ->has(Run::factory(30))
             ->create([
                 'name' => 'iksor',
                 'email' => 'dev@mrogon.co.uk',
+                'api_key' => 'supersecretapikey'
             ]);
-//        $user->assignRole('super_admin');
+        $user->assignRole('admin');
 
 
     }
