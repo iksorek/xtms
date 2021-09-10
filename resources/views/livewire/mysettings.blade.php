@@ -14,9 +14,9 @@
         <div>
             <p>Your API KEY</p>
         </div>
-        <div><p>
-                {{$api_key}}
-            </p></div>
+        <div>
+            <x-jet-input class="form" type="text" value="{{$api_key}}" disabled />
+        </div>
     </div>
     <div class="grid place-items-center">
         <x-jet-button type="submit" class="my-3 md:my-10 md:w-3/4" wire:click="updateSettings">Save changes

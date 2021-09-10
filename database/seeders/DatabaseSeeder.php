@@ -21,10 +21,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
         Permission::create(['name' => 'verify user']);
         Permission::create(['name' => 'delete user']);
         Permission::create(['name' => 'update user']);
         Permission::create(['name' => 'add user']);
+
+
+
         $admin = Role::create(['name' => 'admin']);
         $admin->givePermissionTo('verify user');
         $admin->givePermissionTo('delete user');

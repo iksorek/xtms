@@ -12,9 +12,15 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-public function mysettings(){
-    return view('mySettings');
-}
+    public function mysettings()
+    {
+        return view('mySettings');
+    }
+
+    public function admin()
+    {
+        return view('admin');
+    }
 
 }
 
