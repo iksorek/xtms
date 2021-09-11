@@ -172,3 +172,15 @@ input, button {
 .outline-solid {
     outline: 2px solid black;
 }
+.api_info{
+    @apply w-3/4 bg-gray-200 p-5 mx-auto rounded-xl;
+    h3{
+        @apply font-bold;
+    }
+    pre{
+        @apply bg-gray-300 rounded-lg p-2;
+    }
+    p{
+        margin: .3rem;
+    }
+}
