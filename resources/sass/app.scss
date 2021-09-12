@@ -179,6 +179,7 @@ input, button {
     }
     pre{
         @apply bg-gray-300;
+        overflow: scroll;
     }
     p{
         margin: .3rem;

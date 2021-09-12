@@ -29,23 +29,25 @@
             <p>Method: POST</p>
             <p>Sample JSON body:
             <pre>
-            {
-                "api_key": "supersecretapikey",
-                "postcode_from": "np165ra",
-                "postcode_to": "SG156RY"
-            }</pre>
+    {
+    "api_key": "supersecretapikey",
+    "postcode_from": "np165ra",
+    "postcode_to": "SG156RY"
+    }
+            </pre>
             </p>
             <p>Sample JSON response:
             <pre>
-            {
-            "townStart": "Chepstow",
-            "townFinish": "Arlesey",
-            "time": 162, <span class="text-gray-600">//minutes</span>
-            "distance": 157,  <span class="text-gray-600">//miles</span>
-            "postcodesStart": "NP16 5RA",
-            "postcodesFinish": "SG15 6RY",
-            "costApr": 380 <span class="text-gray-600">//approx cost in GBP</span>
-            }</pre>
+    {
+    "townStart": "Chepstow",
+    "townFinish": "Arlesey",
+    "time": 162, <span class="text-gray-600">//minutes</span>
+    "distance": 157,  <span class="text-gray-600">//miles</span>
+    "postcodesStart": "NP16 5RA",
+    "postcodesFinish": "SG15 6RY",
+    "costApr": 380 <span class="text-gray-600">//approx cost in GBP</span>
+    }
+            </pre>
             </p>
         </div>
 
@@ -54,24 +56,25 @@
             <p>Method: POST</p>
             <p>Sample JSON body:
             <pre>
-             {
-            "api_key": "supersecretapikey",
-            "postcode_from": "np165ra",
-            "postcode_to": "SG156RY"
-            "pickupdate": "2021-10-21",
-            "price": 380,
-            "customer_name": "Batman",
-            "customer_contact": "555-bat-man"
-            }
+    {
+    "api_key": "supersecretapikey",
+    "postcode_from": "np165ra",
+    "postcode_to": "SG156RY"
+    "pickupdate": "2021-10-21",
+    "price": 380,
+    "customer_name": "Batman",
+    "customer_contact": "555-bat-man"
+    }
             </pre>
             </p>
-            <p>As response You should get JSON object with 'created_at' value only. Rest of the object is hidden for security reasons.</p>
+            <p>As response You should get JSON object with 'created_at' value only. Rest of the object is hidden for
+                security reasons.</p>
             <p>
                 Sample JSON response:
             <pre>
-            {
-            "created_at": "2021-09-12T11:44:13.000000Z",
-            }
+    {
+    "created_at": "2021-09-12T11:44:13.000000Z",
+    }
             </pre>
             </p>
         </div>
