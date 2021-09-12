@@ -17,10 +17,5 @@ class Controller extends BaseController
         return view('mySettings');
     }
 
-    public function admin()
-    {
-        return view('admin');
-    }
-
 }
 
