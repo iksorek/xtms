@@ -23,19 +23,20 @@
         </x-jet-button>
     </div>
     <div class="api_info">
-        <h3>API info</h3>
-        <p>Quotes URL: https://xtms.uk/api/quote</p>
-        <p>Method: POST</p>
-        <p>Sample body:
-        <pre>
+        <h3>API quick guide</h3>
+        <div class="api_doc_part">
+            <p>Quotes URL: https://xtms.uk/api/quote</p>
+            <p>Method: POST</p>
+            <p>Sample JSON body:
+            <pre>
             {
                 "api_key": "supersecretapikey",
                 "postcode_from": "np165ra",
                 "postcode_to": "SG156RY"
             }</pre>
-        </p>
-        <p>Sample response:
-        <pre>
+            </p>
+            <p>Sample JSON response:
+            <pre>
             {
             "townStart": "Chepstow",
             "townFinish": "Arlesey",
@@ -45,6 +46,34 @@
             "postcodesFinish": "SG15 6RY",
             "costApr": 380 <span class="text-gray-600">//approx cost in GBP</span>
             }</pre>
-        </p>
+            </p>
+        </div>
+
+        <div class="api_doc_part">
+            <p>Run request URL: https://xtms.uk/api/request</p>
+            <p>Method: POST</p>
+            <p>Sample JSON body:
+            <pre>
+             {
+            "api_key": "supersecretapikey",
+            "postcode_from": "np165ra",
+            "postcode_to": "SG156RY"
+            "pickupdate": "2021-10-21",
+            "price": 380,
+            "customer_name": "Batman",
+            "customer_contact": "555-bat-man"
+            }
+            </pre>
+            </p>
+            <p>As response You should get JSON object with 'created_at' value only. Rest of the object is hidden for security reasons.</p>
+            <p>
+                Sample JSON response:
+            <pre>
+            {
+            "created_at": "2021-09-12T11:44:13.000000Z",
+            }
+            </pre>
+            </p>
+        </div>
     </div>
 </div>
