@@ -23,7 +23,9 @@ class AdminTest extends TestCase
         $response = $this->get('/dashboard');
         $response->assertSee('Admin');
     }
-    public function test_admin_can_load_admin_page(){
+
+    public function test_admin_can_load_admin_page()
+    {
         $admin = Role::create(['name' => 'admin']);
         $user = User::factory()->create();
         $user->assignRole('admin');
@@ -31,7 +33,9 @@ class AdminTest extends TestCase
         $response = $this->get('/admin');
         $response->assertSee('Administration');
     }
-    public function test_non_admin_can_not_see_admin_link(){
+
+    public function test_non_admin_can_not_see_admin_link()
+    {
         $admin = Role::create(['name' => 'admin']);
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -39,11 +43,34 @@ class AdminTest extends TestCase
         $response->assertDontSee('Admin');
     }
 
-    public function test_non_admin_can_not_load_admin_page(){
+    public function test_non_admin_can_not_load_admin_page()
+    {
         $admin = Role::create(['name' => 'admin']);
         $user = User::factory()->create();
         $this->actingAs($user);
         $response = $this->get('/admin');
         $response->assertDontSee('Administration');
+    }
+
+    public function test_admin_can_see_users_list()
+    {
+        $admin = Role::create(['name' => 'admin']);
+        $user = User::factory()->create();
+        $user->assignRole('admin');
+        $this->actingAs($user);
+        $response = $this->get('/admin');
+        $response->assertSeeText('Users list');
+
+    }
+
+    public function test_non_admin_cant_see_users_list()
+    {
+        $admin = Role::create(['name' => 'admin']);
+        $user = User::factory()->create();
+
+        $this->actingAs($user);
+        $response = $this->get('/admin');
+        $response->assertDontSeeText('Users list');
+
     }
 }

@@ -10,7 +10,9 @@
     </x-slot>
 
     <div class="container-live">
-        ADMIN
+        <h2 class="text-xl text-center">Users list</h2>
+
+        <livewire:admin.users-list/>
     </div>
 
 </x-app-layout>

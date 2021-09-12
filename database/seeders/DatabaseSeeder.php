@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         $admin->givePermissionTo('add user');
 
 
-        User::factory(15)
+        User::factory(25)
             ->has(Customer::factory(rand(5, 15)))
             ->has(Vehicle::factory(rand(1, 2)))
             ->has(Run::factory(rand(10, 50)))

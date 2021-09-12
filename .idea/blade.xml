@@ -41,6 +41,9 @@
       <data directive="@endforeach" />
       <data directive="@endforelse" />
       <data directive="@endguest" />
+      <data directive="@endhasallroles" />
+      <data directive="@endhasanyrole" />
+      <data directive="@endhasrole" />
       <data directive="@endif" />
       <data directive="@endisset" />
       <data directive="@endlang" />
@@ -49,6 +52,7 @@
       <data directive="@endprepend" />
       <data directive="@endproduction" />
       <data directive="@endpush" />
+      <data directive="@endrole" />
       <data directive="@endsection" />
       <data directive="@endslot" />
       <data directive="@endswitch" />
@@ -65,6 +69,8 @@
       <data directive="@forelse" injection="true" prefix="&lt;?php foreach(" suffix="): ?&gt;" />
       <data directive="@guest" injection="true" prefix="&lt;?php if(auth()-&gt;guard(" suffix=")-&gt;guest()): ?&gt;" />
       <data directive="@hasSection" injection="true" prefix="&lt;?php if (! empty(trim($__env-&gt;yieldContent(" suffix=")))): ?&gt;" />
+      <data directive="@hasanyrole" injection="true" prefix="&lt;?php if(auth()-&gt;check() &amp;&amp; auth()-&gt;user()-&gt;hasAnyRole(" suffix=")); ?&gt;" />
+      <data directive="@hasrole" injection="true" prefix="&lt;?php if(auth()-&gt;check() &amp;&amp; auth()-&gt;user()-&gt;hasRole(" suffix=")); ?&gt;" />
       <data directive="@if" injection="true" prefix="&lt;?php if(" suffix="): ?&gt;" />
       <data directive="@include" injection="true" prefix="&lt;?php echo $__env-&gt;make(" suffix=", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))-&gt;render(); ?&gt;" />
       <data directive="@includeFirst" injection="true" prefix="&lt;?php echo $__env-&gt;first(" suffix=", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))-&gt;render(); ?&gt;" />
@@ -85,6 +91,7 @@
       <data directive="@production" />
       <data directive="@props" injection="true" prefix="&lt;?php $attributes = $attributes-&gt;exceptProps(" suffix="); ?&gt;" />
       <data directive="@push" injection="true" prefix="&lt;?php $__env-&gt;startPush(" suffix="); ?&gt;" />
+      <data directive="@role" injection="true" prefix="&lt;?php if(auth()-&gt;check() &amp;&amp; auth()-&gt;user()-&gt;hasRole(" suffix=")); ?&gt;" />
       <data directive="@section" injection="true" prefix="&lt;?php $__env-&gt;startSection(" suffix="); ?&gt;" />
       <data directive="@sectionMissing" injection="true" prefix="&lt;?php if (empty(trim($__env-&gt;yieldContent(" suffix=")))): ?&gt;" />
       <data directive="@show" />
@@ -95,6 +102,7 @@
       <data directive="@switch" injection="true" prefix="&lt;?php switch(" suffix="): ?&gt;" />
       <data directive="@this" />
       <data directive="@unless" injection="true" prefix="&lt;?php if (! (" suffix=")): ?&gt;" />
+      <data directive="@unlessrole" injection="true" prefix="&lt;?php if(auth()-&gt;check() &amp;&amp; !auth()-&gt;user()-&gt;hasRole(" suffix=")); ?&gt;" />
       <data directive="@unset" injection="true" prefix="&lt;?php unset(" suffix="); ?&gt;" />
       <data directive="@verbatim" />
       <data directive="@while" injection="true" prefix="&lt;?php while(" suffix="): ?&gt;" />
