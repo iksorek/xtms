@@ -15,21 +15,23 @@ class RunController extends Controller
 
     public function show($run)
     {
-        if(!auth()->user()->Runs()->find($run)){
-            create_banner('Dont try it.. Would be to easy', 'danger');
-            return view('dashboard');
+        if (auth()->user()->Runs()->find($run) || auth()->user()->hasRole('admin')) {
+            $run = Run::with(['Customer', "Vehicle"])->findOrFail($run);
+            return view('Run.runDetails', ["run" => $run]);
+
+        } else {
+       abort(403);
         }
-        $run = Run::with(['Customer', "Vehicle"])->findOrFail($run);
-        return view('Run.runDetails', ["run" => $run]);
+
     }
 
     public function edit($run)
     {
-      if(!auth()->user()->Runs()->find($run)){
-          create_banner('Dont try it.. Would be to easy', 'danger');
-          return view('dashboard');
-      }
-        $run = Run::with(['Customer', "Vehicle"])->findOrFail($run);
-        return view('Run.runEdit', ["run" => $run]);
+        if (auth()->user()->Runs()->find($run) || auth()->user()->hasRole('admin')) {
+            $run = Run::with(['Customer', "Vehicle"])->findOrFail($run);
+            return view('Run.runEdit', ["run" => $run]);
+        } else {
+            abort(403);
+        }
     }
 }

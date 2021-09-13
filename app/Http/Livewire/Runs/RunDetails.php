@@ -14,14 +14,14 @@ class RunDetails extends Component
     public $showCustomerDetails;
 
 
-
-
     public function deleteRun(Run $run)
     {
-        $run->delete();
-        create_banner('Run moved to trash', 'danger');
-
+        if (auth()->user()->Runs()->find($run) || auth()->user()->hasRole('admin')) {
+            $run->delete();
+            create_banner('Run moved to trash', 'danger');
+        }
         $this->redirect(route('runs'));
+
     }
 
 

@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\Run;
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -10,6 +12,7 @@ use Tests\TestCase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+use function Symfony\Component\Translation\t;
 
 class AdminTest extends TestCase
 {
@@ -71,6 +74,37 @@ class AdminTest extends TestCase
         $this->actingAs($user);
         $response = $this->get('/admin');
         $response->assertDontSeeText('Users list');
+
+    }
+
+    public function test_admin_can_see_any_run()
+    {
+        User::factory(20)
+            ->hasRuns(20)
+            ->create();
+        Role::create(['name' => 'admin']);
+        $user = User::factory()->create();
+        $user->assignRole('admin');
+        $this->actingAs($user);
+        $randomRun = Run::inRandomOrder()->first();
+        $response = $this->get('/run/' . $randomRun->id);
+        $response->assertSeeText('Route');
+
+
+    }
+    public function test_admin_can_see_any_vehicle()
+    {
+        User::factory(20)
+            ->hasVehicles(20)
+            ->create();
+        Role::create(['name' => 'admin']);
+        $user = User::factory()->create();
+        $user->assignRole('admin');
+        $this->actingAs($user);
+        $randomVeh = Vehicle::inRandomOrder()->first();
+        $response = $this->get('/vehicledetails/' . $randomVeh->id);
+        $response->assertSeeText('Registration number');
+
 
     }
 }

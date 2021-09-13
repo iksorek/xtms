@@ -33,6 +33,7 @@ class CustomerList extends Component
 
     public function deleteCustomer($id)
     {
+        if(\Auth::user()->hasRole('admin') || \Auth::user()->Customers()->where('id', $id)->exists())
         Customer::findOrFail($id)->delete();
         request()->session()->flash('flash.banner', 'Customer deleted');
         request()->session()->flash('flash.bannerStyle', 'danger');
