@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
 
     }
-    //TODO add non-admin test user
+
+
 }
 
