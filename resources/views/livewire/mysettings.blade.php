@@ -30,7 +30,7 @@
             <p>Sample JSON body:
             <pre>
     {
-    "api_key": "supersecretapikey",
+    "api_key": "{{auth()->user()->api_key}}",
     "postcode_from": "np165ra",
     "postcode_to": "SG156RY"
     }
@@ -57,7 +57,7 @@
             <p>Sample JSON body:
             <pre>
     {
-    "api_key": "supersecretapikey",
+    "api_key": "{{auth()->user()->api_key}}",
     "postcode_from": "np165ra",
     "postcode_to": "SG156RY"
     "pickupdate": "2021-10-21",
