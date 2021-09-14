@@ -22,18 +22,8 @@ class DatabaseSeeder extends Seeder
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        Permission::create(['name' => 'verify user']);
-        Permission::create(['name' => 'delete user']);
-        Permission::create(['name' => 'update user']);
-        Permission::create(['name' => 'add user']);
-
-
-
         $admin = Role::create(['name' => 'admin']);
-        $admin->givePermissionTo('verify user');
-        $admin->givePermissionTo('delete user');
-        $admin->givePermissionTo('update user');
-        $admin->givePermissionTo('add user');
+
 
 
         User::factory(25)
@@ -54,7 +44,18 @@ class DatabaseSeeder extends Seeder
             ]);
         $user->assignRole('admin');
 
+        User::factory()
+            ->has(Customer::factory(50))
+            ->has(Vehicle::factory(3))
+            ->has(Run::factory(30))
+            ->create([
+                'name' => 'testuser',
+                'email' => 'test@xtms.uk',
+                'api_key' => 'supersecretapikey2'
+            ]);
+
 
     }
+    //TODO add non-admin test user
 }
 

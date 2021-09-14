@@ -132,7 +132,7 @@
             <div class="run_details">
                 <div class="run__title-top">Options</div>
                 <span><a href="{{route('editRun', $run)}}" class="button-like-link">Edit run</a></span>
-                <span class="button-like-link" wire:click="$toggle('delete')">Delete</span>
+                <span class="button-like-link cursor-pointer" wire:click="$toggle('delete')">Delete</span>
             </div>
 
 
