@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use phpDocumentor\Reflection\Element;
+use Gate;
 
 class VehicleController extends Controller
 {
@@ -41,12 +41,9 @@ class VehicleController extends Controller
     public function show($vehID)
     {
         $vehicle = Vehicle::with('Runs')->findOrFail($vehID);
-        if (auth()->user()->Vehicles()->where('id', $vehID)->exists() || auth()->user()->hasRole('admin')) {
+        Gate::authorize('show', $vehicle);
             return view('vehicle.vehicleDetails', ['vehicle' => $vehicle]);
-        }
-        else {
-            abort(403);
-        }
+
     }
 
     private function getDataFromDvla($reg)
