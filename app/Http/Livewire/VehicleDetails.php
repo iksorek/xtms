@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use Gate;
 
 class VehicleDetails extends Component
 {
@@ -21,6 +22,7 @@ class VehicleDetails extends Component
 
     public function mount()
     {
+        Gate::authorize('own', $this->vehicle);
         $this->mot = $this->vehicle->mot;
         $this->make = $this->vehicle->make;
         $this->model = $this->vehicle->model;

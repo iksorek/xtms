@@ -11,7 +11,7 @@ class VehiclePolicy
     use HandlesAuthorization;
 
 
-    public function show(User $user, Vehicle $vehicle)
+    public function own(User $user, Vehicle $vehicle): bool
     {
         return $user->id === $vehicle->user_id || auth()->user()->hasRole('admin');
     }

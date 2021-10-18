@@ -23,13 +23,13 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'newmake'=>'required|min:3',
-            'newmodel'=>'required',
-            'newmilage'=>'required|numeric',
-            'newservice'=>'date',
-            'newmot'=>'date',
-            'newinsurance'=>'date',
-            'newtax'=>'date'
+            'newmake' => 'required|min:3',
+            'newmodel' => 'required',
+            'newmilage' => 'required|numeric',
+            'newservice' => 'date',
+            'newmot' => 'date',
+            'newinsurance' => 'date',
+            'newtax' => 'date'
 
 
         ]);
@@ -41,8 +41,8 @@ class VehicleController extends Controller
     public function show($vehID)
     {
         $vehicle = Vehicle::with('Runs')->findOrFail($vehID);
-        Gate::authorize('show', $vehicle);
-            return view('vehicle.vehicleDetails', ['vehicle' => $vehicle]);
+        Gate::authorize('own', $vehicle);
+        return view('vehicle.vehicleDetails', ['vehicle' => $vehicle]);
 
     }
 
