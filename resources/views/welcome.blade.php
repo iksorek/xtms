@@ -23,7 +23,6 @@
             @endif
 
             <form method="POST" action="{{ route('login') }}">
-                @csrf
 
                 <div>
                     <x-jet-label for="email" value="{{ __('Email') }}" />
