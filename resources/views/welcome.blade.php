@@ -9,12 +9,12 @@
 <body class="antialiased">
 <div class="bg-splash">
     <div class="hero justify-center">
-       <h1 class="text-4xl text-indigo-200">Welcome in XTMS</h1>
+        <h1 class="text-4xl text-indigo-200">Welcome in XTMS</h1>
         @auth
             <a href="{{ route("dashboard") }}">Dashboard</a>
         @else
-        <p class="mb-8">You Are not logged in</p>
-            <x-jet-validation-errors class="mb-4" />
+            <p class="mb-8">You Are not logged in</p>
+            <x-jet-validation-errors class="mb-4"/>
 
             @if (session('status'))
                 <div class="mb-4 font-medium text-sm text-green-600">
@@ -24,19 +24,22 @@
 
             <form method="POST" action="{{ route('login') }}">
 
+                @csrf
                 <div>
-                    <x-jet-label for="email" value="{{ __('Email') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <x-jet-label for="email" value="{{ __('Email') }}"/>
+                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                                 required autofocus/>
                 </div>
 
                 <div class="mt-4">
-                    <x-jet-label for="password" value="{{ __('Password') }}" />
-                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                    <x-jet-label for="password" value="{{ __('Password') }}"/>
+                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                                 autocomplete="current-password"/>
                 </div>
 
                 <div class="block mt-4">
                     <label for="remember_me" class="flex items-center">
-                        <x-jet-checkbox id="remember_me" name="remember" />
+                        <x-jet-checkbox id="remember_me" name="remember"/>
                         <span class="ml-2 text-sm">{{ __('Remember me') }}</span>
                     </label>
                 </div>
@@ -55,7 +58,6 @@
             </form>
         @endauth
     </div>
-
 
 
 </div>
