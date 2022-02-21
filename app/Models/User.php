@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\Uuids;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,34 +9,28 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use Uuids;
-
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var string[]
      */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'ppm',
-        'pph'
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
      * @var array
      */
@@ -49,7 +42,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
      * @var array
      */
@@ -65,20 +58,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-
-    public function Vehicles(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Vehicle::class);
-    }
-
-    public function Runs(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Run::class);
-    }
-
-    public function Customers(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Customer::class)->orderBy('name');
-    }
 }
