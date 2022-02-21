@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         $admin = Role::create(['name' => 'admin']);
 
 
-
         User::factory(25)
             ->has(Customer::factory(rand(5, 15)))
             ->has(Vehicle::factory(rand(1, 2)))
