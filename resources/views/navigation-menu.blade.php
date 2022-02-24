@@ -15,6 +15,24 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('vehicles') }}" :active="request()->routeIs('vehicles')">
+                        Vehicles
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('myCustomers') }}" :active="request()->routeIs('myCustomers')">
+                        Customers
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('runs') }}" :active="request()->routeIs('runs')">
+                        Runs
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('mysettings') }}" :active="request()->routeIs('mysettings')">
+                        Settings
+                    </x-jet-nav-link>
+
+                    @role('admin')
+                    <x-jet-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
+                        Admin
+                    </x-jet-nav-link>
+                    @endrole
                 </div>
             </div>
 
@@ -141,6 +159,24 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('vehicles') }}" :active="request()->routeIs('vehicles')">
+                Vehicles
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('myCustomers') }}" :active="request()->routeIs('myCustomers')">
+                Customers
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('runs') }}" :active="request()->routeIs('runs')">
+                Runs
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('mysettings') }}" :active="request()->routeIs('mysettings')">
+                Settings
+            </x-jet-responsive-nav-link>
+
+            @role('admin')
+            <x-jet-responsive-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
+                Admin
+            </x-jet-responsive-nav-link>
+            @endrole
         </div>
 
         <!-- Responsive Settings Options -->
