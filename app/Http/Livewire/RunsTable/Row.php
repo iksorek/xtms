@@ -49,17 +49,22 @@ class Row extends Component
     private function setRunAsFinished()
     {
         $this->oneRun->finished = now();
+        if ($this->oneRun->vehicle != null) {
+            $this->oneRun->vehicle->mileage = $this->oneRun->vehicle->mileage + $this->oneRun->distance;
+            $this->oneRun->vehicle->save();
+
+        }
         $this->oneRun->save();
-        $this->oneRun->vehicle->mileage = $this->oneRun->vehicle->mileage + $this->oneRun->distance;
-        $this->oneRun->vehicle->save();
     }
 
     private function setRunAsUnfinished()
     {
         $this->oneRun->finished = null;
+        if ($this->oneRun->vehicle != null) {
+            $this->oneRun->vehicle->mileage = $this->oneRun->vehicle->mileage - $this->oneRun->distance;
+            $this->oneRun->vehicle->save();
+        }
         $this->oneRun->save();
-        $this->oneRun->vehicle->mileage = $this->oneRun->vehicle->mileage - $this->oneRun->distance;
-        $this->oneRun->vehicle->save();
     }
 
     public function updateColumn($col)
