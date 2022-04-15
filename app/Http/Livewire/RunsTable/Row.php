@@ -46,10 +46,26 @@ class Row extends Component
         $this->redirectRoute('editRun', ['runId' => $run]);
     }
 
+    private function setRunAsFinished()
+    {
+        $this->oneRun->finished = now();
+        $this->oneRun->save();
+        $this->oneRun->vehicle->mileage = $this->oneRun->vehicle->mileage + $this->oneRun->distance;
+        $this->oneRun->vehicle->save();
+    }
+
+    private function setRunAsUnfinished()
+    {
+        $this->oneRun->finished = null;
+        $this->oneRun->save();
+        $this->oneRun->vehicle->mileage = $this->oneRun->vehicle->mileage - $this->oneRun->distance;
+        $this->oneRun->vehicle->save();
+    }
+
     public function updateColumn($col)
     {
         if ($col == 'finished') {
-            $this->oneRun->finished ? $this->oneRun->finished = null : $this->oneRun->finished = now();
+            $this->oneRun->finished ? $this->setRunAsUnfinished() : $this->setRunAsFinished();
 
         } else {
 

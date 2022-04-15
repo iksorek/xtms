@@ -1,0 +1,199 @@
+Index: tests/Feature/PasswordResetTest.php
+===================================================================
+diff --git a/tests/Feature/PasswordResetTest.php b/tests/removed/PasswordResetTest.php
+rename from tests/Feature/PasswordResetTest.php
+rename to tests/removed/PasswordResetTest.php
+--- a/tests/Feature/PasswordResetTest.php	
++++ b/tests/removed/PasswordResetTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Auth\Notifications\ResetPassword;
+Index: tests/Feature/DeleteApiTokenTest.php
+===================================================================
+diff --git a/tests/Feature/DeleteApiTokenTest.php b/tests/removed/DeleteApiTokenTest.php
+rename from tests/Feature/DeleteApiTokenTest.php
+rename to tests/removed/DeleteApiTokenTest.php
+--- a/tests/Feature/DeleteApiTokenTest.php	
++++ b/tests/removed/DeleteApiTokenTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/DeleteAccountTest.php
+===================================================================
+diff --git a/tests/Feature/DeleteAccountTest.php b/tests/removed/DeleteAccountTest.php
+rename from tests/Feature/DeleteAccountTest.php
+rename to tests/removed/DeleteAccountTest.php
+--- a/tests/Feature/DeleteAccountTest.php	
++++ b/tests/removed/DeleteAccountTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+===================================================================
+diff --git a/tests/Feature/TwoFactorAuthenticationSettingsTest.php b/tests/removed/TwoFactorAuthenticationSettingsTest.php
+rename from tests/Feature/TwoFactorAuthenticationSettingsTest.php
+rename to tests/removed/TwoFactorAuthenticationSettingsTest.php
+--- a/tests/Feature/TwoFactorAuthenticationSettingsTest.php	
++++ b/tests/removed/TwoFactorAuthenticationSettingsTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/RegistrationTest.php
+===================================================================
+diff --git a/tests/Feature/RegistrationTest.php b/tests/removed/RegistrationTest.php
+rename from tests/Feature/RegistrationTest.php
+rename to tests/removed/RegistrationTest.php
+--- a/tests/Feature/RegistrationTest.php	
++++ b/tests/removed/RegistrationTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Providers\RouteServiceProvider;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/ProfileInformationTest.php
+===================================================================
+diff --git a/tests/Feature/ProfileInformationTest.php b/tests/removed/ProfileInformationTest.php
+rename from tests/Feature/ProfileInformationTest.php
+rename to tests/removed/ProfileInformationTest.php
+--- a/tests/Feature/ProfileInformationTest.php	
++++ b/tests/removed/ProfileInformationTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/PasswordConfirmationTest.php
+===================================================================
+diff --git a/tests/Feature/PasswordConfirmationTest.php b/tests/removed/PasswordConfirmationTest.php
+rename from tests/Feature/PasswordConfirmationTest.php
+rename to tests/removed/PasswordConfirmationTest.php
+--- a/tests/Feature/PasswordConfirmationTest.php	
++++ b/tests/removed/PasswordConfirmationTest.php	
+@@ -1,10 +1,9 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+-use Laravel\Jetstream\Features;
+ use Tests\TestCase;
+ 
+ class PasswordConfirmationTest extends TestCase
+Index: tests/Feature/EmailVerificationTest.php
+===================================================================
+diff --git a/tests/Feature/EmailVerificationTest.php b/tests/removed/EmailVerificationTest.php
+rename from tests/Feature/EmailVerificationTest.php
+rename to tests/removed/EmailVerificationTest.php
+--- a/tests/Feature/EmailVerificationTest.php	
++++ b/tests/removed/EmailVerificationTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use App\Providers\RouteServiceProvider;
+Index: tests/Feature/UpdatePasswordTest.php
+===================================================================
+diff --git a/tests/Feature/UpdatePasswordTest.php b/tests/removed/UpdatePasswordTest.php
+rename from tests/Feature/UpdatePasswordTest.php
+rename to tests/removed/UpdatePasswordTest.php
+--- a/tests/Feature/UpdatePasswordTest.php	
++++ b/tests/removed/UpdatePasswordTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/BrowserSessionsTest.php
+===================================================================
+diff --git a/tests/Feature/BrowserSessionsTest.php b/tests/removed/BrowserSessionsTest.php
+rename from tests/Feature/BrowserSessionsTest.php
+rename to tests/removed/BrowserSessionsTest.php
+--- a/tests/Feature/BrowserSessionsTest.php	
++++ b/tests/removed/BrowserSessionsTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/CreateApiTokenTest.php
+===================================================================
+diff --git a/tests/Feature/CreateApiTokenTest.php b/tests/removed/CreateApiTokenTest.php
+rename from tests/Feature/CreateApiTokenTest.php
+rename to tests/removed/CreateApiTokenTest.php
+--- a/tests/Feature/CreateApiTokenTest.php	
++++ b/tests/removed/CreateApiTokenTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
+Index: tests/Feature/AuthenticationTest.php
+===================================================================
+diff --git a/tests/Feature/AuthenticationTest.php b/tests/removed/AuthenticationTest.php
+rename from tests/Feature/AuthenticationTest.php
+rename to tests/removed/AuthenticationTest.php
+--- a/tests/Feature/AuthenticationTest.php	
++++ b/tests/removed/AuthenticationTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use App\Providers\RouteServiceProvider;
+Index: tests/Feature/ApiTokenPermissionsTest.php
+===================================================================
+diff --git a/tests/Feature/ApiTokenPermissionsTest.php b/tests/removed/ApiTokenPermissionsTest.php
+rename from tests/Feature/ApiTokenPermissionsTest.php
+rename to tests/removed/ApiTokenPermissionsTest.php
+--- a/tests/Feature/ApiTokenPermissionsTest.php	
++++ b/tests/removed/ApiTokenPermissionsTest.php	
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Tests\Feature;
++namespace Tests\removed;
+ 
+ use App\Models\User;
+ use Illuminate\Foundation\Testing\RefreshDatabase;
