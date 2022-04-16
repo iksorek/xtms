@@ -12,13 +12,13 @@
             @if($oneRun->Customer && $oneRun->customer_id)
                 <div class="flex justify-between w-50">
                     <div>{{$oneRun->Customer->name}}</div>
-                    <div class="text-red-500 border border-red-500 px-1 mx-1" wire:click="detachCustomer">X</div>
+                    <div class="text-red-500 font-extrabold px-1 mx-1" wire:click="detachCustomer">X</div>
                 </div>
 
             @elseif($pickedCustomer)
                 <div class="flex justify-between w-full">
                     <div>{{$pickedCustomer}}</div>
-                    <div class="text-red-500 border border-red-500 px-1 mx-1" wire:click="detachCustomer">X</div>
+                    <div class="text-red-500 font-extrabold px-1 mx-1" wire:click="detachCustomer">X</div>
                 </div>
 
             @else

@@ -79,13 +79,23 @@ input, button {
     color: black;
 }
 
-.run_details {
-    @apply border-2 m-4 p-2 border-gray-300;
-}
+.run {
+    &_details {
+        @apply border-2 m-4 p-2 border-gray-300;
+    }
 
-.run__title-top {
-    @apply text-white bg-gray-500 mx-4 px-2 w-1/4 text-center;
-    transform: translateY(-1rem);
+    &__title-top {
+        @apply w-1/2 text-white bg-gray-500 mx-4 px-2 text-center;
+        transform: translateY(-1rem);
+    }
+
+    &_edit-cell {
+        @apply my-2 md:my-5 grid;
+    }
+
+    &_table_cell-name {
+        @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell;
+    }
 
 }
 
@@ -99,4 +109,70 @@ input, button {
 
 .button-like-link {
     @apply bg-black text-xsm sm:text-sm text-gray-200 rounded px-2 py-1 font-bold m-2 hover:bg-gray-800;
+}
+.container-live {
+    @apply p-2 sm:p-4 md:p-8 mx-auto container;
+    border: 1px dashed rgba(192, 192, 192, .6);
+}
+
+.actions_buttons {
+    @apply w-4 mr-2 transform hover:text-purple-500 cursor-pointer hover:scale-150;
+
+}
+
+.actions_buttons-pos {
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.run_details_missing_badge {
+    @apply text-red-600 px-1 absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    background-color: rgba(205, 128, 16, .9);
+    border-radius: 5%;
+}
+
+.dashboard-title__top {
+    @apply text-white bg-gray-500 mx-4 px-2 text-center w-9/12 sm:w-1/2;
+    transform: translateY(-.8em);
+}
+
+.customer_details {
+    @apply rounded-2xl p-4;
+    position: absolute;
+    display: block;
+    width: 90%;
+
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 200;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: bolder;
+    }
+}
+
+.outline-solid {
+    outline: 2px solid black;
+}
+.api_info{
+    @apply w-3/4 bg-gray-200 p-5 mx-auto;
+    h3{
+        @apply font-bold;
+    }
+    pre{
+        @apply bg-gray-300;
+    }
+    p{
+        margin: .3rem;
+    }
+    .api_doc_part{
+        border: 1px solid gray;
+        margin: .4rem;
+    }
 }
