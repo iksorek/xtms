@@ -50,6 +50,15 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'name' => 'testuser',
                 'email' => 'test@xtms.uk',
+                'api_key' => 'supersecretapikey1'
+            ]);
+        User::factory()
+            ->has(Customer::factory(50))
+            ->has(Vehicle::factory(3))
+            ->has(Run::factory(30))
+            ->create([
+                'name' => 'testuser2',
+                'email' => 'test2@xtms.uk',
                 'api_key' => 'supersecretapikey2'
             ]);
 
