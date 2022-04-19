@@ -6,9 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\RunController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+       return view("dashboard");
+    } else {
+        return view('welcome');
+    }
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
