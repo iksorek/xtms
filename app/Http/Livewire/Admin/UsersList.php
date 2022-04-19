@@ -13,6 +13,7 @@ class UsersList extends Component
 
     public function render()
     {
-        return view('livewire.admin.users-list', ['users' => User::withCount(['Runs', 'Vehicles', "Customers"])->orderBy('created_at')->paginate(10)]);
+        $users = User::withCount(['Runs', 'Vehicles', 'Customers'])->orderByDesc('created_at')->paginate(10);
+        return view('livewire.admin.users-list', ['users' => $users]);
     }
 }

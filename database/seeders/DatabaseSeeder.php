@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $admin = Role::create(['name' => 'admin']);
 
 
-        User::factory(25)
+        User::factory(10)
             ->has(Customer::factory(rand(5, 15)))
             ->has(Vehicle::factory(rand(1, 2)))
             ->has(Run::factory(rand(10, 50)))
@@ -51,15 +51,6 @@ class DatabaseSeeder extends Seeder
                 'name' => 'testuser',
                 'email' => 'test@xtms.uk',
                 'api_key' => 'supersecretapikey1'
-            ]);
-        User::factory()
-            ->has(Customer::factory(50))
-            ->has(Vehicle::factory(3))
-            ->has(Run::factory(30))
-            ->create([
-                'name' => 'testuser2',
-                'email' => 'test2@xtms.uk',
-                'api_key' => 'supersecretapikey2'
             ]);
 
 
