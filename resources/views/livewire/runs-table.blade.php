@@ -30,7 +30,7 @@
                     Route
                 </th>
                 <th class="run_table_cell-name">
-                    Customer
+                    Details
                 </th>
                 <th class="run_table_cell-name">
                     Times

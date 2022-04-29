@@ -16,6 +16,7 @@
                 </div>
 
             @elseif($pickedCustomer)
+
                 <div class="flex justify-between w-full">
                     <div>{{$pickedCustomer}}</div>
                     <div class="text-red-500 font-extrabold px-1 mx-1" wire:click="detachCustomer">X</div>
@@ -41,7 +42,7 @@
 
                 </div>
             @endif
-
+            <p>{{$oneRun->vehicle->reg ?? 'No vehicle'}}</p>
         </div>
 
 
