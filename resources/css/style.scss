@@ -180,3 +180,6 @@ input, button {
         margin: .4rem;
     }
 }
+.error{
+    @apply text-red-600;
+}
