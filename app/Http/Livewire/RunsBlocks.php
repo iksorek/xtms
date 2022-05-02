@@ -9,7 +9,7 @@ use Livewire\Component;
 class RunsBlocks extends Component
 {
 
-    public $daysToCount, $updatedDayToCount;
+    public $daysToCount;
 
     public $today, $lastDay, $dates, $showModal;
     protected $listeners = ['setModal'];
@@ -61,16 +61,11 @@ class RunsBlocks extends Component
     public function setDaysToCount($val)
 
     {
-        $this->validate();
-        if ($val > 100) {
-            $this->daysToCount = 100;
 
-        } else {
-            $this->daysToCount = $val;
-        }
+        $this->validate();
 
         $this->dates = null;
-//        $this->daysToCount = $val;
+        $this->daysToCount = $val;
         for ($i = 0; $i < $val; $i++) {
             $this->today = new \DateTime('now');
             $this->dates[$i] = $this->today->modify("+$i days")->format('Y-m-d');
