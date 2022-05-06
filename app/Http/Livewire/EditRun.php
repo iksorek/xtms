@@ -90,6 +90,7 @@ class EditRun extends Component
         $start_time = "$this->date $this->startTime";
         $this->finish_est = date("Y-m-d H:i:s", strtotime($start_time) + ($response['time'] * 60));
         $this->back_est = date("Y-m-d H:i:s", strtotime($start_time) + ($response['time'] * 60 * 2) + 3600);
+        $this->run->save();
 
     }
 

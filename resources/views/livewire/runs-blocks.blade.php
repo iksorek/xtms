@@ -6,9 +6,7 @@
                  :disabled="$daysToCount == ''" value="Update"/>
     @error('daysToCount') <p class="error">{{ $message }}</p>
     @else
-        @if(!is_int($daysToCount))
-            <p class="error">Please enter a number</p>
-        @else
+        @if(is_int($daysToCount))
             <p>Showing planner for {{$daysToCount}} days:</p>
         @endif
         @enderror

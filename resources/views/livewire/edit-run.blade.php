@@ -21,7 +21,7 @@
 
         </div>
         <x-jet-input-error for="distance"/>
-        <x-jet-button class="w-full h-8 my-auto" wire:click="recalculateRun">Recalculate cost and distance
+        <x-jet-button class="w-full h-8 my-auto" wire:click="recalculateRun">Recalculate cost and distance.
         </x-jet-button>
     </div>
     <div class="run_edit-cell">
