@@ -9,7 +9,7 @@
             <div class="w-full my-5 border border-black border-dotted pb-5">
                 <p class="dashboard-title__top">{{$vehicle->reg}} {{$vehicle->make}}
                     - {{$vehicle->model}}</p>
-                @if($schedulerErr && $schedulerErr->veh == $vehicle->id)
+                @if(isset($schedulerErr->veh)  && $schedulerErr->veh == $vehicle->id)
                     <p class="text-xl text-center bg-red-600 rounded-sm m-2">{{$schedulerErr->desc}}</p>
                 @endif
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full">
@@ -45,7 +45,6 @@
         @endforelse
         <div class="w-full">
             @if($runsWithoutVehicle->count() != 0)
-
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full">
                     @forelse($runsWithoutVehicle as $run)
