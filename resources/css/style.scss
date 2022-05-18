@@ -101,6 +101,9 @@ input, button {
 
 .form_laravel {
     @apply border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm;
+    &-input {
+        @apply border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm px-2 py-1;
+    }
 }
 
 .text-xsm {
@@ -165,7 +168,7 @@ input, button {
     outline: 2px solid black;
 }
 .api_info{
-    @apply w-3/4 bg-gray-200 p-5 mx-auto;
+    @apply w-full lg:w-3/4 bg-gray-200 p-5 mx-auto;
     h3{
         @apply font-bold;
     }

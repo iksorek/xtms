@@ -12,10 +12,8 @@
             <x-jet-input-error for="pph"/>
         </div>
         <div>
-            <p>Your API KEY</p>
-        </div>
-        <div>
-            <x-jet-input class="form" type="text" value="{{$api_key}}" disabled/>
+            <x-jet-label>Api key</x-jet-label>
+            <x-jet-input class="bg-gray-200" value="{{$api_key}}" disabled/>
         </div>
     </div>
     <div class="grid place-items-center">
