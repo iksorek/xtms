@@ -33,9 +33,6 @@ class DatabaseSeeder extends Seeder
 
         //my super admin
         $user = User::factory()
-            ->has(Customer::factory(50))
-            ->has(Vehicle::factory(3))
-            ->has(Run::factory(30))
             ->create([
                 'name' => 'iksor',
                 'email' => 'dev@mrogon.co.uk',

@@ -43,7 +43,7 @@ class RunFactory extends Factory
 
 
         return [
-            'postcode_from' => 'NP165RA',
+            'postcode_from' => 'NP16 5RA',
             'postcode_to' => $this->faker->randomElement($postCodes),
             'price' => rand(20, 1000),
             'status' => $this->faker->randomElement($types),

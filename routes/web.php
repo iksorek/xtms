@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     if (Auth::check()) {
-       return view("dashboard");
+        return view("dashboard");
+
     } else {
         return view('welcome');
     }
@@ -23,7 +24,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/myCustomers', [CustomerController::class, 'index'])->name('myCustomers');
     Route::get('/vehicledetails/{vehicleID}', [VehicleController::class, 'show'])->name('vehicleDetails');
-    Route::get('/myvehicles', [VehicleController::class, 'index'])->name('vehicles');
+    Route::get('/myvehicles', [VehicleController::class, 'index'])->name('myvehicles');
     Route::get('/myvehicles/add', [VehicleController::class, 'create'])->name('addVehicle');
     Route::put('/myvehicles/store', [VehicleController::class, 'store'])->name('storeVehicle');
     Route::get('/runs', [RunController::class, 'index'])->name('runs');
