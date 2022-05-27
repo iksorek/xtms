@@ -22,14 +22,18 @@ class DatabaseSeeder extends Seeder
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $admin = Role::create(['name' => 'admin']);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'user']);
 
 
-        User::factory(10)
+        $users = User::factory(10)
             ->has(Customer::factory(rand(5, 15)))
             ->has(Vehicle::factory(rand(1, 2)))
             ->has(Run::factory(rand(10, 50)))
             ->create();
+        $users->each(function ($user) {
+            $user->assignRole('user');
+        });
 
         //my super admin
         $user = User::factory()
@@ -40,7 +44,7 @@ class DatabaseSeeder extends Seeder
             ]);
         $user->assignRole('admin');
 
-        User::factory()
+        $tempUser = User::factory()
             ->has(Customer::factory(50))
             ->has(Vehicle::factory(3))
             ->has(Run::factory(30))
@@ -49,6 +53,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'test@xtms.uk',
                 'api_key' => 'supersecretapikey1'
             ]);
+        $tempUser->assignRole('user');
 
 
     }

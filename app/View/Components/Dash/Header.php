@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Dash;
 
 use Illuminate\View\Component;
 
-class panel.activeBoxSpan extends Component
+class Header extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class panel.activeBoxSpan extends Component
      */
     public function render()
     {
-        return view('components.panel.active-box-span');
+        return view('components.dash.header');
     }
 }

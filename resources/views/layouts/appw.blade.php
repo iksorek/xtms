@@ -4,17 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/style.css') }}">
-
     @livewireStyles
-
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
@@ -22,30 +17,13 @@
 <x-jet-banner/>
 <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
     <!-- Desktop sidebar -->
-    <aside
-        class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
-    >
+    <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
         <div class="py-4 text-gray-500 dark:text-gray-400">
             <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
                href="{{route('dashboard')}}">
                 XTMS
             </a>
-            <ul class="mt-6">
-
-                @forelse($menu as $item => $value)
-                    <li class="relative px-6 py-3">
-                        @if(request()->routeIs($value))
-                            <x-panel.active-box-span/>
-                        @endif
-                        <a href="{{route($value)}}"
-                           class="menu_item {{request()->routeIs($value) ? ' menu_item-active' : ''}}">
-                            <span class="ml-4">{{$item}}</span>
-                        </a>
-                    </li>
-                @empty
-                    THERE IS NO MENU
-                @endforelse
-            </ul>
+            <x-dash.menu/>
 
         </div>
     </aside>
@@ -78,30 +56,13 @@
                 class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
                 href="{{route('dashboard')}}"
             >XTMS</a>
-            <ul class="mt-6">
-                @forelse($menu as $item => $value)
-                    <li class="relative px-6 py-3">
-                        @if(request()->routeIs($value))
-                            <x-panel.active-box-span/>
-                        @endif
-                        <a
-                            class="menu_item-mobile {{request()->routeIs($value) ? ' menu_item-mobile-active' : ''}}"
-                            href="{{route($value)}}"
-                        >
-                            <span class="ml-4">{{$item}}</span>
-                        </a>
-                    </li>
-                @empty
-                    There is no menu for You :O
-                @endforelse
-
-            </ul>
+            <x-dash.menu/>
 
         </div>
     </aside>
     <div class="flex flex-col flex-1 w-full">
 
-        <x-panel.header/>
+        <x-dash.header/>
 
 
         <main class="h-full overflow-y-auto">

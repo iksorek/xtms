@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Dash;
 
 use Illuminate\View\Component;
 
-class panel.cta extends Component
+class Cta extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class panel.cta extends Component
      */
     public function render()
     {
-        return view('components.panel.cta');
+        return view('components.dash.cta');
     }
 }
