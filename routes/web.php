@@ -7,6 +7,7 @@ use App\Http\Controllers\RunController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -20,7 +21,7 @@ Route::get('/', function () {
         return view('welcome');
     }
 });
-
+Route::get('authLogout', [AuthenticatedSessionController::class, 'destroy'])->name('authLogout');
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');

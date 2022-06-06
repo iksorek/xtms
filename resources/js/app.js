@@ -28,7 +28,8 @@ Alpine.data('data', () => ({
     },
     isProfileMenuOpen: false,
     toggleProfileMenu() {
-        this.isProfileMenuOpen = !this.isProfileMenuOpen
+        this.isProfileMenuOpen = !this.isProfileMenuOpen;
+        console.log(this.isProfileMenuOpen);
     },
     closeProfileMenu() {
         this.isProfileMenuOpen = false
