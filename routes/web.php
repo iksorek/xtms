@@ -10,7 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return redirect(route('dashboard'));
+
+        if (Auth::user()->hasRole('admin')) {
+            return redirect(route('admin'));
+        } else {
+            return redirect(route('dashboard'));
+        }
     } else {
         return view('welcome');
     }
@@ -19,7 +24,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('dashboard')->middleware('role:user|admin');
 
     Route::get('/myCustomers', [CustomerController::class, 'index'])->name('myCustomers');
     Route::get('/vehicledetails/{vehicleID}', [VehicleController::class, 'show'])->name('vehicleDetails');
@@ -30,7 +35,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/run/{runId}', [RunController::class, 'show'])->name('showRun');
     Route::get('/editrun/{runId}', [RunController::class, 'edit'])->name('editRun');
     Route::get('/mysettings', [Controller::class, 'mysettings'])->name('mysettings');
-    Route::get('/admin', [AdminController::class, 'AdminDashboard'])->name('admin');
+    Route::get('/admin', [AdminController::class, 'AdminDashboard'])->middleware(['role:admin'])->name('admin');
 
 
 });
