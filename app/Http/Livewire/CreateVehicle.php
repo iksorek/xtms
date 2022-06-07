@@ -67,7 +67,7 @@ class CreateVehicle extends Component
         $newVehicle->tax = $this->tax;
         $newVehicle->save();
         create_banner('New vehicle saved');
-        return redirect(route('vehicles'));
+        return redirect(route('myvehicles'));
 
 
     }

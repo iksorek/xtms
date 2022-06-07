@@ -34,7 +34,7 @@ class VehicleController extends Controller
 
         ]);
 
-        return redirect(route('vehicles'));
+        return redirect(route('myvehicles'));
     }
 
 

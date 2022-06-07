@@ -62,7 +62,7 @@ class VehicleDetails extends Component
     {
         request()->session()->flash('flash.banner', 'Nothing has been updated');
         request()->session()->flash('flash.bannerStyle', 'success');
-        return redirect(route('vehicles'));
+        return redirect(route('myvehicles'));
     }
 
     public function updateVehicle()
@@ -87,7 +87,7 @@ class VehicleDetails extends Component
         $this->vehicle->delete();
         request()->session()->flash('flash.banner', 'Vehicle deleted');
         request()->session()->flash('flash.bannerStyle', 'danger');
-        return redirect()->to(route('vehicles'));
+        return redirect()->to(route('myvehicles'));
 
 
     }
