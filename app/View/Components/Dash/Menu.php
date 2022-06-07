@@ -12,14 +12,18 @@ class Menu extends Component
      *
      * @return void
      */
-    private $menu;
+    private array $menu;
 
     public function __construct()
     {
         if (Auth::user()->hasRole('admin')) {
             $this->menu = ['Admin' => 'admin'];
         } else {
-            $this->menu = ['Dashboard' => 'dashboard', 'My Vehicles' => 'myvehicles', 'My Runs' => 'runs', 'My Settings' => 'mysettings'];
+            $this->menu = ['Dashboard' => 'dashboard',
+                'Customers' => 'myCustomers',
+                'Vehicles' => 'myvehicles',
+                'Runs' => 'runs',
+                'Settings' => 'mysettings'];
         }
     }
 
