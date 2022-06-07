@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use Illuminate\Support\MessageBag;
 
 class CreateVehicle extends Component
 {
@@ -30,24 +31,28 @@ class CreateVehicle extends Component
 
     public function checkReg()
     {
-
         $this->validate(
             [
                 'reg' => 'required|min:3|unique:App\Models\Vehicle,reg',
             ]
         );
+        $errors = $this->getErrorBag();
         $response = Http::withHeaders([
-            'x-api-key' => env('DVLA_API_KEY'),
+            'x-api-key' => config('app.dvla_api_key'),
             'Content-Type' => 'application/json'
-        ])->acceptJson()->post(env("DVLA_API_URL"), [
+        ])->acceptJson()->post(config('app.dvla_api_url'), [
             "registrationNumber" => $this->reg
         ]);
-//            dd($response->json());
-        $this->make = $response->json('make');
-        $this->mot = $response->json('motExpiryDate');
-        $this->tax = $response->json('taxDueDate');
-        $this->insurance = date("Y-m-d");
 
+        if (!$response->json('errors')) {
+            $this->make = $response->json('make');
+            $this->mot = $response->json('motExpiryDate');
+            $this->tax = $response->json('taxDueDate');
+            $this->insurance = date("Y-m-d");
+        } else {
+            $errors->add('reg', 'Vehicle not found');
+
+        }
     }
 
 

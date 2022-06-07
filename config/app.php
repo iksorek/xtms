@@ -15,6 +15,12 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'dvla_api_key' => env('DVLA_API_KEY'),
+    'dvla_api_url' => env('DVLA_API_URL'),
+    'open_route_api_key' => env('OPEN_ROUTE_API_KEY'),
+    'open_route_api_url' => env('OPEN_ROUTE_API_URL'),
+    'postcode_api_key' => env('POSTCODE_API_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
