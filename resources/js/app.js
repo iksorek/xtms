@@ -3,14 +3,15 @@ require('./bootstrap');
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
-
+console.log(window.localStorage.getItem('dark'));
 Alpine.data('data', () => ({
     dark: window.localStorage.getItem('dark') ? window.localStorage.getItem('dark') : false,
+
     toggleTheme() {
+
         this.dark = !this.dark
         window.localStorage.setItem('dark', this.dark);
-        console.log(this.dark);
-
+        // console.log(this.dark + ' a i tak nie działa');
     },
     isSideMenuOpen: false,
     toggleSideMenu() {

@@ -69,9 +69,10 @@ class EditRun extends Component
         $this->run->customer_id = $this->newCustomer;
         $this->run->start_time = "$this->date $this->startTime";
         $this->run->additional_info = $this->additional_info;
-        create_banner('Changes has been saved');
         $this->run->save();
-        $this->redirectRoute('editRun', $this->run->id);
+        create_banner('Changes has been saved');
+
+        $this->redirectRoute('dashboard');
 
     }
 

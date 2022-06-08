@@ -2,6 +2,7 @@
     <button
         class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
         @click="toggleProfileMenu"
+        @click.away="closeProfileMenu"
         @keydown.escape="closeProfileMenu"
 
         aria-label="Account"
