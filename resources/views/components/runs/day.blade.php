@@ -40,7 +40,12 @@
 
         @empty
             <div class="inline-block h-20 p-2">
-                <p>No planned or requested runs yet</p>
+                @if(isset($mode) && $mode == 'requested')
+                    <p class="run__info-big">No requested runs</p>
+
+                @elseif(!isset($mode) && $mode != 'requested')
+                    <p class="run__info-big">No fully planned runs yet</p>
+                @endif
             </div>
         @endforelse
         <div class="w-full">
@@ -62,7 +67,8 @@
                                     {{substr($run->start_time, -8)}} - {{substr($run->finish_est, -8)}}
 
                                 </p>
-                                <p class="run_details_missing_badge">{{$run->customer_id ? '' : 'No customer'}} {{$run->vehicle_id ?: 'No vehicle'}}</p>
+                                <p class="run_details_missing_badge">{{$run->customer_id ? $run->Customer->name : 'No customer'}}
+                                    <br> {{$run->vehicle_id ? $run->Vehicle->reg : 'No vehicle'}}</p>
                             </div>
 
 

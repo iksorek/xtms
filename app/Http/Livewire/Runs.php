@@ -12,17 +12,15 @@ class Runs extends Component
     public $time, $distance, $townStart, $townFinish, $costApr;
     public $addRun = false;
     public $createRun = false;
-    public $postcodesStart = 'np165ra';
+    public $postcodesStart = 'NP16 5RA';
     public $postcodesFinish = 'SW1A 0AA';
     public $arrayResponse;
-
 
 
     public function cancelAdding()
     {
         return $this->redirectRoute('runs');
     }
-
 
 
     public function calculateRoute()

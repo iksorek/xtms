@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Run;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class RunController extends Controller
 {
 
     public function index()
     {
+
         return view('Run.runsIndex');
     }
 
@@ -20,7 +21,7 @@ class RunController extends Controller
             return view('Run.runDetails', ["run" => $run]);
 
         } else {
-       abort(403);
+            abort(403);
         }
 
     }

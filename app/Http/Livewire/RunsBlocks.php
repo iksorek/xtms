@@ -11,7 +11,7 @@ class RunsBlocks extends Component
 
     public $daysToCount;
 
-    public $today, $lastDay, $dates, $showModal;
+    public $today, $lastDay, $dates, $showModal, $mode;
     protected $listeners = ['setModal'];
     protected $rules = [
         'daysToCount' => 'required|integer|min:1|max:100',
@@ -75,6 +75,6 @@ class RunsBlocks extends Component
 
     public function render()
     {
-        return view('livewire.runs-blocks');
+        return view('livewire.runs-blocks', ['mode' => $this->mode]);
     }
 }

@@ -12,7 +12,7 @@
         @enderror
 
         @foreach($dates as $day)
-            <x-runs.day :day=$day/>
+            <x-runs.day :day=$day :mode=$mode />
         @endforeach
 </div>
 

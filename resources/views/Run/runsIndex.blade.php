@@ -7,6 +7,8 @@
     </x-slot>
 
     <div class="container-live">
-        <livewire:runs />
+            <livewire:runs/>
+
+
     </div>
 </x-app-layout>

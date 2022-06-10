@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\Run;
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class RunsTable extends Component
 {
@@ -14,6 +15,7 @@ class RunsTable extends Component
     public string $mode = 'current';
 
     protected $listeners = ['addToDeleteRunArr'];
+
 
     public function addToDeleteRunArr($id)
     {
@@ -27,15 +29,16 @@ class RunsTable extends Component
     public function deleteSelected()
     {
         if (count($this->runsToDelete) != 0) {
-          foreach ($this->runsToDelete as $delete){
-              Run::where('id', $delete)->forceDelete();
-          }
+            foreach ($this->runsToDelete as $delete) {
+                Run::where('id', $delete)->forceDelete();
+            }
             create_banner('Selected runs has been deleted', 'danger');
             $this->redirect(route("runs"));
         }
     }
 
-    public function deleteOldRuns(){
+    public function deleteOldRuns()
+    {
         Run::with('Customer')->
         whereDate('start_time', '<', date("Y-m-d"))->
         where('user_id', \Auth::id())->
@@ -44,7 +47,9 @@ class RunsTable extends Component
         create_banner('Old runs ended up in the bin', 'danger');
         $this->redirect(route("runs"));
     }
-    public function deleteAllInTheBin(){
+
+    public function deleteAllInTheBin()
+    {
         Run::with('Customer')->
         onlyTrashed()->
         where('user_id', \Auth::id())->forceDelete();
@@ -53,7 +58,6 @@ class RunsTable extends Component
 
     public function getMyRuns()
     {
-
 
         if ($this->mode == 'deleted') {
             return Run::with('Customer')->

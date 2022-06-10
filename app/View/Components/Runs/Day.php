@@ -11,24 +11,32 @@ use phpDocumentor\Reflection\Types\Boolean;
 class Day extends Component
 {
     public string $day;
+    public $mode = null;
     public $vehicles, $runsWithoutVehicle;
     public ?object $schedulerErr = null;
 
 
-    public function __construct($day)
+    public function __construct($day, $mode = null)
     {
         $this->schedulerErr = new \stdClass();
         $this->day = $day;
+        $this->mode = $mode;
 
+        if (!$mode) {
+            $this->vehicles = Vehicle::with(['Runs' => function ($q) use ($day) {
+                $q->whereDate('start_time', '=', $day)->orderBy('start_time');
+            }])->
+            whereHas('Runs', function ($q) use ($day) {
+                $q->whereDate('start_time', '=', $day);
+            })->
+            where('user_id', '=', Auth::id())->get();
+        } else {
+            $this->vehicles = Auth::user()->Vehicles()->with(['Runs' => function ($q) use ($day) {
+                $q->where('status', 'requested')->whereDate('start_time', '=', $day)->orderBy('start_time');
 
-        $this->vehicles = Vehicle::with(['Runs' => function ($q) use ($day) {
-            $q->whereDate('start_time', '=', $day)->orderBy('start_time');
-        }])->
-        whereHas('Runs', function ($q) use ($day) {
-            $q->whereDate('start_time', '=', $day);
-        })->
-        where('user_id', '=', Auth::id())->get();
+            }]);
 
+        }
 
         foreach ($this->vehicles as $vehicle) {
             $last_back = null;
@@ -45,21 +53,26 @@ class Day extends Component
 
         }
 
+        if (!$mode) {
+            $this->runsWithoutVehicle = Run::with(['Customer', "Vehicle"])
+                ->whereDate('start_time', '=', $this->day)
+                ->where('user_id', '=', Auth::id())
+                ->where(function ($q) {
+                    return $q->whereNull('customer_id')
+                        ->orWhereNull('vehicle_id');
+                })
+                ->get();
+        } else {
+            $this->runsWithoutVehicle = Auth::user()->Runs()
+                ->whereDate('start_time', '=', $this->day)
+                ->where('status', 'requested')
 
-        $this->runsWithoutVehicle = Run::with(['Customer', "Vehicle"])
-            ->whereDate('start_time', '=', $this->day)
-            ->where('user_id', '=', Auth::id())
-            ->where(function ($q) {
-                return $q->whereNull('customer_id')
-                    ->orWhereNull('vehicle_id');
-            })
-            ->get();
-
+                ->get();
+        }
     }
 
 
-    public
-    function render()
+    public function render()
     {
         return view('components.runs.day');
     }

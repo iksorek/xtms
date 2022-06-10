@@ -3,21 +3,24 @@
 namespace App\View\Components\Dash;
 
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Auth;
+use Route;
 
-class NotificationMenu extends Component
+class NotificationItem extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $requstedRuns;
+    public string $notification;
+    public int $number;
 
-    public function __construct()
+    public function __construct($notification, $number = 0)
     {
+        $this->notification = $notification;
+        $this->number = $number;
 
-        $this->requstedRuns = Auth::user()->Runs()->where('status', '=', 'requested')->count('id');
+
     }
 
     /**
@@ -27,6 +30,6 @@ class NotificationMenu extends Component
      */
     public function render()
     {
-        return view('components.dash.notification-menu');
+        return view('components.dash.notification-item');
     }
 }

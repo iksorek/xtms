@@ -96,6 +96,9 @@ input, button {
     &_table_cell-name {
         @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell;
     }
+    &__info-big{
+        @apply text-xl text-center m-2;
+    }
 
 }
 

@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
 
-    <x-jet-welcome/>
+    @if(isset($mode) && $mode == 'requested')
+        <h3>Requested runs</h3>
+        <livewire:runs-blocks :mode="$mode"/>
+    @elseif(!isset($mode))
+        <livewire:runs-blocks/>
+    @endif
 
 </x-app-layout>
