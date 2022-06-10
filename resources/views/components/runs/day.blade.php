@@ -39,14 +39,12 @@
             </div>
 
         @empty
-            <div class="inline-block h-20 p-2">
-                @if(isset($mode) && $mode == 'requested')
-                    <p class="run__info-big">No requested runs</p>
-
-                @elseif(!isset($mode) && $mode != 'requested')
+            @if($mode != 'requested')
+                <div class="h-20 p-2 flex">
                     <p class="run__info-big">No fully planned runs yet</p>
-                @endif
-            </div>
+                </div>
+            @endif
+
         @endforelse
         <div class="w-full">
             @if($runsWithoutVehicle->count() != 0)

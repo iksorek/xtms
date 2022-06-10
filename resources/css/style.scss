@@ -97,7 +97,7 @@ input, button {
         @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell;
     }
     &__info-big{
-        @apply text-xl text-center m-2;
+        @apply text-xl text-center mx-auto my-auto inline-block bg-amber-500 p-5;
     }
 
 }
