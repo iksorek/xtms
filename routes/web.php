@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -30,7 +31,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             return view('dashboard');
         }
     })->name('dashboard')->middleware('role:user|admin');
-
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/myCustomers', [CustomerController::class, 'index'])->name('myCustomers');
     Route::get('/vehicledetails/{vehicleID}', [VehicleController::class, 'show'])->name('vehicleDetails');
     Route::get('/myvehicles', [VehicleController::class, 'index'])->name('myvehicles');
