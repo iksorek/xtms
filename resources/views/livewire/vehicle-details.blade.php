@@ -94,10 +94,10 @@
 
     </div>
     <div class="w-full text-center pb-10">
-        <x-jet-button wire:click="updateVehicle" class="mt-3 w-1/4">Update</x-jet-button>
+        <x-jet-button wire:click="updateVehicle" class="mt-3 w-1/4">Save changes</x-jet-button>
         <x-jet-button wire:click="cancelChanges" class="mt-3 w-1/4">Cancel</x-jet-button>
         <br>
-        <x-jet-button wire:click="$toggle('confirmingVehicleDeletion')" class="mt-3 bg-red-600 w-1/2">DELETE VEHICLE
+        <x-jet-button wire:click="$toggle('confirmingVehicleDeletion')" class="mt-3 w-1/2 bg-red-500">DELETE VEHICLE
         </x-jet-button>
 
 
