@@ -44,16 +44,35 @@
 
         <div class="run_details">
             <div class="run__title-top">Route</div>
-            <div class="description">Postcodes: {{$run->postcode_from}} - {{$run->postcode_to}}</div>
+            <div class="description">
+                <p>Postcodes</p>
+                <p>{{$run->postcode_from}} - {{$run->postcode_to}}</p></div>
+            @if($run->address_from)
+                <div class="description"><p>Pick up address: </p>
+                    <p>{{$run->address_from}}</p>
+                </div>
+            @endif
+            @if($run->address_to)
+                <div class="description">
+                    <p>
+                        Drop off address:
+                    </p>
+                    <p>{{$run->address_to}}</p></div>
+
+            @endif
+
             @if($run->Customer)
                 <p class="description cursor-pointer" wire:click="$toggle('showCustomerDetails')">
                     Customer: {{$run->Customer->name}}</p>
             @else
-                <p class="description">
-                    Customer: Not set</p>
+                <div class="description">
+                    <p>Customer: </p>
+                    <p>Not set</p>
+                </div>
             @endif
 
             <p class="description">Vehicle: {{$run->Vehicle ? $run->Vehicle->reg : 'Not set'}}</p>
+
 
         </div>
 
@@ -127,14 +146,24 @@
 
         <div class="run_details">
             <div class="run__title-top">Status</div>
-               <livewire:run-status-change-buttons :run="$run" />
-            </div>
-            <div class="run_details">
-                <div class="run__title-top">Options</div>
-                <span><a href="{{route('editRun', $run)}}" class="button-like-link">Edit run</a></span>
-                <span class="button-like-link cursor-pointer" wire:click="$toggle('delete')">Delete</span>
-            </div>
-
-
+            <livewire:run-status-change-buttons :run="$run"/>
         </div>
-    </div>
+        <div class="run_details">
+            <div class="run__title-top">Options</div>
+            <span><a href="{{route('editRun', $run)}}" class="button-like-link">Edit run</a></span>
+            <span class="button-like-link cursor-pointer" wire:click="$toggle('delete')">Delete</span>
+        </div>
+        <div class="run_details">
+            <div class="run__title-top">Notes</div>
+            <div class="description">{{$run->notes}}</div>
+        </div>
+        <div class="run_details">
+            <div class="run__title-top">Map</div>
+            <div class="description">
+                <div id="map">
+                    <x-ors-map/>
+                </div>
+
+
+            </div>
+        </div>

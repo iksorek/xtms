@@ -54,6 +54,7 @@ if (!function_exists('getQuote')) {
 
 
             if ($response->successful()) {
+                dd($response->json());
                 $res['time'] = round($response->json()['routes'][0]['summary']['duration'] / 60);
                 $res['distance'] = round($response->json()['routes'][0]['summary']['distance']);
                 $res['postcodesStart'] = $postcodesStart;

@@ -45,6 +45,8 @@ class RunFactory extends Factory
         return [
             'postcode_from' => 'NP16 5RA',
             'postcode_to' => $this->faker->randomElement($postCodes),
+            'address_from' => $this->faker->address,
+            'address_to' => $this->faker->address,
             'price' => rand(20, 1000),
             'status' => $this->faker->randomElement($types),
             'start_time' => Carbon::now()->add(rand(0, 5), $this->faker->randomElement(['hour', 'day'])),
