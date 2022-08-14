@@ -61,6 +61,13 @@ class EditRun extends Component
         $this->validate($this->rules);
         $this->run->postcode_from = $this->postcode_from;
         $this->run->postcode_to = $this->postcode_to;
+
+        $details = getQuote($this->postcode_from, $this->postcode_to);
+        $this->run->long_from = $details['long_from'];
+        $this->run->lat_from = $details['lat_from'];
+        $this->run->long_to = $details['long_to'];
+        $this->run->lat_to = $details['lat_to'];
+
         $this->run->price = $this->cost;
         $this->run->back_est = $this->back_est;
         $this->run->finish_est = $this->finish_est;
