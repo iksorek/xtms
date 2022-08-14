@@ -59,6 +59,13 @@ if (!function_exists('getQuote')) {
                 $res['distance'] = round($response->json()['routes'][0]['summary']['distance']);
                 $res['postcodesStart'] = $postcodesStart;
                 $res['postcodesFinish'] = $postcodesFinish;
+                $res['long_from'] = $coordinatesStart['longitude'];
+                $res['lat_from'] = $coordinatesStart['latitude'];
+                $res['long_to'] = $coordinatesFinish['longitude'];
+                $res['lat_to'] = $coordinatesFinish['latitude'];
+
+
+
                 if (!$api_key) {
                     $res['costApr'] = round(($res['distance'] * Auth::user()->ppm) + ($res['time'] / 60 * Auth::user()->pph));
                 } else {

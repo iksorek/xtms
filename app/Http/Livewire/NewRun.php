@@ -46,6 +46,13 @@ class NewRun extends Component
         $run->vehicle_id = $this->vehicle;
         $run->postcode_from = $this->newrun['postcodesStart'];
         $run->postcode_to = $this->newrun['postcodesFinish'];
+
+        $run->long_from = $this->newrun['long_from'];
+        $run->lat_from = $this->newrun['lat_from'];
+        $run->long_to = $this->newrun['long_to'];
+        $run->lat_to = $this->newrun['lat_to'];
+
+
         $run->distance = $this->newrun['distance'];
         $run->customer_id = $this->customer;
         $run->price = $this->cost;

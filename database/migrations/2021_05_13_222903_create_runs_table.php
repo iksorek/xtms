@@ -21,8 +21,12 @@ class CreateRunsTable extends Migration
             $table->foreignUuid('customer_id')->nullable();
             $table->string('postcode_from');
             $table->string('address_from')->nullable();
+            $table->string('long_from')->nullable();
+            $table->string('lat_from')->nullable();
             $table->string('postcode_to');
             $table->string('address_to')->nullable();
+            $table->string('long_to')->nullable();
+            $table->string('lat_to')->nullable();
             $table->integer('distance')->nullable();
             $table->timestamp('start_time')->nullable();
             $table->timestamp('finish_est')->nullable();

@@ -34,7 +34,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/mime-type-detection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
@@ -135,6 +134,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/flare-client-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-ignition" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/backtrace" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nunomaduro/termwind" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

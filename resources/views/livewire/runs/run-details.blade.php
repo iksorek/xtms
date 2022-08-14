@@ -47,17 +47,22 @@
             <div class="description">
                 <p>Postcodes</p>
                 <p>{{$run->postcode_from}} - {{$run->postcode_to}}</p></div>
-            @if($run->address_from)
+            @if($run->address_from || $run->long_from || $run->lat_from)
                 <div class="description"><p>Pick up address: </p>
                     <p>{{$run->address_from}}</p>
+                    <p>Long{{$run->long_from}}</p>
+                    <p>Lat{{$run->lat_from}}</p>
                 </div>
             @endif
-            @if($run->address_to)
+            @if($run->address_to || $run->long_to || $run->lat_to)
                 <div class="description">
                     <p>
                         Drop off address:
                     </p>
-                    <p>{{$run->address_to}}</p></div>
+                    <p>{{$run->address_to}}</p>
+                    <p>Long{{$run->lat_to}}</p>
+                    <p>Lat{{$run->long_to}}</p>
+                </div>
 
             @endif
 
@@ -161,9 +166,12 @@
             <div class="run__title-top">Map</div>
             <div class="description">
                 <div id="map">
-                    <x-ors-map/>
+
+                    <x-ors-map :geo="$run"/>
                 </div>
 
 
             </div>
         </div>
+    </div>
+</div>
