@@ -1,5 +1,4 @@
 <div id="map">
-   TIME: {{$geo->start_time}}
     <script type="text/javascript">
 
         let long_from = {{$geo->long_from}};
@@ -23,7 +22,7 @@
 
         request.onreadystatechange = function () {
             if (this.readyState === 4) {
-                console.log('Body:', this.responseText);
+                // console.log('Body:', this.responseText);
                 answer = (this.responseText);
                 L.geoJSON(JSON.parse(answer)).addTo(map);
                 map.fitBounds([
