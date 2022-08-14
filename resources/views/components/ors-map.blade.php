@@ -10,7 +10,7 @@
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-
+        //TODO MOVE IT TO PROPER JS FILE AND MAKE IN ES6 STANDARD
         let request = new XMLHttpRequest();
         let answer;
 
@@ -35,8 +35,7 @@
 
         const body = '{"coordinates":[[{{$geo->long_from}},{{$geo->lat_from}}],[{{$geo->long_to}},{{$geo->lat_to}}]]}';
 
-         request.send(body);
-
+        request.send(body);
 
 
     </script>
