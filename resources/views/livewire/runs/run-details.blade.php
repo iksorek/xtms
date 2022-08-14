@@ -162,16 +162,18 @@
             <div class="run__title-top">Notes</div>
             <div class="description">{{$run->notes}}</div>
         </div>
-        <div class="run_details">
-            <div class="run__title-top">Map</div>
-            <div class="description">
-                <div id="map">
+        @if($run->long_to && $run->lat_to && $run->long_from && $run->lat_from)
+            <div class="run_details">
+                <div class="run__title-top">Map</div>
+                <div class="description">
+                    <div id="map">
 
-                    <x-ors-map :geo="$run"/>
+                        <x-ors-map :geo="$run"/>
+                    </div>
+
+
                 </div>
-
-
             </div>
-        </div>
+        @endif
     </div>
 </div>
